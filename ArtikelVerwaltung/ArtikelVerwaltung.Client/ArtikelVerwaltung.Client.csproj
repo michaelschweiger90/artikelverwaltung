@@ -94,10 +94,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\config.js" />
+    <Content Include="app\config.router.js" />
+    <Content Include="app\controllers\app.js" />
+    <Content Include="app\controllers\login.js" />
+    <Content Include="app\resources\loginResource.js" />
+    <Content Include="app\services\login.js" />
+    <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="bower.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,11 +115,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.html" />
+    <Content Include="views\login.html" />
+    <Content Include="views\start.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\directives\" />
+    <Folder Include="app\filters\" />
+    <Folder Include="assets\css\" />
+    <Folder Include="assets\media\" />
+    <Folder Include="views\admin\" />
+    <Folder Include="views\article\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

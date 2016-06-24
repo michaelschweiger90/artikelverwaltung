@@ -1,10 +1,45 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>Startseite</title>
-	<meta charset="utf-8" />
-</head>
-<body>
-	Startseite
-</body>
+﻿<html xmlns="http://www.w3.org/1999/xhtml" ng-app="artikelverwaltung">
+    <head>
+        <meta charset="utf-8" />
+        <title page-title></title>
+
+        <meta name="description" content="blank page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+        <!-- <link rel="stylesheet" href="assets/css/article-style.css"> -->
+    </head>
+    <body ng-controller="AppCtrl">
+        <div ui-view></div>
+
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+        <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+        <script src="bower_components/ngstorage/ngStorage.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+        <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+        <script src="bower_components/angular-bootstrap-contextmenu/contextMenu.js"></script>
+
+
+        <script src="app/app.js"></script>
+        <script src="app/config.js"></script>
+        <script src="app/config.router.js"></script>
+
+        <script src="app/resources/loginResource.js"></script>
+
+        <script src="app/services/login.js"></script>
+
+        <script src="app/controllers/app.js"></script>
+         
+    </body>
 </html>
