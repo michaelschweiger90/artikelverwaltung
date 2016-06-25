@@ -8,39 +8,38 @@ using ArtikelVerwaltung.Repository.EF;
 
 namespace ArtikelVerwaltung.Repository.Data
 {
-	public class CartRepositroy : ICartRepository
+	public class CartRepositroy : Repository, ICartRepository
 	{
 		private ArtikelVerwaltungEntities ctx;
 
-		public CartRepositroy(ArtikelVerwaltungEntities ctx)
+		public CartRepositroy(ArtikelVerwaltungEntities ctx) : base(ctx)
 		{
 			this.ctx = ctx;
 		}
 
-		public Cart add(Cart cart)
+		public Cart Add(Cart cart)
 		{
 			return ctx.Cart.Add(cart);
 		}
 		
-		public Cart delete(Cart cart)
+		public Cart Delete(Cart cart)
 		{
 			return ctx.Cart.Remove(cart);
 		}
 
-		public Cart getCartByID(int id)
+		public Cart GetCartByID(int id)
 		{
 			return ctx.Cart.Find(id);
 		}
 
-		public Cart getCartByUser(User user)
+		public List<Cart> GetCartByUser(User user)
 		{
-			List<Cart> results =  ctx.Cart.Where(d => d.UserID == user.ID).ToList();
-			return results.First();
+			return ctx.Cart.Where(d => d.UserID == user.ID).ToList();
 		}
 
-		public Cart update(Cart cart)
+		public Cart Update(Cart cart)
 		{
-			Cart original = getCartByID(cart.ID);
+			Cart original = GetCartByID(cart.ID);
 
 			ctx.Entry(original).CurrentValues.SetValues(cart);
 

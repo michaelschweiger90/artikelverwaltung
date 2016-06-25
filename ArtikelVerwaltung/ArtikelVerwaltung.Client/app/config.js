@@ -2,7 +2,7 @@ var app =
     angular.module('artikelverwaltung')
         .constant('urls', {
             BASE: 'http://localhost:52057/',
-            BASE_API: 'http://localhost:52240/'
+            BASE_API: 'http://localhost:52240/api/v1/'
         })
         .config(
             [
@@ -17,7 +17,9 @@ var app =
                     app.value = $provide.value;
 
                     $translateProvider.translations('de', {
-                        'SYS_USERNAME': 'Benutzer',
+                    	'SYS_USERNAME': 'Benutzer',
+                    	'SYS_SAVE': 'Speichern',
+                    	'SYS_CANCEL': 'Abbrechen'
                         
                     });
 

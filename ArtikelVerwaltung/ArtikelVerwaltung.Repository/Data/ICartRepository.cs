@@ -1,13 +1,16 @@
 ﻿using ArtikelVerwaltung.Repository.EF;
+using System.Collections.Generic;
 
 namespace ArtikelVerwaltung.Repository.Data
 {
-	interface ICartRepository
+	public interface ICartRepository
 	{
-		Cart getCartByUser(User user);
-		Cart getCartByID(int id);
-		Cart add(Cart cart);
-		Cart update(Cart cart);
-		Cart delete(Cart cart);
+		List<Cart> GetCartByUser(User user);
+		Cart GetCartByID(int id);
+		Cart Add(Cart cart);
+		Cart Update(Cart cart);
+		Cart Delete(Cart cart);
+
+		bool SaveAll();
 	}
 }

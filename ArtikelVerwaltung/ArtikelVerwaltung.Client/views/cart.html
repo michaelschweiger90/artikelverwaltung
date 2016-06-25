@@ -1,0 +1,16 @@
+﻿<div ng-controller="CartCtrl">
+	<md-button class="md-raised" layout="start none" ng-click="add()">Warenkorb hinzufügen</md-button>
+
+	<div>
+		<div ng-repeat="cart in carts">
+			{{cart.name}}
+
+			<md-button class="md-icon-button" ng-click="edit(cart)">
+				<i class="material-icons">edit</i>
+			</md-button>
+			<md-button class="md-icon-button" ng-click="delete(cart)">
+				<i class="material-icons">delete</i>
+			</md-button>
+		</div>
+	</div>
+</div>

@@ -53,6 +53,10 @@
   <ItemGroup>
     <Compile Include="Data\CartRepositroy.cs" />
     <Compile Include="Data\ICartRepository.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\IUserRepository.cs" />
+    <Compile Include="Data\Repository.cs" />
+    <Compile Include="Data\UserRepository.cs" />
     <Compile Include="EF\Article.cs">
       <DependentUpon>ArtikelVerwaltungEntity.tt</DependentUpon>
     </Compile>
@@ -83,10 +87,10 @@
     <Compile Include="EF\Category.cs">
       <DependentUpon>ArtikelVerwaltungEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EF\User.cs">
       <DependentUpon>ArtikelVerwaltungEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -100,6 +104,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="EF\ArtikelVerwaltungEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ArtikelVerwaltungEntity.edmx</DependentUpon>
@@ -111,10 +121,6 @@
       <LastGenOutput>ArtikelVerwaltungEntity.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

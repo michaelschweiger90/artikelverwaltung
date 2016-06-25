@@ -1,0 +1,21 @@
+﻿<md-dialog aria-label="Warenkorb" ng-cloak>
+	<form name="form">
+		<md-dialog-content class="dialog-content">
+			<h4>{{(mode == 'insert') ? 'Warenkorb hinzufügen' : 'Warenkorb bearbeiten' }}</h4>
+			<md-input-container class="md-block">
+				<input type="text" ng-model="name" name="name" id="name" required ng-minlength="3" />
+				<div ng-messages="form.name.$error">
+					<div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
+				</div>
+			</md-input-container>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button ng-click="cancel()">
+				{{'SYS_CANCEL' | translate }}
+			</md-button>
+			<md-button ng-disabled="form.$invalid" ng-click="edit()" style="margin-right:20px;">
+				{{'SYS_SAVE' | translate }}
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>
