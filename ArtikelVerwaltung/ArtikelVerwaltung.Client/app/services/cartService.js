@@ -3,10 +3,11 @@
  */
 
 app.factory('Cart', [
-    'CartResource', 'Dialog',
-    function (CartResource, Dialog) {
+    'CartResource', 'CartArticleResource', 'Dialog',
+    function (CartResource, CartArticleResource, Dialog) {
 
     	var carts = null;
+    	var articles = null;
 
     	var getCarts = function (userId, handler) {
     		carts = CartResource.query({ userID: userId }, function () {
@@ -47,9 +48,7 @@ app.factory('Cart', [
     		};
 
     		Dialog.custom(config, function (data) {
-    			console.log(data);
     			newCart.name = data;
-    			console.log(newCart);
     			newCart.$save({userID: userId}, function () {
     				handler(newCart);
     			});
@@ -102,12 +101,48 @@ app.factory('Cart', [
 
     		Dialog.custom(config, function (data) {
     			cart.name = data;
-
-    			console.log(cart);
     			cart.$update({},function () {
     				handler();
     			});
     		}, function () {
+    		});
+    	};
+
+    	var getArticles = function (cart, handler) {
+    		articles = CartArticleResource.query({ userID: cart.userID, id: cart.id }, function () {
+    			handler(articles);
+    		});
+    	};
+
+    	var addArticle = function (cart, article, handler) {
+    		var articleCart = new CartArticleResource();
+
+    		articleCart.cartID = cart.id;
+    		articleCart.articleID = article.id;
+
+    		articleCart.$save({
+    			userID: cart.userID,
+    			id: cart.id
+    		}, function () {
+    			handler();
+    		});
+    	};
+
+    	var removeArticle = function (cart, article, handler) {
+    		var articleCart = new CartArticleResource();
+    		var original = article;
+
+    		articleCart.cartID = cart.id;
+    		articleCart.articleID = article.id;
+
+    		CartArticleResource.removeArticle({
+    			userID: cart.userID,
+    			id: cart.id,
+    			articleID: article.id
+    		}, function () {
+    			articles.splice(articles.indexOf(original), 1);
+
+    			handler(articles);
     		});
     	};
 
@@ -118,7 +153,10 @@ app.factory('Cart', [
     	return {
     		getAll: getCarts,
 			get: getCart,
-    		add: add,
+			add: add,
+			getArticles: getArticles,
+			addArticle: addArticle,
+			removeArticle: removeArticle,
     		delete: deleteCart,
     		update: update,
     		getNewResource: getNewResource

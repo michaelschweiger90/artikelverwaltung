@@ -70,8 +70,6 @@ namespace ArtikelVerwaltung.API.App_Start
 		{
 			kernel.Bind<ArtikelVerwaltungEntities>().To<ArtikelVerwaltungEntities>().InRequestScope();
 			kernel.Bind<IRepository>().To<Repository>().InRequestScope();
-			kernel.Bind<ICartRepository>().To<CartRepositroy>().InRequestScope();
-			kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
 		}
 	}
 }

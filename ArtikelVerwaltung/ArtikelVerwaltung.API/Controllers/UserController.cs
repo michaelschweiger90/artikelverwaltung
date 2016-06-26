@@ -25,6 +25,7 @@ namespace ArtikelVerwaltung.API.Controllers
 		/* Warenkorb */
 		#region Warenkorb
 		[Route("~/api/v1/users/{userId:int}/carts")]
+		[HttpGet]
 		public IHttpActionResult getCartsByUser(int userId)
 		{
 			try
@@ -41,7 +42,7 @@ namespace ArtikelVerwaltung.API.Controllers
 
 				return Ok(carts);
 			}
-			catch(ArgumentException ex)
+			catch(ArgumentException)
 			{
 				return NotFound();
 			}
@@ -49,6 +50,7 @@ namespace ArtikelVerwaltung.API.Controllers
 
 
 		[Route("~/api/v1/users/{userId:int}/carts/{cartId:int}")]
+		[HttpGet]
 		public IHttpActionResult getCartByUser(int userId, int cartId)
 		{
 			try
@@ -70,7 +72,7 @@ namespace ArtikelVerwaltung.API.Controllers
 
 				return Ok(cartDTO);
 			}
-			catch(ArgumentException ex)
+			catch(ArgumentException)
 			{
 				return NotFound();
 			}
@@ -109,11 +111,11 @@ namespace ArtikelVerwaltung.API.Controllers
 					return BadRequest();
 				}
 			}
-			catch(ArgumentException ex)
+			catch(ArgumentException)
 			{
 				return NotFound();
 			}
-			catch(HttpResponseException ex)
+			catch(HttpResponseException)
 			{
 				return BadRequest();
 			}
@@ -158,11 +160,11 @@ namespace ArtikelVerwaltung.API.Controllers
 					return BadRequest();
 				}
 			}
-			catch(ArgumentException ex)
+			catch(ArgumentException)
 			{
 				return NotFound();
 			}
-			catch(HttpResponseException ex)
+			catch(HttpResponseException)
 			{
 				return BadRequest();
 			}
@@ -199,7 +201,125 @@ namespace ArtikelVerwaltung.API.Controllers
 					return BadRequest();
 				}
 			}
-			catch (ArgumentException ex)
+			catch (ArgumentException)
+			{
+				return NotFound();
+			}
+		}
+
+
+		[Route("~/api/v1/users/{userId:int}/carts/{cartId:int}/articles")]
+		[HttpGet]
+		public IHttpActionResult getArticleInCart(int userId, int cartId)
+		{
+			try
+			{
+				User user = UserRepository.getUserById(userId);
+
+				if (user == null)
+					throw new ArgumentException("User exisitert nicht!");
+
+				//if(user.ID != 2)
+				//throw new HttpResponseException(HttpStatusCode.Unauthorized);
+
+				Cart cart = CartRepository.GetCartByID(cartId);
+
+				if (cart == null)
+					throw new ArgumentException("Warenkorb existiert nicht!");
+
+				List<Article> articles =  CartRepository.GetArticle(cart.ID);
+
+				//ToDO in DTO umwandeln
+
+				return Ok(articles);
+			}
+			catch(ArgumentException)
+			{
+				return NotFound();
+			}
+		}
+
+
+		[Route("~/api/v1/users/{userId:int}/carts/{cartId:int}/articles")]
+		[HttpPost]
+		public IHttpActionResult addArticleToCart(int userId, int cartId, [FromBody] ArticleCartDTO acDTO)
+		{
+			try
+			{
+				User user = UserRepository.getUserById(userId);
+
+				if (user == null)
+					throw new ArgumentException("User exisitert nicht!");
+
+				//if(user.ID != 2)
+				//throw new HttpResponseException(HttpStatusCode.Unauthorized);
+
+				Cart cart = CartRepository.GetCartByID(cartId);
+
+				if (cart == null)
+					throw new ArgumentException("Warenkorb existiert nicht!");
+
+				ArticleCart ac = ModelFactory.Create(acDTO);
+				
+				CartRepository.AddArticle(ac);
+
+				if (CartRepository.SaveAll())
+				{
+					return Ok(ModelFactory.Create(cart));
+				}
+				else
+				{
+					return BadRequest();
+				}
+			}
+			catch (ArgumentException)
+			{
+				return NotFound();
+			}
+		}
+
+
+		[Route("~/api/v1/users/{userId:int}/carts/{cartId:int}/articles/{articleId}")]
+		[HttpDelete]
+		public IHttpActionResult removeArticleFromCart(int userId, int cartId, int articleId)
+		{
+			try
+			{
+				User user = UserRepository.getUserById(userId);
+
+				if (user == null)
+					throw new ArgumentException("User exisitert nicht!");
+
+				// ToDo
+				//if(user.ID != 2)
+				//throw new HttpResponseException(HttpStatusCode.Unauthorized);
+
+				Cart cart = CartRepository.GetCartByID(cartId);
+
+				if (cart == null)
+					throw new ArgumentException("Warenkorb existiert nicht!");
+
+				// ToDo überprüfen ob Artikel existiert
+
+				ArticleCart ac = CartRepository.ArticleExisits(cart.ID, articleId);
+
+				if (ac == null)
+				{
+					throw new ArgumentException("Artikel ist nicht im Warenkorb!");
+				}
+
+				CartRepository.RemoveArticle(ac);
+
+				if (CartRepository.SaveAll())
+				{
+					return Ok();
+				}
+				else
+				{
+					return BadRequest();
+				}
+			}
+			catch(ArgumentException)
 			{
 				return NotFound();
 			}

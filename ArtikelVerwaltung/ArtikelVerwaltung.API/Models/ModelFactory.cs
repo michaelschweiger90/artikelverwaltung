@@ -35,7 +35,7 @@ namespace ArtikelVerwaltung.API.Models
 			return cart;
 		}
 
-		internal List<CartDTO> Create(List<Cart> carts)
+		public List<CartDTO> Create(List<Cart> carts)
 		{
 			List<CartDTO> list = new List<CartDTO>();
 
@@ -48,6 +48,23 @@ namespace ArtikelVerwaltung.API.Models
 			}
 
 			return list;
+		}
+
+		public ArticleCart Create(ArticleCartDTO dto)
+		{
+			ArticleCart ac = null;
+
+			if (dto != null)
+			{
+				ac = new ArticleCart()
+				{
+					ID = dto.Id,
+					ArticleID = dto.ArticleID,
+					CartID = dto.CartID
+				};
+			}
+
+			return ac;
 		}
 	}
 }

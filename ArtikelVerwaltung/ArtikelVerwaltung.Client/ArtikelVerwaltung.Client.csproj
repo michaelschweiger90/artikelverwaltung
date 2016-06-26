@@ -100,6 +100,7 @@
     <Content Include="app\controllers\app.js" />
     <Content Include="app\controllers\cart.js" />
     <Content Include="app\controllers\login.js" />
+    <Content Include="app\resources\cartArticleResource.js" />
     <Content Include="app\resources\cartResource.js" />
     <Content Include="app\resources\loginResource.js" />
     <Content Include="app\services\cartService.js" />

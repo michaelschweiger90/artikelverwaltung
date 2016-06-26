@@ -45,6 +45,7 @@ angular
 							serie: true,
 							files: [
 								'app/resources/cartResource.js',
+								'app/resources/cartArticleResource.js',
 								'app/services/cartService.js',
 								'app/controllers/cart.js'
 							]

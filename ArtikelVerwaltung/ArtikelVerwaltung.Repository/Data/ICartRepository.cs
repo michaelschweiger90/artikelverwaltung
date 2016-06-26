@@ -11,6 +11,11 @@ namespace ArtikelVerwaltung.Repository.Data
 		Cart Update(Cart cart);
 		Cart Delete(Cart cart);
 
+		ArticleCart AddArticle(ArticleCart ac);
+		ArticleCart RemoveArticle(ArticleCart ac);
+		ArticleCart ArticleExisits(int cartID, int articleID);
+		List<Article> GetArticle(int cartID);
+
 		bool SaveAll();
 	}
 }
