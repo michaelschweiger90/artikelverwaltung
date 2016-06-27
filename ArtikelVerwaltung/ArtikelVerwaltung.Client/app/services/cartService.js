@@ -1,8 +1,4 @@
-﻿/**
- * Created by Matthias Oppacher on 16.05.2016.
- */
-
-app.factory('Cart', [
+﻿app.factory('Cart', [
     'CartResource', 'CartArticleResource', 'Dialog',
     function (CartResource, CartArticleResource, Dialog) {
 

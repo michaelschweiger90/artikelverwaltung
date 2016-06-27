@@ -54,6 +54,8 @@ angular
     			]
     		}
     	});
+
+        //TODO article state
            
 
     }]);

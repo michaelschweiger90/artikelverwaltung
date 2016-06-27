@@ -1,0 +1,25 @@
+﻿<div ng-controller="ArticleDetailsCtrl">
+    <form name="form" class="article-details">
+        <md-input-container class="md-block article-name" flex-gt-sm>
+            <label>{{'ARTICLE_NAME' | translate }}</label>
+            <input ng-model="article.name" required>
+        </md-input-container>
+
+        <md-input-container class="md-block a-description">
+            <label>{{'ARTICLE_DESCRIPTION' | translate }}</label>
+            <textarea ng-model="article.description" rows="15" md-select-on-focus required></textarea>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'ARTICLE_LINK' | translate }}</label>
+            <input ng-model="article.source" required>
+        </md-input-container>
+ 
+        <div layout="row" layout-align="end">
+            <md-button class="md-raised btn orange-button login-button" ng-click="save()" ng-disabled="form.$invalid || !form.$dirty">
+                <i class="material-icons">save</i>
+                {{'SYS_SAVE' | translate }}
+            </md-button>
+        </div>
+    </form>
+</div>

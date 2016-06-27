@@ -1,0 +1,47 @@
+﻿<div ng-controller="ArticleDetailsCtrl">
+    <div layout="column" layout-padding="5px" class="header">
+        <h2>{{article.name}}</h2>
+    </div>
+
+    <div layout="row" layout-padding="5px">
+        <div flex>
+            <div class="headline">
+                <i class="material-icons icon">subject</i>
+                <span>Beschreibung</span>
+            </div>
+            <md-divider></md-divider>
+            <div class="content">
+                {{article.description}}
+            </div>
+        </div>
+    </div>
+
+    <div layout-gt-xs="row" layout-xs="column" layout-padding="5px">
+        <div flex="100">
+            <md-list>
+                <div class="headline">
+                    <i class="material-icons icon">star_border</i>
+                    <span>Warenkorb</span>
+                    <span style="float: right">
+                        <md-button class="md-icon-button">
+                            <i class="material-icons">edit</i>
+                        </md-button>
+                    </span>
+                </div>
+                <md-divider></md-divider>
+                <div>
+                    <md-list-item ng-show="carts.length > 0" ng-repeat="cart in carts">
+                        <div class="md-list-item-text" layout="column">
+                            {{ cart.name }}
+                        </div>
+                    </md-list-item>
+                    <md-list-item ng-show="carts.length == 0">
+                        <div class="md-list-item-text">
+                            Noch keinem Warenkorb zugeordnet
+                        </div>
+                    </md-list-item>
+                </div>
+            </md-list>
+        </div>
+    </div>
+</div>

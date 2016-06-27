@@ -1,0 +1,30 @@
+﻿<div ng-controller="ArticleListCtrl" class="smart-table">
+    <table st-table="displayedCollection" class="table table-striped" st-safe-src="articles">
+        <thead>
+            <tr>
+                <th st-sort="name">{{'ARTICLE_NAME' | translate }}</th>
+                <th st-sort="name">{{'ARTICLE_PRICE' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr context-menu="menuOptions" ui-sref="app.article.detail({catId: category,id: a.id})" ng-repeat="a in displayedCollection">
+                <td>{{ a.name }}</td>
+                <td>{{ a.price }}</td>
+
+            </tr>
+            <tr ng-show="articles.length == 0 && isInit">
+                <td class="text-center" colspan="3">{{'ARTICLE_NONE_IN_LIST' | translate }}</td>
+            </tr>
+            <tr ng-show="!isInit">
+                <td class="text-center" colspan="3">{{'ARTICLE_PLEASE_CHOOSE' | translate }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="15" st-displayed-pages="10"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

@@ -1,5 +1,4 @@
-﻿
-app.controller('CartCtrl', [
+﻿app.controller('CartCtrl', [
     '$rootScope', '$scope', 'Cart', 
     function ($rootScope, $scope, Cart) {
 

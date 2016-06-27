@@ -98,11 +98,17 @@
     <Content Include="app\config.js" />
     <Content Include="app\config.router.js" />
     <Content Include="app\controllers\app.js" />
+    <Content Include="app\controllers\article.js" />
+    <Content Include="app\controllers\articleDetail.js" />
+    <Content Include="app\controllers\articleList.js" />
     <Content Include="app\controllers\cart.js" />
     <Content Include="app\controllers\login.js" />
+    <Content Include="app\resources\articleCategoryResource.js" />
+    <Content Include="app\resources\articleResource.js" />
     <Content Include="app\resources\cartArticleResource.js" />
     <Content Include="app\resources\cartResource.js" />
     <Content Include="app\resources\loginResource.js" />
+    <Content Include="app\services\article.js" />
     <Content Include="app\services\cartService.js" />
     <Content Include="app\services\dialogService.js" />
     <Content Include="app\services\login.js" />
@@ -112,6 +118,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="bower.json" />
+    <Content Include="views\admin\article-details.html" />
+    <Content Include="views\admin\article-list.html" />
+    <Content Include="views\admin\article.html" />
+    <Content Include="views\Article.html" />
+    <Content Include="views\article\detail.html" />
+    <Content Include="views\article\list.html" />
     <Content Include="views\dlgs\cart.dlg.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -134,8 +146,6 @@
     <Folder Include="app\filters\" />
     <Folder Include="assets\css\" />
     <Folder Include="assets\media\" />
-    <Folder Include="views\admin\" />
-    <Folder Include="views\article\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
