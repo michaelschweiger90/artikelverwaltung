@@ -35,6 +35,32 @@ namespace ArtikelVerwaltung.API.Models
 			return cart;
 		}
 
+		internal List<ArticleDTO> Create(List<Article> articles)
+		{
+			List<ArticleDTO> list = new List<ArticleDTO>();
+
+			if (articles?.Count > 0)
+			{
+				foreach (Article article in articles)
+				{
+					list.Add(Create(article));
+				}
+			}
+
+			return list;
+		}
+
+		private ArticleDTO Create(Article article)
+		{
+			return new ArticleDTO()
+			{
+				ID = article.ID, 
+				Name = article.Name,
+				Price = article.Price,
+				Description = article.Description
+			};
+		}
+
 		public List<CartDTO> Create(List<Cart> carts)
 		{
 			List<CartDTO> list = new List<CartDTO>();

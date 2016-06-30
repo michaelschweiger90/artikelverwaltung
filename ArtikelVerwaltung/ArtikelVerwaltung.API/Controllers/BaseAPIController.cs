@@ -13,14 +13,21 @@ namespace ArtikelVerwaltung.API.Controllers
 	[EnableCors(origins: "*", headers: "*", methods: "*")]
 	public class BaseAPIController : ApiController
 	{
+		private IArticleRepository articleRepo;
 		private ICartRepository cartRepo;
 		private IUserRepository userRepo;
 		private ModelFactory modelFactory;
 
 		public BaseAPIController(IRepository repo)
 		{
+			articleRepo = repo.GetArticleRepository();
 			cartRepo = repo.GetCartRepository();
 			userRepo = repo.GetUserRepository();
+		}
+
+		protected IArticleRepository ArticleRepository
+		{
+			get { return articleRepo; }
 		}
 
 		protected ICartRepository CartRepository

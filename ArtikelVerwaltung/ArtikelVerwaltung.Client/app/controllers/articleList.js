@@ -1,6 +1,6 @@
-﻿app.controller('AritcleListCtrl', [
-    '$rootScope', '$scope', '$stateParams', 'Article', 'Toast', '$filter',
-    function ($rootScope, $scope, $stateParams,  Article, Toast, $filter) {
+﻿app.controller('ArticleListCtrl', [
+    '$rootScope', '$scope', '$stateParams', 'Article', 'Toast', '$filter', '$state',
+    function ($rootScope, $scope, $stateParams,  Article, Toast, $filter, $state) {
 
         $scope.isInit = false;
 

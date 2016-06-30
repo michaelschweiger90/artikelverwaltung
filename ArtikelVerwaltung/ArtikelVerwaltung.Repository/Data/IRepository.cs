@@ -10,6 +10,7 @@ namespace ArtikelVerwaltung.Repository.Data
 	{
 		CartRepositroy GetCartRepository();
 		UserRepository GetUserRepository();
+		ArticleRepository GetArticleRepository();
 
 		bool SaveAll();
 	}

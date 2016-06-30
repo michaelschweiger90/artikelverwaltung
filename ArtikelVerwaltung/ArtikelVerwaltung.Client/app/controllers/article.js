@@ -1,6 +1,6 @@
 ﻿app.controller('ArticleCtrl', [
-    '$rootScope', '$scope', 'Category', 'Eventbus',
-    function ($rootScope, $scope, Category, Eventbus) {
+    '$rootScope', '$scope',
+    function ($rootScope, $scope) {
 
         //TODO Simon
 

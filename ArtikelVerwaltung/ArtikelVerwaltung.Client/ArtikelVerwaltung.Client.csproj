@@ -112,6 +112,7 @@
     <Content Include="app\services\cartService.js" />
     <Content Include="app\services\dialogService.js" />
     <Content Include="app\services\login.js" />
+    <Content Include="app\services\toastService.js" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">

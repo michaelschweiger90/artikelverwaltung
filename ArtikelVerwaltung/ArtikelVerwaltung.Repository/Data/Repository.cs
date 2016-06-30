@@ -26,6 +26,11 @@ namespace ArtikelVerwaltung.Repository.Data
 			return new UserRepository(ctx);
 		}
 
+		public ArticleRepository GetArticleRepository()
+		{
+			return new ArticleRepository(ctx);
+		}
+
 		public bool SaveAll()
 		{
 			return ctx.SaveChanges() > 0;

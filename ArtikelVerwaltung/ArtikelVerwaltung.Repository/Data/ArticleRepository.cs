@@ -23,7 +23,12 @@ namespace ArtikelVerwaltung.Repository.Data
             return ctx.Article.Remove(article);
         }
 
-        public Article GetArticleByID(int id)
+		public List<Article> GetAllArticle()
+		{
+			return ctx.Article.ToList();
+		}
+
+		public Article GetArticleByID(int id)
         {
             return ctx.Article.Find(id);
         }

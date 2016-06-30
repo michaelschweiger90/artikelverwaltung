@@ -9,6 +9,7 @@ namespace ArtikelVerwaltung.Repository.Data
 {
     public interface IArticleRepository
     {
+		List<Article> GetAllArticle();
         Article GetArticleByID(int id);
         Article Add(Article article);
         Article Update(Article article);

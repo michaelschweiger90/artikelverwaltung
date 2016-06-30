@@ -29,14 +29,6 @@
             });
         };
 
-        var getArticleByCart = function (id, handler, errorHandler) {
-            articleInCart = CartArticleResource.query({ cartId: id }, function () {
-                handler(articleInCart);
-            }, function (error) {
-                errorHandler(error);
-            })
-        };
-
         var insertArticle = function (article, handler) {
             ArticleResource.save(article, function () {
                 handler(article);
@@ -46,13 +38,6 @@
         var insertArticleInCategory = function (article, id, handler) {
             article.catId = id;
             ArticleCategoryResource.save(article, function () {
-                handler(article);
-            });
-        };
-
-        var insertArticleInCart = function (article, id, handler) {
-            article.cartId = id;
-            CartArticleResource.save(article, function () {
                 handler(article);
             });
         };
@@ -95,21 +80,6 @@
             });
         };
 
-        var deleteArticleFromCart = function (article, cartId, handler) {
-            var orginal = article;
-            article.cartId = cartId;
-
-            CartArticleResource.delete(article, function () {
-                if (articleInCart != null) {
-                    articleInCart.splice(articleInCart.indexOf(orginal), 1);
-                    handler(articleInCart);
-                } else {
-                    handler();
-                }
-            });
-            //});
-        };
-
         var updateArticle = function (article, handler) {
 
             article.$update(function () {
@@ -132,13 +102,10 @@
             get: getArticle,
             getArticleById: getArticleById,
             getArticleByCategory: getArticleByCategory,
-            getArticleByCart: getArticleByCart,
             insert: insertArticle,
             insertInCategory: insertArticleInCategory,
-            insertInCart: insertArticleInCart,
             delete: deleteArticle,
             deleteArticleFromCategory: deleteArticleFromCategory,
-            deleteArticleFromCart: deleteArticleFromCart,
             update: updateArticle,
             getNewResource: getNewResource,
             copyArticle: copyArticle
