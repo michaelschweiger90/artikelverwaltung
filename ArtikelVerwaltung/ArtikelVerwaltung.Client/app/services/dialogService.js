@@ -1,7 +1,3 @@
-/**
- * Created by Matthias Oppacher on 29.05.2016.
- */
-
 
 app.factory('Dialog', function ($mdDialog, $translate) {
 

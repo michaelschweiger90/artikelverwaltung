@@ -13,7 +13,7 @@ app.controller('AppCtrl', [
                    icon: 'star_border'
                }
         ];
-
+        $scope.isAdmin = true;
         $scope.adminMenus = [
             {
                 link: 'app.article-management.list',
@@ -21,7 +21,7 @@ app.controller('AppCtrl', [
                 icon: 'https'
             },
             {
-                link: 'app.user-management',
+                link: '',
                 title: 'NAVIGATION_USERMANAGEMENT',
                 icon: 'people_outline'
             }
