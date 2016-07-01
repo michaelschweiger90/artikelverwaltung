@@ -35,5 +35,10 @@ namespace ArtikelVerwaltung.Repository.Data
 		{
 			return ctx.SaveChanges() > 0;
 		}
-	}
+
+        public CategoryRepository GetCategoryRepository()
+        {
+            return new CategoryRepository(ctx);
+        }
+    }
 }

@@ -14,14 +14,16 @@ namespace ArtikelVerwaltung.API.Controllers
 	public class BaseAPIController : ApiController
 	{
 		private IArticleRepository articleRepo;
-		private ICartRepository cartRepo;
+        private ICategoryRepository categoryRepo;
+        private ICartRepository cartRepo;
 		private IUserRepository userRepo;
 		private ModelFactory modelFactory;
 
 		public BaseAPIController(IRepository repo)
 		{
 			articleRepo = repo.GetArticleRepository();
-			cartRepo = repo.GetCartRepository();
+            categoryRepo = repo.GetCategoryRepository();
+            cartRepo = repo.GetCartRepository();
 			userRepo = repo.GetUserRepository();
 		}
 
@@ -30,7 +32,12 @@ namespace ArtikelVerwaltung.API.Controllers
 			get { return articleRepo; }
 		}
 
-		protected ICartRepository CartRepository
+        protected ICategoryRepository CategoryRepository
+        {
+            get { return categoryRepo; }
+        }
+
+        protected ICartRepository CartRepository
 		{
 			get { return cartRepo; }
 		}
