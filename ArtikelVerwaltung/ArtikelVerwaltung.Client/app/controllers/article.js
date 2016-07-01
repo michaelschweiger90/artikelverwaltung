@@ -1,8 +1,12 @@
 ﻿app.controller('ArticleCtrl', [
-    '$rootScope', '$scope',
-    function ($rootScope, $scope) {
+    '$rootScope', '$scope', 'Category',
+    function ($rootScope, $scope, Category) {
 
-        //TODO Simon
+        Category.get(function(categories){
+            $scope.categories = categories;
+        });
+
+        $scope.isInit = false;
 
     }]);
 

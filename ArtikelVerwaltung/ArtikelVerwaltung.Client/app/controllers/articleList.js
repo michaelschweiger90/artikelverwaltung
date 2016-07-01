@@ -7,17 +7,10 @@
         $scope.displayedCollection = [];
 
         $scope.menuOptions = [
-            ['Aus Kategorie entfernen', function ($itemScope) {
-                var article = $itemScope.f;
-
-                Article.deleteArticleFromCategory(article, $scope.category, function (article) {
-                    $scope.article = article;
-                });
-            }],
             ['Artikel löschen', function ($itemScope) {
                 var article = $itemScope.a;
 
-                Article.delete(article, function (article) {
+                Article.deleteArticleFromCategory(article, $stateParams.id, function (article) {
                     $scope.article = article;
                 });
             }]

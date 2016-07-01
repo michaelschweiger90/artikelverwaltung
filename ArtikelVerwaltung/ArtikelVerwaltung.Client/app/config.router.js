@@ -49,7 +49,7 @@ angular
             })
             .state('app.article.detail', {
                 url: '/category/:catId/article/:id',
-                templateUrl: 'views/article/article-details.html',
+                templateUrl: 'views/article/article-detail.html',
                 resolve: {
                     deps: [
                         '$ocLazyLoad',
@@ -66,7 +66,7 @@ angular
                                     'app/services/articleService.js',
 									'app/services/cartService.js',
                                     'app/controllers/article.js',
-                                    'app/controllers/articleDetails.js'
+                                    'app/controllers/articleDetail.js'
                                 ]
                             });
                         }
@@ -163,7 +163,7 @@ angular
                                     'app/services/categoryService.js',
                                     'app/services/articleService.js',
                                     'app/controllers/article.js',
-                                    'app/controllers/articleDetails.js'
+                                    'app/controllers/articleDetail.js'
                                 ]
                             });
                         }
@@ -189,7 +189,7 @@ angular
                                     'app/services/cartService.js',
                                     'app/services/articleService.js',
                                     'app/controllers/article.js',
-                                    'app/controllers/articleDetails.js'
+                                    'app/controllers/articleDetail.js'
                                 ]
                             });
                         }
