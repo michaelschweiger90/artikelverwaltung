@@ -1,5 +1,5 @@
 ﻿<div ng-controller="ArticleListCtrl" class="smart-table">
-    <table st-table="displayedCollection" class="table table-striped" st-safe-src="articles">
+    <table st-table="displayedCollection" class="table table-striped" st-safe-src="article">
         <thead>
             <tr>
                 <th st-sort="name">{{'ARTICLE_NAME' | translate }}</th>
@@ -7,7 +7,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr context-menu="menuOptions" ui-sref="app.article.detail({catId: category,id: a.id})" ng-repeat="a in displayedCollection">
+            <tr ui-sref="app.article.detail({catId: category,id: a.id})" ng-repeat="a in displayedCollection">
                 <td>{{ a.name }}</td>
                 <td>{{ a.price }}</td>
 

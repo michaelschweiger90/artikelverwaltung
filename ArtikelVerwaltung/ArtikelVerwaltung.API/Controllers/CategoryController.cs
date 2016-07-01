@@ -169,6 +169,7 @@ namespace ArtikelVerwaltung.API.Controllers
                 if (CategoryRepository.SaveAll())
                 {
                     CategoryRepository.AddArticle(a, category.ID);
+                    CategoryRepository.SaveAll();
                     return Ok(ModelFactory.Create(a));
                 }
                 else
