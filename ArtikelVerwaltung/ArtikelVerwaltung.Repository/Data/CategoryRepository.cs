@@ -13,9 +13,14 @@ namespace ArtikelVerwaltung.Repository.Data
         {
         }
 
-        public ArticleCategory AddArticle(ArticleCategory ac)
+        public Article AddArticle(Article a, int cId)
         {
-            return ctx.ArticleCategory.Add(ac);
+            ctx.ArticleCategory.Add(new ArticleCategory() {
+                CategoryID = cId,
+                ArticleID = a.ID
+            });
+
+            return a;
         }
 
         public ArticleCategory ArticleExisits(int categoryID, int articleID)
@@ -53,6 +58,11 @@ namespace ArtikelVerwaltung.Repository.Data
             }
 
             return articles;
+        }
+
+        public Article GetArticleById(int cId, int aId)
+        {
+            return ctx.ArticleCategory.Where(a => a.CategoryID == cId && a.ArticleID == aId).First().Article;
         }
 
         public Category GetCategoryById(int categoryID)

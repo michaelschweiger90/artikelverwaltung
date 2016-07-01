@@ -9,7 +9,8 @@ namespace ArtikelVerwaltung.Repository.Data
 {
     public interface ICategoryRepository
     {
-        ArticleCategory AddArticle(ArticleCategory ac);
+        Article GetArticleById(int cId, int aId);
+        Article AddArticle(Article article, int cId);
         ArticleCategory RemoveArticle(ArticleCategory ac);
         ArticleCategory ArticleExisits(int categoryID, int articleID);
         List<Article> GetArticle(int categoryID);

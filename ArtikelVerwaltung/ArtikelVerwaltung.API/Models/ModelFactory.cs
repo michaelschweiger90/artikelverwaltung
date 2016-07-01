@@ -35,7 +35,42 @@ namespace ArtikelVerwaltung.API.Models
 			return cart;
 		}
 
-		internal List<ArticleDTO> Create(List<Article> articles)
+        public Article Create(ArticleDTO dto)
+        {
+            Article article = null;
+
+            if (dto != null)
+            {
+                article = new Article()
+                {
+                    ID = dto.ID,
+                    Name = dto.Name,
+                    Description = dto.Description,
+                    Price = dto.Price
+                };
+            }
+
+            return article;
+        }
+
+        public Category Create(CategoryDTO dto)
+        {
+            Category category = null;
+
+            if (dto != null)
+            {
+                category = new Category()
+                {
+                    ID = dto.ID,
+                    Name = dto.Name,
+                    ParentID = dto.ParentID
+                };
+            }
+
+            return category;
+        }
+
+        internal List<ArticleDTO> Create(List<Article> articles)
 		{
 			List<ArticleDTO> list = new List<ArticleDTO>();
 
@@ -75,7 +110,7 @@ namespace ArtikelVerwaltung.API.Models
             };
         }
 
-        private ArticleDTO Create(Article article)
+        public ArticleDTO Create(Article article)
 		{
 			return new ArticleDTO()
 			{
