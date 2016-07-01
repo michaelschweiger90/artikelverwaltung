@@ -20,7 +20,7 @@
                 var id = parseInt($stateParams.id);
 
                 if (!isNaN(id)) {
-                    Article.getArticleById(id, function (article) {
+                    Article.getArticleById($scope.catId, id, function (article) {
                         $scope.article = article;
                     }, function (error) {
                         Toast.translateAndShow("ARTICLE_ERROR_DOES_NOT_EXIST", function () {
@@ -39,7 +39,7 @@
 
         $scope.save = function () {
             if (mode == "update") {
-                Article.update($scope.article, function () {
+                Article.update($scope.article, $scope.catId, function () {
                     Toast.translateAndShow("ARTICLE_SUCCESS_UPDATE", function () {
                         $state.go("app.article-management.list", { id: $scope.catId });
                     });

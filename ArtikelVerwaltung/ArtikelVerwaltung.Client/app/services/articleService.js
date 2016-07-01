@@ -12,8 +12,8 @@
             });
         };
 
-        var getArticleById = function (id, handler, errorHandler) {
-            var article = ArticleResource.get({ id: id }, function () {
+        var getArticleById = function (catId, id, handler, errorHandler) {
+            var article = ArticleCategoryResource.get({catId: catId, id: id }, function () {
 
                 handler(article);
             }, function (error) {
@@ -68,34 +68,29 @@
             var orginal = article;
             article.catId = catId;
 
+            console.log(catId);
+
             Dialog.confirm({
                 title: 'Aus Kategorie entfernen',
                 content: '"' + article.name + '" aus der Kategorie entfernen?',
                 ok: 'Entfernen'
             }, function () {
-                article.$delete(function () {
+                ArticleCategoryResource.delete({ catId:catId, id:article.id }, function () {
                     articleInCategory.splice(articleInCategory.indexOf(orginal), 1);
                     handler(articleInCategory);
                 });
             });
         };
 
-        var updateArticle = function (article, handler) {
-
-            article.$update(function () {
-                handler();
+        var updateArticle = function (article, catId, handler) {
+            article.catId = catId;
+            ArticleCategoryResource.update(article, function () {
+                handler(article);
             });
         };
 
         var getNewResource = function () {
             return new ArticleResource();
-        };
-
-        var copyArticle = function (article, category, handler) {
-            article.catId = category.id;
-            ArticleCategoryResource.copy(article, function () {
-                handler(article);
-            });
         };
 
         return {
@@ -108,6 +103,5 @@
             deleteArticleFromCategory: deleteArticleFromCategory,
             update: updateArticle,
             getNewResource: getNewResource,
-            copyArticle: copyArticle
         };
     }]);

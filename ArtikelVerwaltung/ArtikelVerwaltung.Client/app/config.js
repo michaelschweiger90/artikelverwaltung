@@ -55,6 +55,7 @@ var app =
                         'ARTICLE_FROM': 'Von',
                         'ARTICLE_UNTIL': 'Bis',
                         'ARTICLE_UNASSIGNED': 'Nicht zugeordnete Artikel',
+                        'ARTICLE_PRICE': 'Artikelpreis',
 
                         'CATEGORY_RENAME': 'Kategorie umbenennen',
                         'CATEGORY_INSERT': 'Neue Kategorie',

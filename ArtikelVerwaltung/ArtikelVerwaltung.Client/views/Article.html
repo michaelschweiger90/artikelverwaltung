@@ -1,7 +1,17 @@
 ﻿<div ng-controller="ArticleCtrl">
     <div layout-gt-md="row" layout-sm="column" layout-gt-sm="row">
-
-        <!-- liste -->
+        
+        <div flex-sm-auto flex-gt-sm="40">
+            <md-list>
+                <md-list-item ui-sref="app.article.list({id: category.id})" ng-repeat="category in categories" class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>{{ category.name }}</h3>
+                        <p>{{ category.source }}</p>
+                    </div>
+                    <md-divider></md-divider>
+                </md-list-item>
+            </md-list>
+        </div>
 
         <div flex>
             <ui-view></ui-view>

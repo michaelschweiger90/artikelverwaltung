@@ -20,6 +20,7 @@ namespace ArtikelVerwaltung.Repository.Data
 
         public Article Delete(Article article)
         {
+            ctx.ArticleCategory.RemoveRange(ctx.Article.Find(article.ID).ArticleCategory);
             return ctx.Article.Remove(article);
         }
 

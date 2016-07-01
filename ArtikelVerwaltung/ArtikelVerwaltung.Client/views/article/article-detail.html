@@ -1,5 +1,5 @@
 ﻿<div ng-controller="ArticleDetailsCtrl">
-    <div layout="column" layout-padding="5px" class="header">
+    <div layout="column" layout-padding="5px">
         <h2>{{article.name}}</h2>
     </div>
 
@@ -13,6 +13,21 @@
             <div class="content">
                 {{article.description}}
             </div>
+           
+        </div>
+    </div>
+
+    <div layout="row" layout-padding="5px">
+        <div flex>
+            <div class="headline">
+                <i class="material-icons icon">attach_money</i>
+                <span>Preis</span>
+            </div>
+            <md-divider></md-divider>
+            <div class="content">
+                {{article.price}}
+            </div>
+
         </div>
     </div>
 
