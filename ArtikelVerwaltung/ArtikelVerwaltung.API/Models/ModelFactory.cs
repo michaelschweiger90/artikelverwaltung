@@ -50,7 +50,32 @@ namespace ArtikelVerwaltung.API.Models
 			return list;
 		}
 
-		private ArticleDTO Create(Article article)
+        internal List<CategoryDTO> Create(List<Category> categories)
+        {
+            List<CategoryDTO> list = new List<CategoryDTO>();
+
+            if (categories?.Count > 0)
+            {
+                foreach (Category category in categories)
+                {
+                    list.Add(Create(category));
+                }
+            }
+
+            return list;
+        }
+
+        private CategoryDTO Create(Category category)
+        {
+            return new CategoryDTO()
+            {
+                ID = category.ID,
+                Name = category.Name,
+                ParentID = category.ParentID
+            };
+        }
+
+        private ArticleDTO Create(Article article)
 		{
 			return new ArticleDTO()
 			{
