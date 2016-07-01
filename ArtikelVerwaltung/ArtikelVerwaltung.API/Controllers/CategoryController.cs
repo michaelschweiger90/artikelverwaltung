@@ -16,6 +16,8 @@ namespace ArtikelVerwaltung.API.Controllers
         {
         }
 
+        // ab hier kategorien CRUD Operationen
+
         [Route("~/api/v1/categories")]
         [HttpGet]
         public IHttpActionResult getAllCategories()
@@ -23,6 +25,103 @@ namespace ArtikelVerwaltung.API.Controllers
             List<CategoryDTO> categories = ModelFactory.Create(CategoryRepository.GetAll());
 
             return Ok(categories);
+        }
+
+        [Route("~/api/v1/categories/{id:int}")]
+        [HttpGet]
+        public IHttpActionResult getCategorie(int id)
+        {
+            CategoryDTO category = ModelFactory.Create(CategoryRepository.GetCategoryById(id));
+            return Ok(category);
+        }
+
+        [Route("~/api/v1/categories")]
+        [HttpPost]
+        public IHttpActionResult createCategorie([FromBody] CategoryDTO categoryDTO)
+        {
+            try
+            {
+                Category category = ModelFactory.Create(categoryDTO);
+
+                if (category == null)
+                {
+                    throw new HttpResponseException(HttpStatusCode.BadRequest);
+                }
+
+                if (CategoryRepository.SaveAll())
+                {
+                    CategoryRepository.SaveCategory(category);
+                    return Ok(ModelFactory.Create(category));
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (HttpResponseException)
+            {
+                return BadRequest();
+            }
+        }
+
+        [Route("~/api/v1/categories/{id:int}")]
+        [HttpPut]
+        public IHttpActionResult updateCategorie(int id, [FromBody] CategoryDTO categoryDTO)
+        {
+            try
+            {
+                Category category = CategoryRepository.GetCategoryById(id);
+
+                if (category == null)
+                    throw new ArgumentException("Kategorie exisitert nicht!");
+
+                CategoryRepository.UpdateCategory(category);
+
+                if (CategoryRepository.SaveAll())
+                {
+                    return Ok(ModelFactory.Create(category));
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (ArgumentException)
+            {
+                return NotFound();
+            }
+            catch (HttpResponseException)
+            {
+                return BadRequest();
+            }
+        }
+
+        [Route("~/api/v1/categories/{id:int}")]
+        [HttpDelete]
+        public IHttpActionResult deleteCategorie(int id)
+        {
+            try
+            {
+                Category category = CategoryRepository.GetCategoryById(id);
+
+                if (category == null)
+                    throw new ArgumentException("Kategorie exisitert nicht!");
+
+                CategoryRepository.DeleteCategory(category);
+
+                if (CategoryRepository.SaveAll())
+                {
+                    return Ok(ModelFactory.Create(category));
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (ArgumentException)
+            {
+                return NotFound();
+            }
         }
 
 

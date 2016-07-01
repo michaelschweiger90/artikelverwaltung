@@ -1,0 +1,21 @@
+@import "base";
+
+.btn
+{
+  span {
+    margin: auto;
+  }
+  i {
+    vertical-align: middle;
+  }
+}
+
+.orange-button
+{
+  background-color: $c_layout_green !important;
+  color: $c_white !important;
+
+  &:not([disabled]):hover {
+    background-color: #995108;
+  }
+}

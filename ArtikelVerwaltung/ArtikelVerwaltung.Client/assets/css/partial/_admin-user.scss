@@ -1,0 +1,21 @@
+.admin-user {
+  .user-title {
+    margin-bottom: 70px;
+  }
+  .user-table {
+    .rights-switch {
+      margin: 0;
+    }
+    td {
+      vertical-align: middle;
+      .md-checked {
+        .md-bar{
+          background-color: $c_layout_green;
+        }
+        .md-thumb {
+          background-color: $c_layout_green;
+        }
+      }
+    }
+  }
+}

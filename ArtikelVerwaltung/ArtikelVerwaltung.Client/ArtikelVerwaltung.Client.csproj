@@ -103,13 +103,16 @@
     <Content Include="app\controllers\articleList.js" />
     <Content Include="app\controllers\cart.js" />
     <Content Include="app\controllers\login.js" />
+    <Content Include="app\filters\mailSidenav.js" />
     <Content Include="app\resources\articleCategoryResource.js" />
     <Content Include="app\resources\articleResource.js" />
     <Content Include="app\resources\cartArticleResource.js" />
     <Content Include="app\resources\cartResource.js" />
+    <Content Include="app\resources\categoryResource.js" />
     <Content Include="app\resources\loginResource.js" />
-    <Content Include="app\services\article.js" />
+    <Content Include="app\services\articleService.js" />
     <Content Include="app\services\cartService.js" />
+    <Content Include="app\services\categoryService.js" />
     <Content Include="app\services\dialogService.js" />
     <Content Include="app\services\login.js" />
     <Content Include="app\services\toastService.js" />
@@ -123,9 +126,18 @@
     <Content Include="views\admin\article-list.html" />
     <Content Include="views\admin\article.html" />
     <Content Include="views\Article.html" />
-    <Content Include="views\article\detail.html" />
-    <Content Include="views\article\list.html" />
+    <Content Include="views\article\article-detail.html" />
+    <Content Include="views\article\article-list.html" />
     <Content Include="views\dlgs\cart.dlg.html" />
+    <Content Include="assets\css\partial\_admin-user.scss" />
+    <Content Include="assets\css\partial\_article.scss" />
+    <Content Include="assets\css\partial\_base.scss" />
+    <Content Include="assets\css\partial\_buttons.scss" />
+    <Content Include="assets\css\partial\_details.scss" />
+    <Content Include="assets\css\partial\_login.scss" />
+    <Content Include="assets\css\partial\_main.scss" />
+    <Content Include="assets\css\partial\_table.scss" />
+    <Content Include="assets\css\style.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -135,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="views\cart.html" />
+    <Content Include="views\layout.html" />
     <Content Include="views\login.html" />
     <Content Include="views\start.html" />
     <Content Include="Web.config" />
@@ -144,8 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\directives\" />
-    <Folder Include="app\filters\" />
-    <Folder Include="assets\css\" />
     <Folder Include="assets\media\" />
   </ItemGroup>
   <PropertyGroup>

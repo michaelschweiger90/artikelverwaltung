@@ -1,0 +1,78 @@
+.fm-details {
+  .fm-name {
+    input {
+      font-size: 20px;
+    }
+  }
+  .date-container {
+    margin-top: -20px;
+    margin-bottom: 30px;
+    label {
+      font-size: 11px;
+      opacity: 0.54;
+    }
+    .start-date {
+      margin-right: 50px;
+    }
+    .md-datepicker-button {
+      .md-datepicker-calendar-icon {
+        fill: $c_layout_green;
+      }
+    }
+    .md-datepicker-input-container {
+      border-color: $c_layout_green;
+    }
+  }
+  .fm-tags {
+    .md-chips.md-focused {
+       box-shadow: 0 2px $c_layout_green;
+    }
+    .md-chip.md-focused {
+        background: $c_layout_green_bright none repeat;
+    }
+    .md-chip-input-container {
+      md-progress-linear {
+        //background-color: green; ???
+      }
+    }
+  }
+}
+
+.md-datepicker-calendar-pane {
+  .md-calendar-selected-date {
+    span {
+      background: $c_layout_green !important;
+    }
+  }
+  .md-calendar-date-today {
+    span {
+      border: 1px solid $c_layout_green !important;
+    }
+  }
+}
+
+.headline
+{
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.010em;
+  color: rgba(0,0,0,0.54);
+  position: relative;
+
+  & > i
+  {
+    position: absolute;
+    top: 7px;
+  }
+
+  & > span
+  {
+    margin-left: 28px;
+  }
+}
+
+.content
+{
+  padding: 10px 10px 10px 18px;
+}

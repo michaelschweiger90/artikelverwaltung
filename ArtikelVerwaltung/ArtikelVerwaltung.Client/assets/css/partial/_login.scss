@@ -1,0 +1,27 @@
+@import "base";
+
+
+
+
+.login-container
+{
+  .login-header
+  {
+    background-color: #fff;
+
+    .login-logo
+    {
+      width: 250px;
+      height: auto;
+    }
+  }
+
+  .login-body
+  {
+    .pw-forgot
+    {
+      margin-top: 50px;
+    }
+  }
+}
+

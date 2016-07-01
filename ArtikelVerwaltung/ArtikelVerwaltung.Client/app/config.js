@@ -17,9 +17,58 @@ var app =
                     app.value = $provide.value;
 
                     $translateProvider.translations('de', {
-                    	'SYS_USERNAME': 'Benutzer',
-                    	'SYS_SAVE': 'Speichern',
-                    	'SYS_CANCEL': 'Abbrechen'
+                        'SYS_USERNAME': 'Benutzer',
+                        'SYS_PASSWORD': 'Passwort',
+                        'SYS_LOGIN': 'Login',
+                        'SYS_LOGIN_TITLE': 'Artikel-Verwaltung',
+                        'SYS_LOGOUT': 'Logout',
+                        'SYS_EMAIL': 'E-Mail-Adresse',
+                        'SYS_ERROR_REQUIRED': 'Pflichtfeld',
+                        'SYS_BACK': 'Zurück',
+                        'SYS_SEARCH_TERM': 'Suchbegriff',
+                        'SYS_SAVE': 'Speichern',
+                        'SYS_CANCEL': 'Abbrechen',
+
+                        'NAVIGATION_HEADLINE_ARTICLE': 'Artikel-Verwaltung',
+                        'NAVIGATION_HEADLINE_MANAGEMENT': 'Administration',
+                        'NAVIGATION_ARTICLE': 'Artikel',
+                        'NAVIGATION_CART': 'Warenkorb',
+                        'NAVIGATION_USERMANAGEMENT': 'Benutzer-Verwaltung',
+                        'NAVIGATION_ARTICLEMANAGEMENT': 'Artikel-Verwaltung',
+                        'NAVIGATION_TAGMANAGEMENT': 'Tag-Verwaltung',
+                       
+
+                        'ARTICLE_ERROR_DOES_NOT_EXIST': 'Der Artikel existiert nicht!',
+                        'ARTICLE_NEW': 'Neuer Artikel',
+                        'ARTICLE_SUCCESS_INSERT': 'Artikel erfolgreich angelegt',
+                        'ARTICLE_SUCCESS_UPDATE': 'Artikel erfolgreich bearbeitet',
+                        'ARTICLE_NAME': 'Name',
+                        'ARTICLE_DESCRIPTION': 'Beschreibung',
+                        'ARTICLE_LINK': 'Link',
+                        'ARTICLE_NONE_IN_LIST': 'Keine Artikel in der Kategorie.',
+                        'ARTICLE_PLEASE_CHOOSE': 'Bitte eine Kategorie auswählen.',
+                        'ARTICLE_ADD_TO_CART': 'Zu Warenkorb hinzufügen',
+                        'ARTICLE_DELETE_FROM_CART': 'Aus Warenkorb entfernen',
+                        'ARTICLE_IN_CART': 'In Warenkorb gespeichert',
+                        'ARTICLE_NONE_FOUND': 'Keine Artikel gefunden.',
+                        'ARTICLE_AVAILABLE': 'Verfügbar mindestens',
+                        'ARTICLE_FROM': 'Von',
+                        'ARTICLE_UNTIL': 'Bis',
+                        'ARTICLE_UNASSIGNED': 'Nicht zugeordnete Artikel',
+
+                        'CATEGORY_RENAME': 'Kategorie umbenennen',
+                        'CATEGORY_INSERT': 'Neue Kategorie',
+
+                        'CART_DELETE': 'Warenkorb löschen',
+                        'CART_RENAME': 'Warenkorb umbenennen',
+
+                        'TOOLTIP_LOGOUT': 'Logout',
+                        'TOOLTIP_SEARCH': 'Suche',
+                        'TOOLTIP_USER_FAB': 'Benutzer',
+                        'TOOLTIP_USER_DELETE': 'Benutzer löschen',
+                        'TOOLTIP_USER_PW_CHANGE': 'Passwort ändern',
+                        'TOOLTIP_OPEN_SIDENAV': 'Menü',
+
                         
                     });
 

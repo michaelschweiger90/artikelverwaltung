@@ -1,0 +1,24 @@
+.header
+{
+  position: relative;
+
+  &>h2
+  {
+    position: absolute;
+    z-index: 1000;
+    left: 20px;
+    transition:color 1s;
+
+    &.white
+    {
+      color: #ffffff;
+    }
+
+  }
+
+
+  .orange
+  {
+    background-color: $c_layout_green !important;
+  }
+}

@@ -100,7 +100,7 @@ namespace ArtikelVerwaltung.API.Models
             return list;
         }
 
-        private CategoryDTO Create(Category category)
+        public CategoryDTO Create(Category category)
         {
             return new CategoryDTO()
             {

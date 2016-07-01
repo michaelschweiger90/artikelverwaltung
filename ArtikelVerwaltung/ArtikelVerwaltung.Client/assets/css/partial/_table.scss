@@ -1,0 +1,45 @@
+.smart-table {
+  overflow-y: auto;
+  .table {
+    tbody {
+      tr:hover {
+        background-color: $c_layout_green_bright !important;
+        color: white;
+        cursor: pointer;
+      }
+    }
+    .table-search {
+      width: 100%;
+      margin-bottom: 0;
+      .md-errors-spacer {
+        visibility: hidden !important;
+        display: none !important;
+      }
+    }
+    .st-sort-ascent:after {
+      font-family: "Material Icons";
+      content: '\e316';
+    }
+    .st-sort-descent:after {
+      font-family: "Material Icons";
+      content: "\e313";
+    }
+    .pagination {
+      a {
+        border-color: $c_layout_green;
+        color: $c_layout_green;
+      }
+      a:hover {
+        color: black;
+        border-color: $c_layout_green;
+        background-color: $c_layout_green_bright;
+      }
+      .active {
+        a {
+          background-color: $c_layout_green !important;
+          color: white !important;
+        }
+      }
+    }
+  }
+}

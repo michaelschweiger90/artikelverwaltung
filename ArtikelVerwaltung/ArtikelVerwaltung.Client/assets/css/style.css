@@ -1,0 +1,254 @@
+/* Variablen */
+/* Variablen */
+.btn span {
+  margin: auto; }
+.btn i {
+  vertical-align: middle; }
+
+.orange-button {
+  background-color: #00AF06 !important;
+  color: #ffffff !important; }
+  .orange-button:not([disabled]):hover {
+    background-color: #995108; }
+
+/* Variablen */
+body {
+  background: white;
+  background: -moz-linear-gradient(top, white 0%, #f39200 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, white), color-stop(100%, #f39200));
+  background: -webkit-linear-gradient(top, white 0%, #f39200 100%);
+  background: -o-linear-gradient(top, white 0%, #f39200 100%);
+  background: -ms-linear-gradient(top, white 0%, #f39200 100%);
+  background: linear-gradient(to bottom, white 0%, #f39200 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f39200', GradientType=0 ); }
+
+a {
+  text-decoration: none; }
+  a:visited {
+    color: inherit; }
+
+.inline {
+  display: inline; }
+
+.box {
+  max-width: 90%;
+  width: 500px;
+  padding: 15px;
+  background-color: #ffffff; }
+  .box a {
+    text-decoration: none;
+    color: #00AF06; }
+    .box a:visited {
+      color: #00AF06; }
+
+.md-input-focused label {
+  color: #00AF06 !important; }
+.md-input-focused input, .md-input-focused textarea {
+  border-color: #00AF06 !important; }
+
+.firefox-height-fix {
+  height: 100%; }
+
+.sideNavHeader {
+  height: 215px;
+  min-height: 130px;
+  background-color: #00AF06 !important; }
+  .sideNavHeader .header-container {
+    text-align: center; }
+    @media screen and (min-height: 601px) {
+      .sideNavHeader .header-container {
+        display: none; } }
+  .sideNavHeader .logo-container {
+    margin: 15px auto;
+    position: relative;
+    background-color: #fff;
+    width: 150px;
+    border-radius: 50%;
+    height: 150px; }
+    @media screen and (max-height: 600px) {
+      .sideNavHeader .logo-container {
+        display: none; } }
+    .sideNavHeader .logo-container img {
+      max-height: 66%;
+      margin: 26px; }
+  .sideNavHeader .info-container {
+    font-size: 16px;
+    padding: 5px 15px; }
+    .sideNavHeader .info-container .user-name {
+      position: absolute;
+      bottom: 7px; }
+    .sideNavHeader .info-container .user-dial {
+      margin-bottom: 3px;
+      bottom: 0;
+      right: 0; }
+      .sideNavHeader .info-container .user-dial .fab-trigger {
+        height: 80%;
+        width: auto;
+        color: black;
+        background-color: white !important; }
+      .sideNavHeader .info-container .user-dial .fab-option {
+        height: 85%;
+        width: auto;
+        margin-top: 5px;
+        color: black;
+        background-color: white; }
+        .sideNavHeader .info-container .user-dial .fab-option i {
+          font-size: 17px; }
+
+.md-subheader-inner {
+  padding-bottom: 0 !important; }
+
+.headerToolbar {
+  background-color: #00AF06 !important; }
+  .headerToolbar .toolbar-back {
+    margin-right: 15px; }
+  .headerToolbar .search-container {
+    background-color: #ffffff;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 12px; }
+    .headerToolbar .search-container .md-input {
+      border-color: #00AF06 !important; }
+    .headerToolbar .search-container .md-errors-spacer {
+      visibility: hidden !important;
+      display: none !important; }
+  .headerToolbar .mobile-search {
+    margin-top: -20px;
+    text-align: center; }
+    .headerToolbar .mobile-search .search-container {
+      width: 90%; }
+
+.md-dialog-container button {
+  color: #00AF06 !important; }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/bower_components/material-design-icons/iconfont/MaterialIcons-Regular.eot);
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(/bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff2) format("woff2"), url(/bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff) format("woff"), url(/bower_components/material-design-icons/iconfont/MaterialIcons-Regular.ttf) format("truetype"); }
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
+
+/* Variablen */
+.login-container .login-header {
+  background-color: #fff; }
+  .login-container .login-header .login-logo {
+    width: 250px;
+    height: auto; }
+.login-container .login-body .pw-forgot {
+  margin-top: 50px; }
+
+.admin-user .user-title {
+  margin-bottom: 70px; }
+.admin-user .user-table .rights-switch {
+  margin: 0; }
+.admin-user .user-table td {
+  vertical-align: middle; }
+  .admin-user .user-table td .md-checked .md-bar {
+    background-color: #00AF06; }
+  .admin-user .user-table td .md-checked .md-thumb {
+    background-color: #00AF06; }
+
+.smart-table {
+  overflow-y: auto; }
+  .smart-table .table tbody tr:hover {
+    background-color: #51FE56 !important;
+    color: white;
+    cursor: pointer; }
+  .smart-table .table .table-search {
+    width: 100%;
+    margin-bottom: 0; }
+    .smart-table .table .table-search .md-errors-spacer {
+      visibility: hidden !important;
+      display: none !important; }
+  .smart-table .table .st-sort-ascent:after {
+    font-family: "Material Icons";
+    content: '\e316'; }
+  .smart-table .table .st-sort-descent:after {
+    font-family: "Material Icons";
+    content: "\e313"; }
+  .smart-table .table .pagination a {
+    border-color: #00AF06;
+    color: #00AF06; }
+  .smart-table .table .pagination a:hover {
+    color: black;
+    border-color: #00AF06;
+    background-color: #51FE56; }
+  .smart-table .table .pagination .active a {
+    background-color: #00AF06 !important;
+    color: white !important; }
+
+.fm-details .fm-name input {
+  font-size: 20px; }
+.fm-details .date-container {
+  margin-top: -20px;
+  margin-bottom: 30px; }
+  .fm-details .date-container label {
+    font-size: 11px;
+    opacity: 0.54; }
+  .fm-details .date-container .start-date {
+    margin-right: 50px; }
+  .fm-details .date-container .md-datepicker-button .md-datepicker-calendar-icon {
+    fill: #00AF06; }
+  .fm-details .date-container .md-datepicker-input-container {
+    border-color: #00AF06; }
+.fm-details .fm-tags .md-chips.md-focused {
+  box-shadow: 0 2px #00AF06; }
+.fm-details .fm-tags .md-chip.md-focused {
+  background: #51FE56 none repeat; }
+
+.md-datepicker-calendar-pane .md-calendar-selected-date span {
+  background: #00AF06 !important; }
+.md-datepicker-calendar-pane .md-calendar-date-today span {
+  border: 1px solid #00AF06 !important; }
+
+.headline {
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.010em;
+  color: rgba(0, 0, 0, 0.54);
+  position: relative; }
+  .headline > i {
+    position: absolute;
+    top: 7px; }
+  .headline > span {
+    margin-left: 28px; }
+
+.content {
+  padding: 10px 10px 10px 18px; }
+
+.header {
+  position: relative; }
+  .header > h2 {
+    position: absolute;
+    z-index: 1000;
+    left: 20px;
+    transition: color 1s; }
+    .header > h2.white {
+      color: #ffffff; }
+  .header .orange {
+    background-color: #00AF06 !important; }
+
+/*# sourceMappingURL=style.css.map */

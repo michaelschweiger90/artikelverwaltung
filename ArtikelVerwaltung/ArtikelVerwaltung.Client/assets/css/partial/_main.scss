@@ -1,0 +1,203 @@
+@import 'base';
+
+body
+{
+  background: rgba(255,255,255,1);
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,146,0,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(243,146,0,1)));
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,146,0,1) 100%);
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,146,0,1) 100%);
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,146,0,1) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(243,146,0,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f39200', GradientType=0 );
+}
+
+a
+{
+  text-decoration: none;
+
+  &:visited
+  {
+    color: inherit;
+  }
+}
+
+.inline {
+  display: inline;
+}
+
+.box
+{
+  max-width: 90%;
+  width: 500px;
+  padding: 15px;
+  background-color: $c_white;
+
+  a
+  {
+    text-decoration: none;
+    color: $c_layout_green;
+
+    &:visited
+    {
+      color: $c_layout_green;
+    }
+  }
+}
+
+.md-input-focused
+{
+  label
+  {
+    color: $c_layout_green !important;
+  }
+
+  input, textarea
+  {
+    border-color: $c_layout_green !important;
+  }
+}
+
+.firefox-height-fix {
+  height: 100%;
+}
+
+.sideNavHeader {
+  height: 215px;
+  min-height: 130px;
+  background-color: $c_sideNaviHeaderBackground !important;
+
+  .header-container {
+    @media screen and (min-height: 601px) {
+      display: none;
+    }
+    text-align: center;
+  }
+  .logo-container
+  {
+    @media screen and (max-height: 600px) {
+      display: none;
+    }
+    margin: 15px auto;
+    position: relative;
+    background-color: #fff;
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+
+    & img {
+      max-height: 66%;
+      margin: 26px;
+    }
+  }
+
+  .info-container {
+    font-size: 16px;
+    padding: 5px 15px;
+    .user-name {
+      position: absolute;
+      bottom: 7px;
+    }
+    .user-dial {
+      margin-bottom: 3px;
+      bottom: 0;
+      right: 0;
+      .fab-trigger {
+        height: 80%;
+        width: auto;
+        color: black;
+        background-color: white !important;
+      }
+      .fab-option {
+        height: 85%;
+        width: auto;
+        margin-top: 5px;
+        color: black;
+        background-color: white;
+        i {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
+
+.md-subheader-inner
+{
+  padding-bottom: 0 !important;
+}
+
+.headerToolbar
+{
+  background-color: $c_sideNaviHeaderBackground !important;
+  .toolbar-back {
+    margin-right: 15px;
+  }
+  .search-container {
+    background-color: $c_white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 12px;
+
+    .md-input {
+      border-color: $c_sideNaviHeaderBackground !important;
+    }
+    .md-errors-spacer {
+      visibility: hidden !important;
+      display: none !important;
+    }
+  }
+  .mobile-search {
+    margin-top: -20px;
+    text-align: center;
+    .search-container {
+      width: 90%;
+    }
+  }
+}
+
+.md-dialog-container {
+  button {
+    color: $c_layout_green !important;
+  }
+}
+
+
+//Needed for the Material Design Icons
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/bower_components/material-design-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+  local('MaterialIcons-Regular'),
+  url(/bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+  url(/bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
+  url(/bower_components/material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+

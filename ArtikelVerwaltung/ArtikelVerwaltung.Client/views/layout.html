@@ -1,0 +1,88 @@
+<div-- layout="row" class="firefox-height-fix">
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        <md-toolbar class="sideNavHeader">
+            <div class="header-container">
+                <h4>Artikel-Verwaltung</h4>
+            </div>
+            <!--div class="logo-container">
+                <img src="/assets/media/logo_small.png" />
+            </div-->
+            <div class="info-container" layout="row">
+                <div class="user-name">
+                    {{Email | mailSidenav}}
+                </div>
+                <div>
+                    <md-fab-speed-dial md-direction="up" class="md-scale user-dial md-fab-bottom-right">
+                        <md-fab-trigger>
+                            <md-button class="md-fab md-warn fab-trigger">
+                                <md-tooltip md-direction="right">{{'TOOLTIP_USER_FAB' | translate}}</md-tooltip>
+                                <i class="material-icons">person</i>
+                            </md-button>
+                        </md-fab-trigger>
+                        <md-fab-actions>
+                            <md-button class="md-icon-button fab-option" ui-sref="app.changepw">
+                                <md-tooltip md-direction="right">{{'TOOLTIP_USER_PW_CHANGE' | translate}}</md-tooltip>
+                                <i class="material-icons">build</i>
+                            </md-button>
+                            <md-button class="md-icon-button fab-option" ng-click="deleteUser()">
+                                <md-tooltip md-direction="right">{{'TOOLTIP_USER_DELETE' | translate}}</md-tooltip>
+                                <i class="material-icons">delete</i>
+                            </md-button>
+                        </md-fab-actions>
+                    </md-fab-speed-dial>
+                </div>
+            </div>
+        </md-toolbar>
+        <md-list>
+            <md-subheader>{{'NAVIGATION_HEADLINE_ARTICLE' | translate}}</md-subheader>
+            <md-list-item ui-sref="{{menu.link}}" ng-click="naviClicked(menu)" ng-repeat="menu in menus">
+                <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                    <div class="inset">
+                        <i class="material-icons">{{menu.icon}}</i>
+                    </div>
+                    <div>
+                        {{menu.title | translate}}
+                    </div>
+                </md-item-content>
+            </md-list-item>
+
+            <!-- only admin -->
+            <div ng-show="isAdmin">
+                <md-divider></md-divider>
+                <md-subheader>{{'NAVIGATION_HEADLINE_MANAGEMENT' | translate}}</md-subheader>
+                <md-list-item ui-sref="{{menu.link}}" ng-click="naviClicked(menu)" ng-repeat="menu in adminMenus">
+                    <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                        <div class="inset">
+                            <i class="material-icons">{{menu.icon}}</i>
+                        </div>
+                        <div>
+                            {{menu.title | translate}}
+                        </div>
+                    </md-item-content>
+                </md-list-item>
+            </div>
+
+        </md-list>
+    </md-sidenav>
+    <div layout="column" class="relative" layout-fill role="main">
+        <md-toolbar class="headerToolbar">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
+                    <md-tooltip>{{'TOOLTIP_OPEN_SIDENAV' | translate}}</md-tooltip>
+                    <i class="material-icons">menu</i>
+                </md-button>
+                <h3>
+                    {{headerTitle | translate}}
+                </h3>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="Logout" ng-click="logout()">
+                    <md-tooltip>{{'TOOLTIP_LOGOUT' | translate}}</md-tooltip>
+                    <i class="material-icons">exit_to_app</i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content flex md-scroll-y>
+            <ui-view layout="column" layout-fill layout-padding></ui-view>
+        </md-content>
+    </div>
+</div>
