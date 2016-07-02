@@ -10,7 +10,7 @@ app.controller('AppCtrl', [
                {
                    link: 'app.cart',
                    title: 'NAVIGATION_CART',
-                   icon: 'star_border'
+                   icon: 'shopping_cart'
                }
         ];
         $scope.isAdmin = true;
