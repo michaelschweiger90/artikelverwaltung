@@ -11,6 +11,8 @@ namespace ArtikelVerwaltung.Repository.Data
 	{
 		User GetUserById(int id);
 
+        User FindUserByEmail(string email);
+
         void Create(User user);
 
 		bool SaveAll();

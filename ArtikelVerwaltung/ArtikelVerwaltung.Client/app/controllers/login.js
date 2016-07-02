@@ -1,11 +1,12 @@
 ﻿app.controller('LoginCtrl', [
     '$rootScope', '$scope', 'LoginService',
-    function ($rootScope, $scope, Login) {
+    function ($rootScope, $scope, LoginService) {
 
-    $scope.user = {};
+        $scope.user = null;
+        $scope.dataloading = false;
 
-    $scope.login = function()
+    $scope.doLogin = function ()
     {
-        Login.doLogin($scope.user.email, $scope.user.password);
-    };
+        LoginService.doLogin($scope.user);
+    }
 }]);

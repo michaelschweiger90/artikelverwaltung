@@ -20,5 +20,10 @@ namespace ArtikelVerwaltung.Repository.Data
         {
             ctx.User.Add(user);
         }
+
+        public User FindUserByEmail(string email)
+        {
+            return ctx.User.Where(d => d.Email == email).SingleOrDefault();
+        }
     }
 }

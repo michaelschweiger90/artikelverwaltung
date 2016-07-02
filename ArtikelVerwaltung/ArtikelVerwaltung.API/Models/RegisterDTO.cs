@@ -6,8 +6,9 @@ using System.Web;
 
 namespace ArtikelVerwaltung.API.Models
 {
-    public class UserDTO : RegisterDTO
+    public class RegisterDTO : LoginDTO
     {
-        public int ID { get; set; }
+        [Required]
+        public string Name { get; set; }
     }
 }

@@ -1,12 +1,13 @@
 ﻿app.controller('RegisterCtrl', [
     '$rootScope', '$scope', 'RegisterService',
     function ($rootScope, $scope, RegisterService) {
-        var user = null;
-        var dataloading = false;
+        $scope.user = null;
+        $scope.dataloading = false;
 
-        function registerUser() {
+        $scope.registerUser = function () {
             this.dataLoading = true;
-            $scope.user = user;
-        }
+
+            RegisterService.registerUser($scope.user);
+        };
 
     }]);

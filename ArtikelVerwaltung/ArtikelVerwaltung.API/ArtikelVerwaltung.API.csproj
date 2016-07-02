@@ -177,7 +177,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseAPIController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,6 +186,8 @@
     <Compile Include="Models\ArticleDTO.cs" />
     <Compile Include="Models\CartDTO.cs" />
     <Compile Include="Models\AuthFactory.cs" />
+    <Compile Include="Models\RegisterDTO.cs" />
+    <Compile Include="Models\LoginDTO.cs" />
     <Compile Include="Models\UserDTO.cs" />
     <Compile Include="Models\CategoryDTO.cs" />
     <Compile Include="Models\ModelFactory.cs" />

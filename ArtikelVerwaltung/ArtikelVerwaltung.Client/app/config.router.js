@@ -9,15 +9,14 @@ angular
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider
-            .otherwise('/app');
-            // .otherwise('/login');
+            // .otherwise('/app');
+            .otherwise('/login');
 
         $stateProvider
             .state('register', {
                 url: '/register',
                 templateUrl: 'views/register.html',
                 controller: 'RegisterCtrl',
-                controllerAs: 'regco',
                 resolve: {
                     deps: [
                         '$ocLazyLoad',
@@ -38,7 +37,6 @@ angular
                 url: '/login',
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl',
-                controllerAs: 'logco',
                 resolve: {
                     deps: [
                         '$ocLazyLoad',
