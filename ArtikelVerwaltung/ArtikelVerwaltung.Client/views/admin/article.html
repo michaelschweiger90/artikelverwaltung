@@ -3,7 +3,7 @@
     <div flex="40">
         <md-list>
             <md-list-item ui-sref="app.article-management.list({id: category.id})" ng-repeat="category in categories" class="md-2-line">
-                <div class="md-list-item-text">
+                <div class="md-list-item-text" context-menu="menuOptions">
                     <h3>{{ category.name }}</h3>
                     <p>{{ category.source }}</p>
                 </div>
