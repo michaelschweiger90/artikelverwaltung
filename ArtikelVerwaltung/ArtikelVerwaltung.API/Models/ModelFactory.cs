@@ -152,5 +152,17 @@ namespace ArtikelVerwaltung.API.Models
 
 			return ac;
 		}
-	}
+
+        public User Create(UserDTO userDTO)
+        {
+            return new User()
+            {
+                ID = userDTO.ID,
+                Email = userDTO.MailAddress,
+                Passwort = AuthFactory.encrptPasswordWithSHA256(userDTO.Password),
+                IsAdmin = false,
+                Cart = null
+            };
+        }
+    }
 }

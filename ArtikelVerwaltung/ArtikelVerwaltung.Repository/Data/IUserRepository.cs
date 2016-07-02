@@ -9,7 +9,9 @@ namespace ArtikelVerwaltung.Repository.Data
 {
 	public interface IUserRepository
 	{
-		User getUserById(int id);
+		User GetUserById(int id);
+
+        void Create(User user);
 
 		bool SaveAll();
 	}

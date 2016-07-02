@@ -1,6 +1,6 @@
 {
-  "name": "fmd-client",
-  "description": "Client für die Fördermitteldatenbank der FH Rosenheim",
+  "name": "artikelverwaltung",
+  "description": "Client für die Artikelverwaltung - APT Projekt",
   "main": "",
   "license": "Open Source",
   "homepage": "",
@@ -16,6 +16,10 @@
     {
       "name": "Simon Folger",
       "email": "simon.folger@stud.fh-rosenheim.de"
+    },
+    {
+      "name": "Veli Döngelci",
+      "email"; "veli.doengelci@stud.fh-rosenheim.de"
     }
   ],
   "private": true,

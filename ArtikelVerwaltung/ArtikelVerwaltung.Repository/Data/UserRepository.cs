@@ -11,9 +11,14 @@ namespace ArtikelVerwaltung.Repository.Data
 	{
 		public UserRepository(ArtikelVerwaltungEntities ctx) : base(ctx) { }
 
-		public User getUserById(int id)
+		public User GetUserById(int id)
 		{
 			return ctx.User.Find(id);
 		}
-	}
+
+        public void Create(User user)
+        {
+            ctx.User.Add(user);
+        }
+    }
 }

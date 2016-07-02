@@ -30,7 +30,7 @@ namespace ArtikelVerwaltung.API.Controllers
 		{
 			try
 			{
-				User user = UserRepository.getUserById(userId);
+				User user = UserRepository.GetUserById(userId);
 
 				if (user == null)
 					throw new ArgumentException("User existiert nicht!");
@@ -55,7 +55,7 @@ namespace ArtikelVerwaltung.API.Controllers
 		{
 			try
 			{
-				User user = UserRepository.getUserById(userId);
+				User user = UserRepository.GetUserById(userId);
 
 				if (user == null)
 					throw new ArgumentException("User existiert nicht!");
@@ -85,7 +85,7 @@ namespace ArtikelVerwaltung.API.Controllers
 		{
 			try
 			{
-				User user = UserRepository.getUserById(userId);
+				User user = UserRepository.GetUserById(userId);
 
 				if (user == null)
 					throw new ArgumentException("User existiert nicht!");
@@ -129,7 +129,7 @@ namespace ArtikelVerwaltung.API.Controllers
 		{
 			try
 			{
-				User user = UserRepository.getUserById(userId);
+				User user = UserRepository.GetUserById(userId);
 
 				if (user == null)
 					throw new ArgumentException("User exisitert nicht!");
@@ -177,7 +177,7 @@ namespace ArtikelVerwaltung.API.Controllers
 		{
 			try
 			{
-				User user = UserRepository.getUserById(userId);
+				User user = UserRepository.GetUserById(userId);
 
 				if (user == null)
 					throw new ArgumentException("User exisitert nicht!");
@@ -214,7 +214,7 @@ namespace ArtikelVerwaltung.API.Controllers
 		{
 			try
 			{
-				User user = UserRepository.getUserById(userId);
+				User user = UserRepository.GetUserById(userId);
 
 				if (user == null)
 					throw new ArgumentException("User exisitert nicht!");
@@ -246,7 +246,7 @@ namespace ArtikelVerwaltung.API.Controllers
 		{
 			try
 			{
-				User user = UserRepository.getUserById(userId);
+				User user = UserRepository.GetUserById(userId);
 
 				if (user == null)
 					throw new ArgumentException("User exisitert nicht!");
@@ -285,7 +285,7 @@ namespace ArtikelVerwaltung.API.Controllers
 		{
 			try
 			{
-				User user = UserRepository.getUserById(userId);
+				User user = UserRepository.GetUserById(userId);
 
 				if (user == null)
 					throw new ArgumentException("User exisitert nicht!");

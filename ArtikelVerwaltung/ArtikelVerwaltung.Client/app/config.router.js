@@ -12,7 +12,28 @@ angular
             .otherwise('/app');
 
         $stateProvider
-            
+            .state('register', {
+                url: '/register',
+                templateUrl: 'views/register.html',
+                controller: 'RegisterCtrl',
+                controllerAs: 'regco',
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/resources/registerResource.js',
+                                    'app/services/registerService.js',
+                                    'app/controllers/register.js'
+                                ]
+                            });
+                        }
+                    ]
+                }
+                
+            })
             .state('app', {
                 abstract: false,
                 url: '/app',
@@ -195,7 +216,7 @@ angular
                         }
                     ]
                 }
-            })
+            });
 
            
 

@@ -18,7 +18,10 @@ var app =
 
                     $translateProvider.translations('de', {
                         'SYS_USERNAME': 'Benutzer',
+                        'SYS_REGISTER': 'Registrieren',
                         'SYS_PASSWORD': 'Passwort',
+                        'SYS_PASSWORD_REPEAT': 'Passwort wiederholen',
+                        'SYS_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
                         'SYS_LOGIN': 'Login',
                         'SYS_LOGIN_TITLE': 'Artikel-Verwaltung',
                         'SYS_LOGOUT': 'Logout',
@@ -68,7 +71,7 @@ var app =
                         'TOOLTIP_USER_FAB': 'Benutzer',
                         'TOOLTIP_USER_DELETE': 'Benutzer löschen',
                         'TOOLTIP_USER_PW_CHANGE': 'Passwort ändern',
-                        'TOOLTIP_OPEN_SIDENAV': 'Menü',
+                        'TOOLTIP_OPEN_SIDENAV': 'Menü'
 
                         
                     });
