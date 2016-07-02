@@ -10,6 +10,7 @@ angular
 
         $urlRouterProvider
             .otherwise('/app');
+            // .otherwise('/login');
 
         $stateProvider
             .state('register', {
@@ -32,7 +33,27 @@ angular
                         }
                     ]
                 }
-                
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'views/login.html',
+                controller: 'LoginCtrl',
+                controllerAs: 'logco',
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/resources/loginResource.js',
+                                    'app/services/loginService.js',
+                                    'app/controllers/login.js'
+                                ]
+                            });
+                        }
+                    ]
+                }
             })
             .state('app', {
                 abstract: false,

@@ -1,37 +1,40 @@
-<div ng-controller="LoginCtrl">
-    <form name="loginForm">
-        <md-content class="md-padding login-body" layout="column">
-            <div class="login-header" layout="column" layout-align="center center">
-                <img class="login-logo"src="assets/media/logo.jpg">
-                <h2>{{'SYS_LOGIN_TITLE' | translate }}</h2>
-                <h2>{{'SYS_LOGIN' | translate }}</h2>
-            </div>
-            <md-input-container class="md-block" flex-gt-sm>
-                <label for="email">{{'SYS_EMAIL' | translate }}</label>
-                <input type="email" ng-model="user.email" name="email" id="email" required ng-minlength="10" ng-maxlength="255">
-                <div ng-messages="loginForm.email.$error">
-                    <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
-                    <div ng-message="minlength">{{'LOGIN_ERROR_EMAIL_TOO_SHORT' | translate }}</div>
-                    <div ng-message="maxlength">{{'LOGIN_ERROR_EMAIL_TOO_LONG' | translate }}</div>
-                    <div ng-message="pattern">{{'LOGIN_ERROR_EMAIL_WRONG_DOMAIN' | translate }}</div>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4"></div>
+    <div class="col-md-3 col-md-offset-4" ng-controller="LoginCtrl">
+        <form name="loginForm">
+            <md-content class="md-padding login-body" layout="column">
+                <div class="login-header" layout="column" layout-align="center center">
+                    <img class="login-logo" src="/assets/media/av_logo.png">
+                    <h1>{{'SYS_TITLE' | translate }}</h1>
+                    <h2>{{'SYS_LOGIN' | translate }}</h2>
                 </div>
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
-                <label for="password">{{'SYS_PASSWORD' | translate }}</label>
-                <input type="password" ng-model="user.password" id="password" name="password" required>
-                <div ng-messages="loginForm.password.$error">
-                    <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label for="email">{{'SYS_EMAIL' | translate }}</label>
+                    <input type="email" ng-model="user.email" name="email" id="email" required ng-minlength="10" ng-maxlength="255">
+                    <div ng-messages="loginForm.email.$error">
+                        <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
+                        <div ng-message="minlength">{{'LOGIN_ERROR_EMAIL_TOO_SHORT' | translate }}</div>
+                        <div ng-message="maxlength">{{'LOGIN_ERROR_EMAIL_TOO_LONG' | translate }}</div>
+                        <div ng-message="pattern">{{'LOGIN_ERROR_EMAIL_WRONG_DOMAIN' | translate }}</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label for="password">{{'SYS_PASSWORD' | translate }}</label>
+                    <input type="password" ng-model="user.password" id="password" name="password" required>
+                    <div ng-messages="loginForm.password.$error">
+                        <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
+                    </div>
+                </md-input-container>
+                <div class="login-button-set" layout-gt-xs="row" layout-xs="column" layout-align="center center">
+                    <md-button class="md-raised orange-button left-button" layout="end none" ui-sref="register">{{'SYS_REGISTER_BUTTON' | translate }}</md-button>
+                    <div flex=""></div>
+                    <md-button class="md-raised orange-button right-button btn" layout="start none" ng-click="login()" ng-disabled="loginForm.$invalid">{{'SYS_LOGIN' | translate }}</md-button>
                 </div>
-            </md-input-container>
-            <div class="login-button-set" layout-gt-xs="row" layout-xs="column" layout-align="center center">
-                <md-button class="md-raised orange-button left-button" layout="end none" ui-sref="start.register">{{'SYS_REGISTER_BUTTON' | translate }}</md-button>
-                <div flex=""></div>
-                <md-button class="md-raised orange-button right-button btn" layout="start none" ng-click="login()" ng-disabled="loginForm.$invalid">{{'SYS_LOGIN' | translate }}</md-button>
-            </div>
-            <div class="pw-forgot" layout="row" layout-align="end" layout-margin>
-                <a ui-sref="start.forgot">{{'SYS_FORGOT' | translate }}</a>
-            </div>
-        </md-content>
-    </form>
+                <div class="pw-forgot" layout="row" layout-align="end" layout-margin>
+                    <a ui-sref="start.forgot">{{'SYS_FORGOT' | translate }}</a>
+                </div>
+            </md-content>
+        </form>
+    </div>
+    <div class="col-md-5 col-md-offset-4"></div>
 </div>
-

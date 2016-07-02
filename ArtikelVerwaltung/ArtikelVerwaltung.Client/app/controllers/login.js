@@ -1,5 +1,5 @@
 ﻿app.controller('LoginCtrl', [
-    '$rootScope', '$scope', 'Login',
+    '$rootScope', '$scope', 'LoginService',
     function ($rootScope, $scope, Login) {
 
     $scope.user = {};

@@ -1,9 +1,20 @@
 ﻿<div class="col-md-6 col-md-offset-3" ng-controller="RegisterCtrl">
     <form name="form" ng-submit="regco.registerUser()" role="form">
         <div class="login-header" layout="column" layout-align="center center">
+            <img class="login-logo" src="/assets/media/av_logo.png">
+            <h1>{{'SYS_TITLE' | translate }}</h1>
             <h2>{{'SYS_REGISTER' | translate }}</h2>
         </div>
         <md-content class="md-padding login-body" layout="column">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label for="name">{{'SYS_NAME' | translate }}</label>
+                <input type="text" name="name" id="name" ng-minlength="3" ng-maxlength="255" ng-model="regco.user.name" required />
+                <div ng-messages="form.name.$error">
+                    <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="minlength">{{'LOGIN_ERROR_EMAIL_TOO_SHORT' | translate }}</div>
+                    <div ng-message="maxlength">{{'LOGIN_ERROR_EMAIL_TOO_LONG' | translate }}</div>
+                </div>
+            </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label for="mailAddress">{{'SYS_EMAIL' | translate }}</label>
                 <input type="email" name="mailAddress" id="mailAddress" ng-minlength="10" ng-maxlength="255" ng-model="regco.user.mailAdress" required />
@@ -31,7 +42,7 @@
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                 <md-button ng-disabled="form.$invalid || regco.dataLoading" class="md-raised md-primary">{{'SYS_REGISTER' | translate }}</md-button>
                 <img ng-if="regco.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                <a href="#/login">{{'SYS_CANCEL' | translate }}</a>
+                <a ui-sref="login">{{'SYS_CANCEL' | translate }}</a>
             </section>
         </md-content>
     </form>

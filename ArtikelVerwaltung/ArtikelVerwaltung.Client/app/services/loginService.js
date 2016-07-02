@@ -1,4 +1,4 @@
-app.factory('Login', [
+app.factory('LoginService', [
     '$localStorage', '$state', '$translate', 
     function ($localStorage, $state, $translate) {
 

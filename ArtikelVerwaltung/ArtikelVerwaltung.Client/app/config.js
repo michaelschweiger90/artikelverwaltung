@@ -23,7 +23,7 @@ var app =
                         'SYS_PASSWORD_REPEAT': 'Passwort wiederholen',
                         'SYS_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
                         'SYS_LOGIN': 'Login',
-                        'SYS_LOGIN_TITLE': 'Artikel-Verwaltung',
+                        'SYS_TITLE': 'Artikel-Verwaltung',
                         'SYS_LOGOUT': 'Logout',
                         'SYS_EMAIL': 'E-Mail-Adresse',
                         'SYS_ERROR_REQUIRED': 'Pflichtfeld',
@@ -31,6 +31,9 @@ var app =
                         'SYS_SEARCH_TERM': 'Suchbegriff',
                         'SYS_SAVE': 'Speichern',
                         'SYS_CANCEL': 'Abbrechen',
+                        'SYS_FORGOT': 'Passwort vergessen?',
+                        'SYS_REGISTER_BUTTON': 'Registrieren',
+                        'SYS_NAME': 'Name',
 
                         'NAVIGATION_HEADLINE_ARTICLE': 'Artikel-Verwaltung',
                         'NAVIGATION_HEADLINE_MANAGEMENT': 'Administration',
@@ -76,6 +79,7 @@ var app =
                         
                     });
 
+                    $translateProvider.useSanitizeValueStrategy('escape');
                     $translateProvider.preferredLanguage('de');
 
                     $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function ($q, $location, $localStorage) {
@@ -89,7 +93,7 @@ var app =
                             },
                             'responseError': function (response) {
                                 if (response.status === 401 || response.status === 403) {
-                                    $location.path('/app/login');
+                                    $location.path('/login');
                                 }
                                 return $q.reject(response);
                             }
