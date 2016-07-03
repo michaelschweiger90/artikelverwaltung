@@ -121,6 +121,7 @@
     <Content Include="app\services\registerService.js" />
     <Content Include="app\services\toastService.js" />
     <Content Include="assets\media\av_logo.png" />
+    <Content Include="assets\media\exitLogo.png" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">

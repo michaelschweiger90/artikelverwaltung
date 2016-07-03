@@ -12,6 +12,14 @@ angular
             .otherwise('/login');
 
         $stateProvider
+            .state('logout', {
+                url: '/logout',
+                controller: function ($state, $localStorage) {
+                    $localStorage.authToken = '';
+                    $localStorage.user = {};
+                    $state.go('login');
+                }
+            })
             .state('register', {
                 url: '/register',
                 templateUrl: 'views/register.html',

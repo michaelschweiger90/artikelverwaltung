@@ -33,6 +33,7 @@ var app =
                         'SYS_FORGOT': 'Passwort vergessen?',
                         'SYS_REGISTER_BUTTON': 'Registrieren',
                         'SYS_NAME': 'Name',
+                        'SYS_LOGOUT': 'Ausloggen',
 
                         'ERROR_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
                         'ERROR_TOO_LONG': 'Maximale Länge überschritten',
@@ -91,8 +92,8 @@ var app =
                         return {
                             'request': function (config) {
                                 config.headers = config.headers || {};
-                                if ($localStorage.token) {
-                                    config.headers.Authorization = 'Bearer ' + $localStorage.token;
+                                if ($localStorage.authToken) {
+                                    config.headers.Authorization = 'Basic ' + $localStorage.authToken;
                                 }
                                 return config;
                             },
@@ -104,6 +105,5 @@ var app =
                             }
                         };
                     }]);
-
                 }
             ]);

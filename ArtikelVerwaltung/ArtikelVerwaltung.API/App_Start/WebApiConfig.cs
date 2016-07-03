@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using ArtikelVerwaltung.API.Filters;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,7 @@ namespace ArtikelVerwaltung.API
 			config.MapHttpAttributeRoutes();
 
 			config.EnableCors();
-
-			/*config.Routes.MapHttpRoute(
-				name: "",
-				routeTemplate: "api/v1/{"
-			);*/
+            config.Filters.Add(new ApiAuthFilterAttribute("User"));
 
 			var json = config.Formatters.JsonFormatter;
 			json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;

@@ -5,16 +5,12 @@ namespace ArtikelVerwaltung.API.App_Start
 {
 	using System;
 	using System.Web;
-	using System.Web.Http;
 
 	using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
 	using Ninject;
 	using Ninject.Web.Common;
-	using Ninject.Web.WebApi;
 	using Repository.EF;
-	using Ninject.Web.WebApi.Filter;
-	using System.Web.Http.Validation;
 	using Repository.Data;
 	public static class NinjectWebCommon 
 	{

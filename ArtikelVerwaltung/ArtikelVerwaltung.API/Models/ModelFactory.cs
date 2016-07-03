@@ -177,5 +177,17 @@ namespace ArtikelVerwaltung.API.Models
                 Cart = null
             };
         }
+
+        public FullUserDTO Create(User user)
+        {
+            return new FullUserDTO()
+            {
+                Name = user.Name,
+                MailAddress = user.Email,
+                Password = "",
+                ID = user.ID,
+                isAdmin = user.IsAdmin
+            };
+        }
     }
 }

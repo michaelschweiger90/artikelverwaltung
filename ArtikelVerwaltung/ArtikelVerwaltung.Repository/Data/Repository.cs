@@ -1,13 +1,8 @@
 ﻿using ArtikelVerwaltung.Repository.EF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ArtikelVerwaltung.Repository.Data
 {
-	public class Repository : IRepository
+    public class Repository : IRepository
 	{
 		protected ArtikelVerwaltungEntities ctx;
 

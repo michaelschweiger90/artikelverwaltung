@@ -1,21 +1,24 @@
 ﻿using ArtikelVerwaltung.API.Models;
+using ArtikelVerwaltung.API.Services;
 using ArtikelVerwaltung.Repository.Data;
 using ArtikelVerwaltung.Repository.EF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
 
 namespace ArtikelVerwaltung.API.Controllers
 {
 	public class AuthController : BaseAPIController
 	{
-        public AuthController(IRepository repo) : base(repo) { }
+        private IAuthService authService;
+
+        public AuthController(IRepository repo) : base(repo)
+        {
+            this.authService = new AuthService(repo.GetUserRepository());
+        }
 
         [Route("~/api/v1/register")]
+        [AllowAnonymous]
         [HttpPost]
         public IHttpActionResult registerUser([FromBody] RegisterDTO registerDTO)
         {
@@ -26,20 +29,19 @@ namespace ArtikelVerwaltung.API.Controllers
             }
 
             // check if mail address exists
-            User existingUser = UserRepository.FindUserByEmail(registerDTO.MailAddress);
-            if (existingUser != null)
+            if (authService.ExistsUser(registerDTO.MailAddress))
             {
                 return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.Conflict, "User exists"));
             }
 
             // now create user.
             User user = ModelFactory.Create(registerDTO);
-            UserRepository.Create(user);
-            UserRepository.SaveAll();
-
+            authService.SaveUser(user);
+            
             if (user.ID > 0)
             {
-                return ResponseMessage(Request.CreateResponse(HttpStatusCode.Created));
+                FullUserDTO createdUserDTO = ModelFactory.Create(user);
+                return Ok(createdUserDTO);
             }
             else
             {
@@ -48,6 +50,7 @@ namespace ArtikelVerwaltung.API.Controllers
         }
 
         [Route("~/api/v1/login")]
+        [AllowAnonymous]
         [HttpPost]
         public IHttpActionResult loginUser([FromBody] LoginDTO loginDTO)
         {
@@ -56,16 +59,13 @@ namespace ArtikelVerwaltung.API.Controllers
             {
                 return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
             }
-            // find user with requested mail
-            User user = UserRepository.FindUserByEmail(loginDTO.MailAddress);
+            // do authentication
+            User user = authService.Authenticate(loginDTO.MailAddress, loginDTO.Password);
 
             if (user !=null)
             {
-                if (user.Passwort.Equals(AuthFactory.encrptPasswordWithSHA256(loginDTO.Password)))
-                {
-                    return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
-                }
-                return ResponseMessage(Request.CreateResponse(HttpStatusCode.Created));
+                FullUserDTO fullUserDTO = ModelFactory.Create(user);
+                return Ok(fullUserDTO);
             }
             else
             {
