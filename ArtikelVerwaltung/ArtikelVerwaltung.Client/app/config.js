@@ -21,12 +21,11 @@ var app =
                         'SYS_REGISTER': 'Registrieren',
                         'SYS_PASSWORD': 'Passwort',
                         'SYS_PASSWORD_REPEAT': 'Passwort wiederholen',
-                        'SYS_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
                         'SYS_LOGIN': 'Login',
                         'SYS_TITLE': 'Artikel-Verwaltung',
                         'SYS_LOGOUT': 'Logout',
                         'SYS_EMAIL': 'E-Mail-Adresse',
-                        'SYS_ERROR_REQUIRED': 'Pflichtfeld',
+                        
                         'SYS_BACK': 'Zurück',
                         'SYS_SEARCH_TERM': 'Suchbegriff',
                         'SYS_SAVE': 'Speichern',
@@ -34,6 +33,12 @@ var app =
                         'SYS_FORGOT': 'Passwort vergessen?',
                         'SYS_REGISTER_BUTTON': 'Registrieren',
                         'SYS_NAME': 'Name',
+
+                        'ERROR_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
+                        'ERROR_TOO_LONG': 'Maximale Länge überschritten',
+                        'ERROR_EMAIL_INVALID': 'Mailaddresse ungültig',
+                        'ERROR_TOO_SHORT': 'Minimale Länge nicht erfüllt',
+                        'ERROR_REQUIRED': 'Pflichtfeld',
 
                         'NAVIGATION_HEADLINE_ARTICLE': 'Artikel-Verwaltung',
                         'NAVIGATION_HEADLINE_MANAGEMENT': 'Administration',

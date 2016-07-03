@@ -9,7 +9,6 @@ angular
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider
-            // .otherwise('/app');
             .otherwise('/login');
 
         $stateProvider
@@ -24,6 +23,7 @@ angular
                             return $ocLazyLoad.load({
                                 serie: true,
                                 files: [
+                                    'app/directives/compareTo.js',
                                     'app/resources/registerResource.js',
                                     'app/services/registerService.js',
                                     'app/controllers/register.js'

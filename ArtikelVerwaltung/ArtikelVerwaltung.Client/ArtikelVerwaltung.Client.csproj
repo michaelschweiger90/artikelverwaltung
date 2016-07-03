@@ -104,6 +104,7 @@
     <Content Include="app\controllers\cart.js" />
     <Content Include="app\controllers\login.js" />
     <Content Include="app\controllers\register.js" />
+    <Content Include="app\directives\compareTo.js" />
     <Content Include="app\filters\mailSidenav.js" />
     <Content Include="app\resources\articleCategoryResource.js" />
     <Content Include="app\resources\articleResource.js" />
@@ -160,9 +161,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\directives\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

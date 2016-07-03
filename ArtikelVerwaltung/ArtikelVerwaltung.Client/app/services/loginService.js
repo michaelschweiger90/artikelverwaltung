@@ -1,32 +1,24 @@
 app.factory('LoginService', [
-    '$localStorage', '$state', '$translate', 'LoginResource', 
-function ($localStorage, $state, $translate, LoginResource) {
-
-    var doLogin = function(user)
+    'LoginResource', function (LoginResource)
     {
-        LoginResource.login({
-            'mailAddress': user.mailAddress,
-            'password': user.password
-        }, function(data){
+        var doLogin = function(user)
+        {
+            return LoginResource.login(
+                {
+                    'mailAddress': user.mailAddress,
+                    'password': user.password
+                }
+            );
+        };
 
-            $localStorage.token = data.token;
-            // Eventbus.userLoggedIn();
-            $state.go('app.article.list');
+        var doLogout = function()
+        {
+            
+        };
 
-        }, function(data){
-            //data.data        
-
-        });
-    };
-
-    var doLogout = function()
-    {
-        $localStorage.token = null;
-        $state.go('login');
-    };
-
-    return {
-        doLogin: doLogin,
-        doLogout: doLogout
-    };
-}]);
+        return {
+            doLogin: doLogin,
+            doLogout: doLogout
+        };
+    }
+]);

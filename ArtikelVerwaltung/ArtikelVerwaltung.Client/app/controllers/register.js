@@ -1,13 +1,23 @@
 ﻿app.controller('RegisterCtrl', [
-    '$rootScope', '$scope', 'RegisterService',
-    function ($rootScope, $scope, RegisterService) {
+    '$state', '$localStorage', '$rootScope', '$scope', 'RegisterService',
+    function ($state, $localStorage, $rootScope, $scope, RegisterService)
+    {
         $scope.user = null;
-        $scope.dataloading = false;
+        $scope.dataLoading = false;
 
-        $scope.registerUser = function () {
-            this.dataLoading = true;
+        $scope.registerUser = function ()
+        {
+            $scope.dataLoading = true;
 
-            RegisterService.registerUser($scope.user);
+            RegisterService.registerUser($scope.user).$promise.then(
+                function (data)
+                {
+                    $state.go('app.article.list');
+                }, function (data)
+                {
+                    $scope.dataLoading = false;
+                }
+            );
         };
-
-    }]);
+    }
+]);

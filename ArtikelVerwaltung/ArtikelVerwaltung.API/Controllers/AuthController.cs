@@ -59,7 +59,7 @@ namespace ArtikelVerwaltung.API.Controllers
             // find user with requested mail
             User user = UserRepository.FindUserByEmail(loginDTO.MailAddress);
 
-            if (user.ID > 0)
+            if (user !=null)
             {
                 if (user.Passwort.Equals(AuthFactory.encrptPasswordWithSHA256(loginDTO.Password)))
                 {

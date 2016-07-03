@@ -8,6 +8,7 @@ namespace ArtikelVerwaltung.API.Models
 {
     public class UserDTO : RegisterDTO
     {
+        [Required]
         public int ID { get; set; }
     }
 }

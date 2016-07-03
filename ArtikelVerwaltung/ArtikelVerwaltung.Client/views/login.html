@@ -8,19 +8,19 @@
         <md-content class="md-padding login-body" layout="column">
             <md-input-container class="md-block" flex-gt-sm>
                 <label for="mailAddress">{{'SYS_EMAIL' | translate }}</label>
-                <input type="email" ng-model="user.mailAddress" name="mailAddress" id="mailAddress" required ng-minlength="10" ng-maxlength="255">
+                <input type="email" ng-model="user.mailAddress" name="mailAddress" id="mailAddress" required ng-maxlength="255">
                 <div ng-messages="loginForm.mailAddress.$error">
-                    <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
-                    <div ng-message="minlength">{{'LOGIN_ERROR_EMAIL_TOO_SHORT' | translate }}</div>
-                    <div ng-message="maxlength">{{'LOGIN_ERROR_EMAIL_TOO_LONG' | translate }}</div>
-                    <div ng-message="pattern">{{'LOGIN_ERROR_EMAIL_WRONG_DOMAIN' | translate }}</div>
+                    <div ng-message="email">{{'ERROR_EMAIL_INVALID' | translate }}</div>
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="maxlength">{{'ERROR_TOO_LONG' | translate }}</div>                    
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label for="password">{{'SYS_PASSWORD' | translate }}</label>
-                <input type="password" ng-model="user.password" id="password" name="password" required>
+                <input type="password" ng-model="user.password" ng-minlength="8" id="password" name="password" required>
                 <div ng-messages="loginForm.password.$error">
-                    <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="minlength">{{'ERROR_TOO_SHORT' | translate }}</div>
                 </div>
             </md-input-container>
             <div class="login-button-set" layout-gt-xs="row" layout-xs="column" layout-align="center center">

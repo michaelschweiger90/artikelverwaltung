@@ -8,35 +8,36 @@
         <md-content class="md-padding login-body" layout="column">
             <md-input-container class="md-block" flex-gt-sm>
                 <label for="name">{{'SYS_NAME' | translate }}</label>
-                <input type="text" name="name" id="name" ng-minlength="3" ng-maxlength="255" ng-model="user.name" required />
+                <input type="text" name="name" id="name" ng-minlength="5" ng-maxlength="255" ng-model="user.name" required />
                 <div ng-messages="form.name.$error">
-                    <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
-                    <div ng-message="minlength">{{'LOGIN_ERROR_EMAIL_TOO_SHORT' | translate }}</div>
-                    <div ng-message="maxlength">{{'LOGIN_ERROR_EMAIL_TOO_LONG' | translate }}</div>
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="minlength">{{'ERROR_TOO_SHORT' | translate }}</div>
+                    <div ng-message="maxlength">{{'ERROR_TOO_LONG' | translate }}</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label for="mailAddress">{{'SYS_EMAIL' | translate }}</label>
-                <input type="email" name="mailAddress" id="mailAddress" ng-minlength="10" ng-maxlength="255" ng-model="user.mailAddress" required />
+                <input type="email" name="mailAddress" id="mailAddress" ng-maxlength="255" ng-model="user.mailAddress" required />
                 <div ng-messages="form.mailAddress.$error">
-                    <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
-                    <div ng-message="minlength">{{'LOGIN_ERROR_EMAIL_TOO_SHORT' | translate }}</div>
-                    <div ng-message="maxlength">{{'LOGIN_ERROR_EMAIL_TOO_LONG' | translate }}</div>
-                    <div ng-message="pattern">{{'LOGIN_ERROR_EMAIL_WRONG_DOMAIN' | translate }}</div>
+                    <div ng-message="email">{{'ERROR_EMAIL_INVALID' | translate }}</div>
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="maxlength">{{'ERROR_TOO_LONG' | translate }}</div>  
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label for="password">{{'SYS_PASSWORD' | translate }}</label>
-                <input type="password" name="password" id="password" ng-model="user.password" required />
-                <div ng-messages="loginForm.password.$error">
-                    <div ng-message="required">{{'SYS_ERROR_REQUIRED' | translate }}</div>
+                <input type="password" name="password" id="password" ng-minlength="8" ng-model="user.password" required />
+                <div ng-messages="form.password.$error">
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="minlength">{{'ERROR_TOO_SHORT' | translate }}</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label for="passwordRepeat">{{'SYS_PASSWORD_REPEAT' | translate }}</label>
-                <input type="password" name="passwordRepeat" id="passwordRepeat" ng-model="user.passwordRepeat" required />
-                <div ng-messages="loginForm.passwordRepeat.$error">
-                    <div ng-message="required">{{'SYS_PASSWORD_MATCH' | translate }}</div>
+                <input type="password" name="passwordRepeat" id="passwordRepeat" required ng-model="user.passwordRepeat" compare-to="user.password" />
+                <div ng-messages="form.passwordRepeat.$error">
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="compareTo">{{'ERROR_PASSWORD_MATCH' | translate }}</div>
                 </div>
             </md-input-container>
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
