@@ -14,10 +14,27 @@ angular
         $stateProvider
             .state('logout', {
                 url: '/logout',
-                controller: function ($state, $localStorage) {
-                    $localStorage.authToken = '';
-                    $localStorage.user = {};
-                    $state.go('login');
+                controller: function ($state, $localStorage, AuthService) {
+                    AuthService.doLogout().$promise.then(function (data) {
+                        $localStorage.user = {};
+                        $state.go('login');
+                    }, function () {
+
+                    });
+                },
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/resources/authResource.js',
+                                    'app/services/authService.js',
+                                ]
+                            });
+                        }
+                    ]
                 }
             })
             .state('register', {
@@ -32,8 +49,8 @@ angular
                                 serie: true,
                                 files: [
                                     'app/directives/compareTo.js',
-                                    'app/resources/registerResource.js',
-                                    'app/services/registerService.js',
+                                    'app/resources/authResource.js',
+                                    'app/services/authService.js',
                                     'app/controllers/register.js'
                                 ]
                             });
@@ -52,8 +69,8 @@ angular
                             return $ocLazyLoad.load({
                                 serie: true,
                                 files: [
-                                    'app/resources/loginResource.js',
-                                    'app/services/loginService.js',
+                                    'app/resources/authResource.js',
+                                    'app/services/authService.js',
                                     'app/controllers/login.js'
                                 ]
                             });

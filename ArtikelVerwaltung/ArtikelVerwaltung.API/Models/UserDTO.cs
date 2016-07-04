@@ -10,5 +10,9 @@ namespace ArtikelVerwaltung.API.Models
     {
         [Required]
         public int ID { get; set; }
+
+        public bool isAdmin { get; set; }
+        [Required]
+        public string Token { get; set; }
     }
 }

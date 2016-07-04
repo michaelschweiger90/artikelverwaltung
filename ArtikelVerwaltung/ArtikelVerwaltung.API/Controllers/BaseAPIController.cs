@@ -1,16 +1,11 @@
 ﻿using ArtikelVerwaltung.API.Models;
 using ArtikelVerwaltung.Repository.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
 namespace ArtikelVerwaltung.API.Controllers
 {
-	[EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
 	public class BaseAPIController : ApiController
 	{
 		private IArticleRepository articleRepo;

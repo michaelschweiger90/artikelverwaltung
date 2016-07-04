@@ -5,6 +5,7 @@ using ArtikelVerwaltung.Repository.EF;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Threading;
 
 namespace ArtikelVerwaltung.API.Controllers
 {
@@ -17,7 +18,7 @@ namespace ArtikelVerwaltung.API.Controllers
             this.authService = new AuthService(repo.GetUserRepository());
         }
 
-        [Route("~/api/v1/register")]
+        [Route("~/api/v1/auth/register")]
         [AllowAnonymous]
         [HttpPost]
         public IHttpActionResult registerUser([FromBody] RegisterDTO registerDTO)
@@ -40,7 +41,7 @@ namespace ArtikelVerwaltung.API.Controllers
             
             if (user.ID > 0)
             {
-                FullUserDTO createdUserDTO = ModelFactory.Create(user);
+                UserDTO createdUserDTO = ModelFactory.Create(user);
                 return Ok(createdUserDTO);
             }
             else
@@ -49,7 +50,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
         }
 
-        [Route("~/api/v1/login")]
+        [Route("~/api/v1/auth/login")]
         [AllowAnonymous]
         [HttpPost]
         public IHttpActionResult loginUser([FromBody] LoginDTO loginDTO)
@@ -60,17 +61,52 @@ namespace ArtikelVerwaltung.API.Controllers
                 return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
             }
             // do authentication
-            User user = authService.Authenticate(loginDTO.MailAddress, loginDTO.Password);
+            User user = authService.AuthenticateByPassword(loginDTO.MailAddress, loginDTO.Password);
 
             if (user !=null)
             {
-                FullUserDTO fullUserDTO = ModelFactory.Create(user);
-                return Ok(fullUserDTO);
+                UserDTO userDTO = ModelFactory.Create(user);
+                return Ok(userDTO);
             }
             else
             {
                 return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not created"));
             }
+        }
+
+        [Route("~/api/v1/auth/forgot")]
+        [AllowAnonymous]
+        [HttpPost]
+        public IHttpActionResult forgotPassword([FromBody] ForgotDTO forgotDTO)
+        {
+            // check if parameters valid
+            if (!ModelState.IsValid)
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+            }
+            // do authentication
+            bool actionResult = authService.RenewPasswordBySecrets(forgotDTO.MailAddress, forgotDTO.SecretQuestion, forgotDTO.SecretAnswer, forgotDTO.NewPassword);
+
+            if (actionResult)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
+            }
+            else
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Something went wrong while renewing"));
+            }
+        }
+
+        [Route("~/api/v1/auth/logout")]
+        [HttpDelete]
+        public IHttpActionResult logoutUser()
+        {
+            var identity = Thread.CurrentPrincipal.Identity as TokenAuthenticationIdentity;
+            if (identity != null && authService.LogoutUser(identity.Token))
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
+            }
+            return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No user for log out"));
         }
     }
 }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using ArtikelVerwaltung.Repository.EF;
 
 namespace ArtikelVerwaltung.Repository.Data
 {
-	public class UserRepository : Repository, IUserRepository
+    public class UserRepository : Repository, IUserRepository
 	{
 		public UserRepository(ArtikelVerwaltungEntities ctx) : base(ctx) { }
 
@@ -24,6 +20,11 @@ namespace ArtikelVerwaltung.Repository.Data
         public User FindUserByEmail(string email)
         {
             return ctx.User.Where(d => d.Email == email).SingleOrDefault();
+        }
+
+        public User FindUserByToken(string token)
+        {
+            return ctx.User.Where(d => d.Token == token).SingleOrDefault();
         }
     }
 }

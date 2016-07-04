@@ -25,7 +25,8 @@ var app =
                         'SYS_TITLE': 'Artikel-Verwaltung',
                         'SYS_LOGOUT': 'Logout',
                         'SYS_EMAIL': 'E-Mail-Adresse',
-                        
+                        'SYS_SECRET_QUESTION': 'Geheimfrage',
+                        'SYS_SECRET_ANSWER': 'Geheimantwort',
                         'SYS_BACK': 'Zurück',
                         'SYS_SEARCH_TERM': 'Suchbegriff',
                         'SYS_SAVE': 'Speichern',
@@ -92,13 +93,15 @@ var app =
                         return {
                             'request': function (config) {
                                 config.headers = config.headers || {};
-                                if ($localStorage.authToken) {
-                                    config.headers.Authorization = 'Basic ' + $localStorage.authToken;
+                                if ($localStorage.user.authToken) {
+                                    config.headers.Authorization = 'Bearer ' + $localStorage.user.authToken;
+                                    config.headers['id'] = $localStorage.user.id;
                                 }
                                 return config;
                             },
                             'responseError': function (response) {
                                 if (response.status === 401 || response.status === 403) {
+                                    $localStorage.user = {};
                                     $location.path('/login');
                                 }
                                 return $q.reject(response);

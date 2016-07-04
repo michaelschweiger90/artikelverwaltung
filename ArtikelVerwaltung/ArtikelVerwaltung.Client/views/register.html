@@ -25,6 +25,20 @@
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
+                <label for="secretQuestion">{{'SYS_SECRET_QUESTION' | translate }}</label>
+                <input type="text" name="secretQuestion" id="secretQuestion" ng-maxlength="255" ng-model="user.secretQuestion" required />
+                <div ng-messages="form.secretQuestion.$error">
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label for="secretAnswer">{{'SYS_SECRET_ANSWER' | translate }}</label>
+                <input type="text" name="secretAnswer" id="secretAnswer" ng-maxlength="255" ng-model="user.secretAnswer" required />
+                <div ng-messages="form.secretAnswer.$error">
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
                 <label for="password">{{'SYS_PASSWORD' | translate }}</label>
                 <input type="password" name="password" id="password" ng-minlength="8" ng-model="user.password" required />
                 <div ng-messages="form.password.$error">

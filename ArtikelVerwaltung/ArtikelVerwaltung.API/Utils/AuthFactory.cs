@@ -1,13 +1,9 @@
-﻿using ArtikelVerwaltung.Repository.EF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Text;
-using System.Web;
 
-namespace ArtikelVerwaltung.API.Models
+namespace ArtikelVerwaltung.API.Utils
 {
-	public class AuthFactory
+    public class AuthFactory
 	{
         public static string encrptPasswordWithSHA256(string password)
         {
@@ -18,6 +14,12 @@ namespace ArtikelVerwaltung.API.Models
             byte[] hash = hashAlgo.ComputeHash(plainTextBytes);
 
             return Convert.ToBase64String(hash);
+        }
+
+        public static string generateUniqueToken()
+        {
+            string token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+            return token;
         }
     }
 }

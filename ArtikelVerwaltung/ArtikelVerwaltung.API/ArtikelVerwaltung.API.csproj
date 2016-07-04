@@ -185,12 +185,12 @@
     </Compile>
     <Compile Include="Models\ArticleCartDTO.cs" />
     <Compile Include="Models\ArticleDTO.cs" />
-    <Compile Include="Models\BasicAuthenticationIdetitiy.cs" />
+    <Compile Include="Models\ForgotDTO.cs" />
+    <Compile Include="Models\TokenAuthenticationIdetitiy.cs" />
     <Compile Include="Models\CartDTO.cs" />
-    <Compile Include="Models\AuthFactory.cs" />
+    <Compile Include="Utils\AuthFactory.cs" />
     <Compile Include="Models\RegisterDTO.cs" />
     <Compile Include="Models\LoginDTO.cs" />
-    <Compile Include="Models\FullUserDTO.cs" />
     <Compile Include="Models\UserDTO.cs" />
     <Compile Include="Models\CategoryDTO.cs" />
     <Compile Include="Models\ModelFactory.cs" />

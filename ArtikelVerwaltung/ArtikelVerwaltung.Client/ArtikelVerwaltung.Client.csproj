@@ -111,14 +111,12 @@
     <Content Include="app\resources\cartArticleResource.js" />
     <Content Include="app\resources\cartResource.js" />
     <Content Include="app\resources\categoryResource.js" />
-    <Content Include="app\resources\loginResource.js" />
-    <Content Include="app\resources\registerResource.js" />
+    <Content Include="app\resources\authResource.js" />
     <Content Include="app\services\articleService.js" />
     <Content Include="app\services\cartService.js" />
     <Content Include="app\services\categoryService.js" />
     <Content Include="app\services\dialogService.js" />
-    <Content Include="app\services\loginService.js" />
-    <Content Include="app\services\registerService.js" />
+    <Content Include="app\services\authService.js" />
     <Content Include="app\services\toastService.js" />
     <Content Include="assets\media\av_logo.png" />
     <Content Include="assets\media\exitLogo.png" />

@@ -1,6 +1,6 @@
 ﻿app.controller('RegisterCtrl', [
-    '$state', '$localStorage', '$rootScope', '$scope', 'RegisterService',
-    function ($state, $localStorage, $rootScope, $scope, RegisterService)
+    '$state', '$localStorage', '$rootScope', '$scope', 'AuthService',
+    function ($state, $localStorage, $rootScope, $scope, AuthService)
     {
         $scope.user = null;
         $scope.dataLoading = false;
@@ -9,7 +9,7 @@
         {
             $scope.dataLoading = true;
 
-            RegisterService.registerUser($scope.user).$promise.then(
+            AuthService.registerUser($scope.user).$promise.then(
                 function (data)
                 {
                     var user = {};
@@ -17,11 +17,8 @@
                     user.mailAddress = data.mailAddress;
                     user.isAdmin = data.isAdmin;
                     user.id = data.id;
-                    user.password = $scope.user.password;
+                    user.authToken = data.token,
                     $localStorage.user = user;
-
-                    var authString = $scope.user.mailAddress + ":" + $scope.user.password;
-                    $localStorage.authToken = btoa(authString);
 
                     $state.go('app.article.list');
                 }, function (data)

@@ -13,6 +13,7 @@ using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using System.Collections.Generic;
 
 namespace ArtikelVerwaltung.API.Filters
 {
@@ -41,11 +42,6 @@ namespace ArtikelVerwaltung.API.Filters
             }
             var genericPrincipal = new GenericPrincipal(identity, null);
             Thread.CurrentPrincipal = genericPrincipal;
-            if (!OnAuthenticateUser(identity.Email, identity.Password, filterContext))
-            {
-                ChallengeAuthRequest(filterContext);
-                return;
-            }
 
             if (!OnAuthoriseUser(filterContext))
             {
@@ -56,66 +52,65 @@ namespace ArtikelVerwaltung.API.Filters
             base.OnAuthorization(filterContext);
         }
 
-        private bool OnAuthenticateUser(string email, string password, HttpActionContext filterContext)
+        private TokenAuthenticationIdentity FetchAuthHeader(HttpActionContext filterContext)
         {
-            var repository = filterContext.ControllerContext.Configuration
-                               .DependencyResolver.GetService(typeof(IRepository)) as Repository.Data.Repository;
-            if (repository == null) return false;
-            
-            IAuthService authService = new AuthService(repository.GetUserRepository());
-            User user = authService.Authenticate(email, password);
-
-            if (user != null)
-            {
-                var basicAuthenticationIdentity = Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
-                if (basicAuthenticationIdentity != null)
-                {
-                    basicAuthenticationIdentity.UserId = user.ID;
-                    basicAuthenticationIdentity.IsAdmin = user.IsAdmin;
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private BasicAuthenticationIdentity FetchAuthHeader(HttpActionContext filterContext)
-        {
-            string authHeaderValue = null;
+            string authToken = null;
+            int authId = 0;
             var authRequest = filterContext.Request.Headers.Authorization;
-            if (authRequest != null && !String.IsNullOrEmpty(authRequest.Scheme) && authRequest.Scheme == "Basic")
+            IEnumerable<string> values;
+            var authIds = filterContext.Request.Headers.TryGetValues("id", out values);
+            
+            if (authRequest != null && !String.IsNullOrEmpty(authRequest.Scheme) && authRequest.Scheme == "Bearer")
             {
-                authHeaderValue = authRequest.Parameter;
+                authToken = authRequest.Parameter;
             }
 
-            if (string.IsNullOrEmpty(authHeaderValue))
+            if (values != null && !String.IsNullOrEmpty(values.FirstOrDefault()) && Convert.ToInt32(values.FirstOrDefault()) > 0)
+            {
+                var authIdString = values.FirstOrDefault();
+                authId = Convert.ToInt32(authIdString);
+            }
+
+            if (string.IsNullOrEmpty(authToken) && !(authId > 0))
             {
                 return null;
             }
 
-            authHeaderValue = Encoding.Default.GetString(Convert.FromBase64String(authHeaderValue));
-            var credentials = authHeaderValue.Split(':');
-            return credentials.Length < 2 ? null : new BasicAuthenticationIdentity(credentials[0], credentials[1]);
+            var basicIdentity = new TokenAuthenticationIdentity(authId, authToken);
+            return basicIdentity;
         }
 
         private void ChallengeAuthRequest(HttpActionContext filterContext)
         {
             var dnsHost = filterContext.Request.RequestUri.DnsSafeHost;
             filterContext.Response = filterContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
-            filterContext.Response.Headers.Add("WWW-Authenticate", string.Format("Basic realm=\"{0}\"", dnsHost));
+            filterContext.Response.Headers.Add("WWW-Authenticate", string.Format("Bearer realm=\"{0}\"", dnsHost));
         }
 
         private bool OnAuthoriseUser(HttpActionContext actionContext)
         {
-            var currentIdentity = Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
-            switch (_role)
+            var repository = actionContext.ControllerContext.Configuration
+                               .DependencyResolver.GetService(typeof(IRepository)) as Repository.Data.Repository;
+            if (repository == null) return false;
+
+            IAuthService authService = new AuthService(repository.GetUserRepository());
+
+            var currentIdentity = Thread.CurrentPrincipal.Identity as TokenAuthenticationIdentity;
+
+            User user = authService.AuthoriseUserByTokenAndId(currentIdentity.UserId, currentIdentity.Token);
+            if (user != null)
             {
-                case "Admin":
-                    return currentIdentity.IsAdmin && currentIdentity.UserId > 0;
-                case "User":
-                    return currentIdentity.UserId > 0;
-                default:
-                    return false;
+                switch (_role)
+                {
+                    case "Admin":
+                        return currentIdentity.IsAdmin && currentIdentity.UserId > 0;
+                    case "User":
+                        return currentIdentity.UserId > 0;
+                    default:
+                        return false;
+                }
             }
+            return false;
         }
 
         private bool SkipAuthorization(HttpActionContext actionContext)

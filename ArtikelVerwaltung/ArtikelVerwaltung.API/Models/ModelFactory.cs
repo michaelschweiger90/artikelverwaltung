@@ -1,8 +1,7 @@
 ﻿using ArtikelVerwaltung.Repository.EF;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using ArtikelVerwaltung.API.Utils;
 
 namespace ArtikelVerwaltung.API.Models
 {
@@ -174,19 +173,24 @@ namespace ArtikelVerwaltung.API.Models
                 Email = registerDTO.MailAddress,
                 Passwort = AuthFactory.encrptPasswordWithSHA256(registerDTO.Password),
                 IsAdmin = false,
+                SecretQuestion = registerDTO.SecretQuestion,
+                SecretAnswer = registerDTO.SecretAnswer,
+                Token = AuthFactory.generateUniqueToken(),
+                TokenDate = DateTime.Now,
                 Cart = null
             };
         }
 
-        public FullUserDTO Create(User user)
+        public UserDTO Create(User user)
         {
-            return new FullUserDTO()
+            return new UserDTO()
             {
                 Name = user.Name,
                 MailAddress = user.Email,
                 Password = "",
                 ID = user.ID,
-                isAdmin = user.IsAdmin
+                isAdmin = user.IsAdmin,
+                Token = user.Token
             };
         }
     }

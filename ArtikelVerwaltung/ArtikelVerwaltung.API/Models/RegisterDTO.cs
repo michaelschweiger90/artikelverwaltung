@@ -11,5 +11,11 @@ namespace ArtikelVerwaltung.API.Models
         [Required]
         [StringLength(255, MinimumLength = 5)]
         public string Name { get; set; }
+
+        [Required]
+        public string SecretQuestion { get; set; }
+
+        [Required]
+        public string SecretAnswer { get; set; }
     }
 }

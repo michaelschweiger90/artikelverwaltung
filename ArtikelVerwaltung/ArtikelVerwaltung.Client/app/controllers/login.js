@@ -1,6 +1,6 @@
 ﻿app.controller('LoginCtrl', [
-    '$localStorage', '$rootScope', '$scope', '$state', 'LoginService',
-    function ($localStorage, $rootScope, $scope, $state, LoginService)
+    '$localStorage', '$rootScope', '$scope', '$state', 'AuthService',
+    function ($localStorage, $rootScope, $scope, $state, AuthService)
     {
         $scope.user = null;
         $scope.dataLoading = false;
@@ -8,7 +8,7 @@
         $scope.doLogin = function () {
             $scope.dataLoading = true;
 
-            LoginService.doLogin($scope.user).$promise.then(
+            AuthService.doLogin($scope.user).$promise.then(
                 function (data)
                 {
                     var user = {};
@@ -16,11 +16,8 @@
                     user.mailAddress = data.mailAddress;
                     user.isAdmin = data.isAdmin;
                     user.id = data.id;
-                    user.password = $scope.user.password;
+                    user.authToken = data.token,
                     $localStorage.user = user;
-                        
-                    var authString = $scope.user.mailAddress + ":" + $scope.user.password;
-                    $localStorage.authToken = btoa(authString);
 
                     $state.go('app.article.list');
                 }, function (data)
