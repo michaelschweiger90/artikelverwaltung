@@ -152,7 +152,7 @@ namespace ArtikelVerwaltung.API.Models
 			return ac;
 		}
 
-        public User Create(UserDTO userDTO)
+        public User Create(AuthDTO userDTO)
         {
             return new User()
             {
@@ -181,13 +181,12 @@ namespace ArtikelVerwaltung.API.Models
             };
         }
 
-        public UserDTO Create(User user)
+        public AuthDTO Create(User user)
         {
-            return new UserDTO()
+            return new AuthDTO()
             {
                 Name = user.Name,
                 MailAddress = user.Email,
-                Password = "",
                 ID = user.ID,
                 isAdmin = user.IsAdmin,
                 Token = user.Token

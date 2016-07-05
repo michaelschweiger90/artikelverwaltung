@@ -41,7 +41,7 @@ namespace ArtikelVerwaltung.API.Controllers
             
             if (user.ID > 0)
             {
-                UserDTO createdUserDTO = ModelFactory.Create(user);
+                AuthDTO createdUserDTO = ModelFactory.Create(user);
                 return Ok(createdUserDTO);
             }
             else
@@ -65,7 +65,7 @@ namespace ArtikelVerwaltung.API.Controllers
 
             if (user !=null)
             {
-                UserDTO userDTO = ModelFactory.Create(user);
+                AuthDTO userDTO = ModelFactory.Create(user);
                 return Ok(userDTO);
             }
             else

@@ -6,13 +6,12 @@ using System.Web;
 
 namespace ArtikelVerwaltung.API.Models
 {
-    public class UserDTO : RegisterDTO
+    public class AuthDTO : RegisterDTO
     {
-        [Required]
         public int ID { get; set; }
 
         public bool isAdmin { get; set; }
-        [Required]
+
         public string Token { get; set; }
     }
 }
