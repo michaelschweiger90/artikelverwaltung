@@ -12,6 +12,27 @@ angular
             .otherwise('/login');
 
         $stateProvider
+            .state('forgot', {
+                url: '/forgot',
+                templateUrl: 'views/forgot.html',
+                controller: 'ForgotCtrl',
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/directives/compareTo.js',
+                                    'app/resources/authResource.js',
+                                    'app/services/authService.js',
+                                    'app/controllers/forgot.js'
+                                ]
+                            });
+                        }
+                    ]
+                }
+            })
             .state('logout', {
                 url: '/logout',
                 controller: function ($state, $localStorage, AuthService) {

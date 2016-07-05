@@ -1,20 +1,11 @@
-﻿<div class="col-md-6 col-md-offset-3" ng-controller="RegisterCtrl">
+﻿<div class="col-md-6 col-md-offset-3" ng-controller="ForgotCtrl">
     <form name="form">
         <div class="login-header" layout="column" layout-align="center center">
             <img class="login-logo" src="/assets/media/av_logo.png">
             <h1>{{'SYS_TITLE' | translate }}</h1>
-            <h2>{{'SYS_REGISTER' | translate }}</h2>
+            <h2>{{'SYS_FORGOT' | translate }}</h2>
         </div>
         <md-content class="md-padding login-body" layout="column">
-            <md-input-container class="md-block" flex-gt-sm>
-                <label for="name">{{'SYS_NAME' | translate }}</label>
-                <input type="text" name="name" id="name" ng-minlength="5" ng-maxlength="255" ng-model="user.name" required />
-                <div ng-messages="form.name.$error">
-                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
-                    <div ng-message="minlength">{{'ERROR_TOO_SHORT' | translate }}</div>
-                    <div ng-message="maxlength">{{'ERROR_TOO_LONG' | translate }}</div>
-                </div>
-            </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label for="mailAddress">{{'SYS_EMAIL' | translate }}</label>
                 <input type="email" name="mailAddress" id="mailAddress" ng-maxlength="255" ng-model="user.mailAddress" required />
@@ -39,23 +30,23 @@
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
-                <label for="password">{{'SYS_PASSWORD' | translate }}</label>
-                <input type="password" name="password" id="password" ng-minlength="8" ng-model="user.password" required />
-                <div ng-messages="form.password.$error">
+                <label for="newPassword">{{'SYS_PASSWORD' | translate }}</label>
+                <input type="password" name="newPassword" id="newPassword" ng-minlength="8" ng-model="user.newPassword" required />
+                <div ng-messages="form.newPassword.$error">
                     <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
                     <div ng-message="minlength">{{'ERROR_TOO_SHORT' | translate }}</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
-                <label for="passwordRepeat">{{'SYS_PASSWORD_REPEAT' | translate }}</label>
-                <input type="password" name="passwordRepeat" id="passwordRepeat" required ng-model="user.passwordRepeat" compare-to="user.password" />
-                <div ng-messages="form.passwordRepeat.$error">
+                <label for="newPasswordRepeat">{{'SYS_PASSWORD_REPEAT' | translate }}</label>
+                <input type="password" name="newPasswordRepeat" id="newPasswordRepeat" required ng-model="user.newPasswordRepeat" compare-to="user.newPassword" />
+                <div ng-messages="form.newPasswordRepeat.$error">
                     <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
                     <div ng-message="compareTo">{{'ERROR_PASSWORD_MATCH' | translate }}</div>
                 </div>
             </md-input-container>
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                <md-button ng-click="doRegister()" ng-disabled="form.$invalid || dataLoading" class="md-raised md-primary">{{'SYS_REGISTER' | translate }}</md-button>
+                <md-button ng-click="doForgot()" ng-disabled="form.$invalid || dataLoading" class="md-raised md-primary">{{'SYS_REGISTER' | translate }}</md-button>
                 <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                 <a ui-sref="login">{{'SYS_CANCEL' | translate }}</a>
             </section>

@@ -9,6 +9,7 @@ using System.Threading;
 
 namespace ArtikelVerwaltung.API.Controllers
 {
+    [RoutePrefix("api/v1/auth")]
 	public class AuthController : BaseAPIController
 	{
         private IAuthService authService;
@@ -18,7 +19,7 @@ namespace ArtikelVerwaltung.API.Controllers
             this.authService = new AuthService(repo.GetUserRepository());
         }
 
-        [Route("~/api/v1/auth/register")]
+        [Route("register")]
         [AllowAnonymous]
         [HttpPost]
         public IHttpActionResult registerUser([FromBody] RegisterDTO registerDTO)
@@ -41,7 +42,7 @@ namespace ArtikelVerwaltung.API.Controllers
             
             if (user.ID > 0)
             {
-                AuthDTO createdUserDTO = ModelFactory.Create(user);
+                UserDTO createdUserDTO = ModelFactory.Create(user);
                 return Ok(createdUserDTO);
             }
             else
@@ -50,7 +51,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
         }
 
-        [Route("~/api/v1/auth/login")]
+        [Route("login")]
         [AllowAnonymous]
         [HttpPost]
         public IHttpActionResult loginUser([FromBody] LoginDTO loginDTO)
@@ -65,7 +66,7 @@ namespace ArtikelVerwaltung.API.Controllers
 
             if (user !=null)
             {
-                AuthDTO userDTO = ModelFactory.Create(user);
+                UserDTO userDTO = ModelFactory.Create(user);
                 return Ok(userDTO);
             }
             else
@@ -74,7 +75,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
         }
 
-        [Route("~/api/v1/auth/forgot")]
+        [Route("forgot")]
         [AllowAnonymous]
         [HttpPost]
         public IHttpActionResult forgotPassword([FromBody] ForgotDTO forgotDTO)
@@ -97,7 +98,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
         }
 
-        [Route("~/api/v1/auth/logout")]
+        [Route("logout")]
         [HttpDelete]
         public IHttpActionResult logoutUser()
         {

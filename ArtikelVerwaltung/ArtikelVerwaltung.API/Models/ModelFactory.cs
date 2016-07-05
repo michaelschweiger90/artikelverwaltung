@@ -152,19 +152,6 @@ namespace ArtikelVerwaltung.API.Models
 			return ac;
 		}
 
-        public User Create(AuthDTO userDTO)
-        {
-            return new User()
-            {
-                ID = userDTO.ID,
-                Name = userDTO.Name,
-                Email = userDTO.MailAddress,
-                Passwort = AuthFactory.encrptPasswordWithSHA256(userDTO.Password),
-                IsAdmin = false,
-                Cart = null
-            };
-        }
-
         public User Create(RegisterDTO registerDTO)
         {
             return new User()
@@ -181,9 +168,9 @@ namespace ArtikelVerwaltung.API.Models
             };
         }
 
-        public AuthDTO Create(User user)
+        public UserDTO Create(User user)
         {
-            return new AuthDTO()
+            return new UserDTO()
             {
                 Name = user.Name,
                 MailAddress = user.Email,

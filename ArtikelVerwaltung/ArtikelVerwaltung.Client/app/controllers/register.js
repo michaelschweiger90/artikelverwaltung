@@ -5,11 +5,11 @@
         $scope.user = null;
         $scope.dataLoading = false;
 
-        $scope.registerUser = function ()
+        $scope.doRegister = function ()
         {
             $scope.dataLoading = true;
 
-            AuthService.registerUser($scope.user).$promise.then(
+            AuthService.doRegister($scope.user).$promise.then(
                 function (data)
                 {
                     var user = {};

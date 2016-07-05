@@ -42,7 +42,7 @@ namespace ArtikelVerwaltung.API.Services
             if (user !=null && 
                 (user.SecretQuestion.Equals(secretQuestion) && user.SecretAnswer.Equals(secretAnswer)))
             {
-                user.Passwort = newPassword;
+                user.Passwort = AuthFactory.encrptPasswordWithSHA256(newPassword);
                 userRepository.SaveAll();
                 return true;
             }

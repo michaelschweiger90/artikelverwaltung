@@ -1,7 +1,7 @@
 ﻿app.factory('AuthService', [
     'AuthResource', function (AuthResource)
     {
-        var registerUser = function (user) {
+        var doRegister = function (user) {
             return AuthResource.register(
                 {
                     'name': user.name,
@@ -22,8 +22,13 @@
             );
         };
 
-        var forgotPassword = function () {
-
+        var doForgot = function (user) {
+            return AuthResource.forgot({
+                'mailAddress': user.mailAddress,
+                'newPassword': user.newPassword,
+                'secretAnswer': user.secretAnswer,
+                'secretQuestion': user.secretQuestion
+            });
         };
 
         var doLogout = function() {
@@ -33,8 +38,8 @@
         return {
             doLogin: doLogin,
             doLogout: doLogout,
-            forgotPassword: forgotPassword,
-            registerUser: registerUser
+            doForgot: doForgot,
+            doRegister: doRegister
         };
     }
 ]);

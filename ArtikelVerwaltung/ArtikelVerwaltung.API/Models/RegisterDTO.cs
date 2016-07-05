@@ -10,11 +10,11 @@ namespace ArtikelVerwaltung.API.Models
         public string Name { get; set; }
 
         [Required]
-        [JsonIgnore]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string SecretQuestion { get; set; }
 
         [Required]
-        [JsonIgnore]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string SecretAnswer { get; set; }
     }
 }

@@ -35,6 +35,7 @@ var app =
                         'SYS_REGISTER_BUTTON': 'Registrieren',
                         'SYS_NAME': 'Name',
                         'SYS_LOGOUT': 'Ausloggen',
+                        'SYS_FORGOT': 'Passwort vergessen',
 
                         'ERROR_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
                         'ERROR_TOO_LONG': 'Maximale Länge überschritten',

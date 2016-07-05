@@ -102,6 +102,7 @@
     <Content Include="app\controllers\articleDetail.js" />
     <Content Include="app\controllers\articleList.js" />
     <Content Include="app\controllers\cart.js" />
+    <Content Include="app\controllers\forgot.js" />
     <Content Include="app\controllers\login.js" />
     <Content Include="app\controllers\register.js" />
     <Content Include="app\directives\compareTo.js" />
@@ -153,6 +154,7 @@
     <Content Include="views\cart.html" />
     <Content Include="views\layout.html" />
     <Content Include="views\login.html" />
+    <Content Include="views\forgot.html" />
     <Content Include="views\register.html" />
     <Content Include="views\start.html" />
     <Content Include="Web.config" />

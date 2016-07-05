@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace ArtikelVerwaltung.API.Models
 {
@@ -14,7 +10,7 @@ namespace ArtikelVerwaltung.API.Models
         public string MailAddress { get; set; }
 
         [Required]
-        [JsonIgnore]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         [StringLength(255, MinimumLength = 8)]
         public string Password { get; set; }
     }
