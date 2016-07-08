@@ -1,0 +1,36 @@
+<div class="col-md-3 col-md-offset-3" ng-controller="LoginCtrl">
+    <form name="loginForm" role="form">
+        <div class="login-header" layout="column" layout-align="center center">
+            <img class="login-logo" src="/assets/media/av_logo.png">
+            <h1>{{'SYS_TITLE' | translate }}</h1>
+            <h2>{{'SYS_LOGIN' | translate }}</h2>
+        </div>
+        <md-content class="md-padding login-body" layout="column">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label for="mailAddress">{{'SYS_EMAIL' | translate }}</label>
+                <input type="email" ng-model="user.mailAddress" name="mailAddress" id="mailAddress" required ng-maxlength="255">
+                <div ng-messages="loginForm.mailAddress.$error">
+                    <div ng-message="email">{{'ERROR_EMAIL_INVALID' | translate }}</div>
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="maxlength">{{'ERROR_TOO_LONG' | translate }}</div>                    
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label for="password">{{'SYS_PASSWORD' | translate }}</label>
+                <input type="password" ng-model="user.password" ng-minlength="8" id="password" name="password" required>
+                <div ng-messages="loginForm.password.$error">
+                    <div ng-message="required">{{'ERROR_REQUIRED' | translate }}</div>
+                    <div ng-message="minlength">{{'ERROR_TOO_SHORT' | translate }}</div>
+                </div>
+            </md-input-container>
+            <div class="login-button-set" layout-gt-xs="row" layout-xs="column" layout-align="center center">
+                <md-button class="md-raised orange-button left-button" layout="end none" ui-sref="register">{{'SYS_REGISTER_BUTTON' | translate }}</md-button>
+                <div flex=""></div>
+                <md-button ng-click="doLogin()" ng-disabled="loginForm.$invalid || dataLoading" class="md-raised md-primary">{{'SYS_LOGIN' | translate }}</md-button>
+            </div>
+            <div class="pw-forgot" layout="row" layout-align="end" layout-margin>
+                <a ui-sref="forgot">{{'SYS_FORGOT' | translate }}</a>
+            </div>
+        </md-content>
+    </form>
+</div>
