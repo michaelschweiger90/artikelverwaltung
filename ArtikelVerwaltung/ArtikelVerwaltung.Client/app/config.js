@@ -94,7 +94,7 @@ var app =
                         return {
                             'request': function (config) {
                                 config.headers = config.headers || {};
-                                if ($localStorage.user.authToken) {
+                                if ($localStorage.user != null && $localStorage.user.authToken) {
                                     config.headers.Authorization = 'Bearer ' + $localStorage.user.authToken;
                                     config.headers['id'] = $localStorage.user.id;
                                 }
