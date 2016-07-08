@@ -1,6 +1,6 @@
 app.controller('AppCtrl', [
-    '$scope', '$mdSidenav' , '$rootScope',
-    function ($scope, $mdSidenav, $rootScope) {
+    '$scope', '$mdSidenav', '$rootScope', '$localStorage',
+    function ($scope, $mdSidenav, $rootScope, $localStorage) {
         $scope.menus = [
                {
                    link: 'app.article.list',
@@ -13,7 +13,8 @@ app.controller('AppCtrl', [
                    icon: 'shopping_cart'
                }
         ];
-        $scope.isAdmin = true;
+
+        $scope.isAdmin = $localStorage.user.isAdmin;
         $scope.adminMenus = [
             {
                 link: 'app.article-management.list',

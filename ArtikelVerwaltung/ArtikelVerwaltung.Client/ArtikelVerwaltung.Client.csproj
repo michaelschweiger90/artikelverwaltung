@@ -103,6 +103,7 @@
     <Content Include="app\controllers\articleList.js" />
     <Content Include="app\controllers\cart.js" />
     <Content Include="app\controllers\forgot.js" />
+    <Content Include="app\controllers\user.js" />
     <Content Include="app\controllers\login.js" />
     <Content Include="app\controllers\register.js" />
     <Content Include="app\directives\compareTo.js" />
@@ -119,8 +120,8 @@
     <Content Include="app\services\dialogService.js" />
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\toastService.js" />
+    <Content Include="assets\materialicons\material-icons.css" />
     <Content Include="assets\media\av_logo.png" />
-    <Content Include="assets\media\exitLogo.png" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -143,6 +144,10 @@
     <Content Include="assets\css\partial\_main.scss" />
     <Content Include="assets\css\partial\_table.scss" />
     <Content Include="assets\css\style.scss" />
+    <Content Include="assets\materialicons\MaterialIcons-Regular.eot" />
+    <Content Include="assets\materialicons\MaterialIcons-Regular.ttf" />
+    <Content Include="assets\materialicons\MaterialIcons-Regular.woff" />
+    <Content Include="assets\materialicons\MaterialIcons-Regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -157,6 +162,8 @@
     <Content Include="views\forgot.html" />
     <Content Include="views\register.html" />
     <Content Include="views\start.html" />
+    <Content Include="views\user\useredit.html" />
+    <Content Include="views\user\userlist.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

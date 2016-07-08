@@ -102,7 +102,23 @@ angular
             .state('app', {
                 abstract: false,
                 url: '/app',
-                templateUrl: 'views/layout.html'
+                templateUrl: 'views/layout.html',
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/filters/mailSidenav.js',
+                                    'app/services/toastService.js',
+                                    'app/services/dialogService.js',
+                                    'app/controllers/app.js'
+                                ]
+                            });
+                        }
+                    ]
+                }
             })
             .state('app.article', {
                 url: '',

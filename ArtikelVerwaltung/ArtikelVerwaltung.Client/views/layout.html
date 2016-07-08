@@ -1,4 +1,4 @@
-<div layout="row" class="firefox-height-fix">
+<div layout="row" class="firefox-height-fix" ng-controller="AppCtrl">
     <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
         <md-toolbar class="sideNavHeader">
             <div class="header-container">
@@ -73,7 +73,7 @@
                 <span flex></span>
                 <md-button class="md-icon-button" aria-label="SYS_LOGOUT" ui-sref="logout">
                     <md-tooltip>{{'SYS_LOGOUT' | translate}}</md-tooltip>
-                    <img class="material-icons" src="/assets/media/exitLogo.png" style="width: 24px; height: 24px;">
+                    <i class="material-icons">exit_to_app</i>
                 </md-button>
             </div>
         </md-toolbar>
