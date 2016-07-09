@@ -10,5 +10,7 @@ namespace ArtikelVerwaltung.API.Services
         bool MakeUserAdminById(int id);
 
         bool RemoveAdminRightByUserId(int id);
+
+        bool RemoveUserById(int id);
     }
 }

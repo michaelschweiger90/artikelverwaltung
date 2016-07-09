@@ -13,10 +13,15 @@
             return UserResource.removeAdminRights({ id: id });
         };
 
+        var deleteUser = function (id) {
+            return UserResource.deleteUser({ id: id });
+        }
+
         return {
             getAllUsers: getAllUsers,
             makeAdmin: makeAdmin,
-            removeAdminRights: removeAdminRights
+            removeAdminRights: removeAdminRights,
+            deleteUser: deleteUser
         };
     }
 ]);

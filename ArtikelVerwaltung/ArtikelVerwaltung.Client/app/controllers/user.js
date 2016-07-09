@@ -19,6 +19,12 @@
 
         $scope.makeAdmin = function (user) {
             UserService.makeAdmin(user.id).$promise.then(function () {
+                if (user.id === $localStorage.user.id) {
+                    $localStorage.user = {};
+                    $state.go('login');
+                    return;
+                }
+
                 user.isAdmin = true;
                 $translate('SYS_ADMIN').then(function (translate) {
                     user.role = translate;
@@ -30,6 +36,12 @@
 
         $scope.removeAdminRights = function (user) {
             UserService.removeAdminRights(user.id).$promise.then(function () {
+                if (user.id === $localStorage.user.id) {
+                    $localStorage.user = {};
+                    $state.go('login');
+                    return;
+                }
+
                 user.isAdmin = false;
                 $translate('SYS_USER').then(function (translate) {
                     user.role = translate;
@@ -43,10 +55,21 @@
 
         };
 
-        $scope.removeUser = function (user) {
+        $scope.deleteUser = function (user) {
+            UserService.deleteUser(user.id).$promise.then(function () {
+                if (user.id === $localStorage.user.id) {
+                    $localStorage.user = {};
+                    $state.go('login');
+                    return;
+                }
 
+                var index = $scope.users.indexOf(user);
+                if (index !== -1) {
+                    $scope.users.splice(index, 1);
+                }
+            }, function () {
+
+            });
         };
-
-        
     }
 ]);

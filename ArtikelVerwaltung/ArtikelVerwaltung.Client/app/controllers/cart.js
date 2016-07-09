@@ -1,8 +1,8 @@
 ﻿app.controller('CartCtrl', [
-    '$rootScope', '$scope', 'Cart', 
-    function ($rootScope, $scope, Cart) {
+    '$rootScope', '$scope', 'Cart', '$localStorage',
+    function ($rootScope, $scope, Cart, $localStorage) {
 
-    	var userId = 1;
+    	var userId = $localStorage.user.id;
 
     	$scope.carts = null;
     	$scope.selectedCart = null;

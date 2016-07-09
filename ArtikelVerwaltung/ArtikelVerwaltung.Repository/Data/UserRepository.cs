@@ -33,5 +33,11 @@ namespace ArtikelVerwaltung.Repository.Data
         {
             return ctx.User.ToList();
         }
+
+        public bool Delete(User user)
+        {
+            ctx.User.Remove(user);
+            return SaveAll();
+        }
     }
 }

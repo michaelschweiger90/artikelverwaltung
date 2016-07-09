@@ -79,5 +79,5 @@ namespace ArtikelVerwaltung.Repository.Data
 
 			return cart;
 		}
-	}
+    }
 }

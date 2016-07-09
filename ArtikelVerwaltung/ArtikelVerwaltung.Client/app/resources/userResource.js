@@ -15,6 +15,11 @@
             url: urls.BASE_API + 'user/:id/adminRights/remove',
             method: 'DELETE',
             params: { id: '@id' }
+        },
+        deleteUser: {
+            url: urls.BASE_API + 'user/:id/remove',
+            method: 'DELETE',
+            params: { id: '@id' }
         }
     });
 }]);

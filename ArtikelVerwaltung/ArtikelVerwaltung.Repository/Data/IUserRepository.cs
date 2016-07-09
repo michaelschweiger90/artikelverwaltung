@@ -16,5 +16,7 @@ namespace ArtikelVerwaltung.Repository.Data
         void Create(User user);
 
 		bool SaveAll();
+
+        bool Delete(User user);
 	}
 }

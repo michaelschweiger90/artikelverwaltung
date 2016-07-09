@@ -66,5 +66,20 @@ namespace ArtikelVerwaltung.API.Controllers
                 return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
             }
         }
+
+        [Route("{userId:int}/remove")]
+        [ApiAuthFilter("Admin")]
+        [HttpDelete]
+        public IHttpActionResult deleteUser(int userId)
+        {
+            if (userService.RemoveUserById(userId))
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
+            }
+            else
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+            }
+        }
     }
 }
