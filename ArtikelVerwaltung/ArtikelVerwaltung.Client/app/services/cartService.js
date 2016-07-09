@@ -1,6 +1,6 @@
 ﻿app.factory('Cart', [
-    'CartResource', 'CartArticleResource', 'Dialog',
-    function (CartResource, CartArticleResource, Dialog) {
+    'CartResource', 'CartArticleResource', 'Dialog', '$localStorage',
+function (CartResource, CartArticleResource, Dialog, $localStorage) {
 
     	var carts = null;
     	var articles = null;
@@ -110,17 +110,102 @@
     		});
     	};
 
-    	var addArticle = function (cart, article, handler) {
-    		var articleCart = new CartArticleResource();
+    	var prepareCarts = function (carts, article, handler) {
 
-    		articleCart.cartID = cart.id;
-    		articleCart.articleID = article.id;
+    		var articleCarts = article.carts;
+    		var isWanted = false;
 
-    		articleCart.$save({
-    			userID: cart.userID,
-    			id: cart.id
-    		}, function () {
-    			handler();
+    		for(var i = 0; i < carts.length; i++)
+    		{
+    			for(var j = 0; j < articleCarts.length; j++)
+    			{
+    				if (carts[i].id == articleCarts[j].cartID)
+    				{
+    					carts[i].wanted = true;
+    					isWanted = true;
+    				}	
+    			}
+    		}
+
+    		if (handler)
+    		{
+    			handler(carts, isWanted);
+    		}
+
+    		return carts;
+    	};
+
+    	var articleCarts = [];
+
+    	var addArticle = function (article, handler) {
+
+    		getCarts($localStorage.user.id, function (carts) {
+
+    			carts = prepareCarts(carts, article);
+    			articleCarts = [];
+
+    			var CartController = function ($scope, $mdDialog) {
+
+    				$scope.carts = carts;
+    				$scope.article = article;
+
+    				$scope.hide = function () {
+    					$mdDialog.hide();
+    				};
+    				$scope.cancel = function () {
+    					$mdDialog.cancel();
+    				};
+    				$scope.edit = function () {
+    					$mdDialog.hide($scope.carts);
+    				};
+    			};
+
+    			var config = {
+    				controller: CartController,
+    				template: '/views/dlgs/addArticleToCart.dlg.html'
+    			};
+
+    			Dialog.custom(config, function (carts) {
+
+    				var promises = [];
+    				article.carts = [];
+
+    				for(var i = 0; i < carts.length; i++)
+    				{
+    					var cart = carts[i];
+
+    					if (cart.wanted == true)
+    					{
+    						var articleCart = new CartArticleResource();
+
+    						articleCart.cartID = cart.id;
+    						articleCart.articleID = article.id;
+    						articleCart.userID = cart.userID;
+    						articleCart.id = cart.id;
+
+    						var promise = CartArticleResource.save(articleCart, function (cart) {
+    							cart.wanted = true;
+    							articleCarts.push(cart);
+    							article.carts.push({
+    								articleID: article.id,
+									cartID: cart.id
+    							});
+    						});
+
+    						promises.push(promise);
+    					}
+    					else
+    					{
+    						removeArticle(cart, article, function () { });
+    					}
+    				}
+
+    				Promise.all(promises).then(function () {
+    					handler(articleCarts, article);
+    				});
+
+    			}, function () { });
+
     		});
     	};
 
@@ -136,7 +221,11 @@
     			id: cart.id,
     			articleID: article.id
     		}, function () {
-    			articles.splice(articles.indexOf(original), 1);
+
+    			if (articles)
+    			{
+    				articles.splice(articles.indexOf(original), 1);
+    			}
 
     			handler(articles);
     		});
@@ -155,6 +244,7 @@
 			removeArticle: removeArticle,
     		delete: deleteCart,
     		update: update,
-    		getNewResource: getNewResource
+    		getNewResource: getNewResource,
+    		prepareCarts: prepareCarts
     	};
     }]);

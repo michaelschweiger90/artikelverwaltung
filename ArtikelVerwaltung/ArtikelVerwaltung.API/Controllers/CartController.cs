@@ -252,7 +252,12 @@ namespace ArtikelVerwaltung.API.Controllers
 
                 ArticleCart ac = ModelFactory.Create(acDTO);
 
-                CartRepository.AddArticle(ac);
+				ArticleCart acExist = CartRepository.ArticleExisits(cart.ID, ac.ArticleID);
+
+				if (acExist != null)
+					return Ok(ModelFactory.Create(cart));
+
+				CartRepository.AddArticle(ac);
 
                 if (CartRepository.SaveAll())
                 {
@@ -270,7 +275,7 @@ namespace ArtikelVerwaltung.API.Controllers
         }
 
 
-        [Route("~/api/v1/users/{userId:int}/carts/{cartId:int}/articles/{articleId}")]
+        [Route("~/api/v1/users/{userId:int}/carts/{cartId:int}/articles/{articleId:int}")]
         [HttpDelete]
         public IHttpActionResult removeArticleFromCart(int userId, int cartId, int articleId)
         {
@@ -287,17 +292,15 @@ namespace ArtikelVerwaltung.API.Controllers
 
                 Cart cart = CartRepository.GetCartByID(cartId);
 
-                if (cart == null)
-                    throw new ArgumentException("Warenkorb existiert nicht!");
-
-                // ToDo überprüfen ob Artikel existiert
-
+                //if (cart == null)
+                    //throw new ArgumentException("Warenkorb existiert nicht!");
+				
                 ArticleCart ac = CartRepository.ArticleExisits(cart.ID, articleId);
 
                 if (ac == null)
                 {
-                    throw new ArgumentException("Artikel ist nicht im Warenkorb!");
-                }
+					return Ok();
+				}
 
                 CartRepository.RemoveArticle(ac);
 
