@@ -43,6 +43,7 @@
     "material-design-icons": "^2.2.3",
     "angular-smart-table": "^2.1.8",
     "bootstrap": "^3.3.6",
-    "angular-bootstrap-contextmenu": "^0.9.7"
+    "angular-bootstrap-contextmenu": "^0.9.7",
+    "angular-material-data-table": "0.10.9"
   }
 }

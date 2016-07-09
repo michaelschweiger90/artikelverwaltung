@@ -179,5 +179,21 @@ namespace ArtikelVerwaltung.API.Models
                 Token = user.Token
             };
         }
+
+        public List<UserDTO> Create(List<User> users)
+        {
+            List<UserDTO> list = new List<UserDTO>();
+
+            if (users.Count > 0)
+            {
+                foreach (User user in users)
+                {
+                    UserDTO userDTO = Create(user);
+                    list.Add(userDTO);
+                }
+            }
+
+            return list;
+        }
     }
 }

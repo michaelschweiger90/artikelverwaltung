@@ -17,7 +17,6 @@ var app =
                     app.value = $provide.value;
 
                     $translateProvider.translations('de', {
-                        'SYS_USERNAME': 'Benutzer',
                         'SYS_REGISTER': 'Registrieren',
                         'SYS_PASSWORD': 'Passwort',
                         'SYS_PASSWORD_REPEAT': 'Passwort wiederholen',
@@ -36,6 +35,13 @@ var app =
                         'SYS_NAME': 'Name',
                         'SYS_LOGOUT': 'Ausloggen',
                         'SYS_FORGOT': 'Passwort vergessen',
+                        'SYS_ROLE': 'Rolle',
+                        'SYS_ADMIN': 'Admin',
+                        'SYS_USER': 'Benutzer',
+
+                        'USER_LIST': 'Benutzerliste',
+                        'USER_MAKE_ADMIN': 'Admin-Rechte geben',
+                        'USER_REMOVE_ADMIN': 'Admin-Rechte beheben',
 
                         'ERROR_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
                         'ERROR_TOO_LONG': 'Maximale Länge überschritten',

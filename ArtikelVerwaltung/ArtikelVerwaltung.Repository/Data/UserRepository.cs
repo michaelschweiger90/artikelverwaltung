@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using ArtikelVerwaltung.Repository.EF;
 
 namespace ArtikelVerwaltung.Repository.Data
@@ -25,6 +27,11 @@ namespace ArtikelVerwaltung.Repository.Data
         public User FindUserByToken(string token)
         {
             return ctx.User.Where(d => d.Token == token).SingleOrDefault();
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return ctx.User.ToList();
         }
     }
 }

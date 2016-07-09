@@ -22,7 +22,7 @@ app.controller('AppCtrl', [
                 icon: 'https'
             },
             {
-                link: '',
+                link: 'app.user.list',
                 title: 'NAVIGATION_USERMANAGEMENT',
                 icon: 'people_outline'
             }

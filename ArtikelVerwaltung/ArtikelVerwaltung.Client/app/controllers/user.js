@@ -1,30 +1,52 @@
-﻿app.controller('LoginCtrl', [
-    '$localStorage', '$rootScope', '$scope', '$state', 'AuthService',
-    function ($localStorage, $rootScope, $scope, $state, AuthService)
+﻿app.controller('UserCtrl', [
+    '$localStorage', '$rootScope', '$scope', '$state', 'UserService', '$translate',
+    function ($localStorage, $rootScope, $scope, $state, UserService, $translate)
     {
-        $scope.user = null;
-        $scope.dataLoading = false;
+        $scope.users = [];
 
-        $scope.doLogin = function () {
-            $scope.dataLoading = true;
+        UserService.getAllUsers().$promise.then(function (data) {
+            data.forEach(function (value) {
+                var translatePromise = value.isAdmin ? $translate('SYS_ADMIN') : $translate('SYS_USER');
 
-            AuthService.doLogin($scope.user).$promise.then(
-                function (data)
-                {
-                    var user = {};
-                    user.name = data.name;
-                    user.mailAddress = data.mailAddress;
-                    user.isAdmin = data.isAdmin;
-                    user.id = data.id;
-                    user.authToken = data.token,
-                    $localStorage.user = user;
+                translatePromise.then(function (translate) {
+                    value.role = translate;
+                });
+                $scope.users.push(value);
+            });
+        }, function (data) {
 
-                    $state.go('app.article.list');
-                }, function (data)
-                {
-                    $scope.dataLoading = false;
-                }
-            );
+        });
+
+        $scope.makeAdmin = function (user) {
+            UserService.makeAdmin(user.id).$promise.then(function () {
+                user.isAdmin = true;
+                $translate('SYS_ADMIN').then(function (translate) {
+                    user.role = translate;
+                });
+            }, function () {
+                
+            });
         };
+
+        $scope.removeAdminRights = function (user) {
+            UserService.removeAdminRights(user.id).$promise.then(function () {
+                user.isAdmin = false;
+                $translate('SYS_USER').then(function (translate) {
+                    user.role = translate;
+                });
+            }, function () {
+
+            });
+        };
+
+        $scope.editUser = function (user) {
+
+        };
+
+        $scope.removeUser = function (user) {
+
+        };
+
+        
     }
 ]);

@@ -120,6 +120,49 @@ angular
                     ]
                 }
             })
+            .state('app.user', {
+                url: '',
+                templateUrl: '',
+                abstract: false
+            })
+            .state('app.user.list', {
+                url: '/user/list',
+                templateUrl: 'views/user/userlist.html',
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/resources/userResource.js',
+                                    'app/services/userService.js',
+                                    'app/controllers/user.js'
+                                ]
+                            })
+                        }
+                    ]
+                }
+            })
+            .state('app.user.edit', {
+                url: '/user/edit',
+                templateUrl: 'views/user/useredit.html',
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/resources/userResource.js',
+                                    'app/services/userService.js',
+                                    'app/controllers/user.js'
+                                ]
+                            })
+                        }
+                    ]
+                }
+            })
             .state('app.article', {
                 url: '',
                 templateUrl: 'views/article.html',
@@ -169,23 +212,6 @@ angular
 									'app/services/cartService.js',
                                     'app/controllers/article.js',
                                     'app/controllers/articleDetail.js'
-                                ]
-                            });
-                        }
-                    ]
-                }
-            })
-            .state('app.changepw', {
-                url: '/changepw',
-                templateUrl: 'views/changepw.html',
-                resolve: {
-                    deps: [
-                        '$ocLazyLoad',
-                        function ($ocLazyLoad) {
-                            return $ocLazyLoad.load({
-                                serie: true,
-                                files: [
-                                    'app/controllers/changepw.js'
                                 ]
                             });
                         }

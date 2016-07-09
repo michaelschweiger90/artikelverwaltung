@@ -110,11 +110,13 @@
     <Content Include="app\filters\mailSidenav.js" />
     <Content Include="app\resources\articleCategoryResource.js" />
     <Content Include="app\resources\articleResource.js" />
+    <Content Include="app\resources\userResource.js" />
     <Content Include="app\resources\cartArticleResource.js" />
     <Content Include="app\resources\cartResource.js" />
     <Content Include="app\resources\categoryResource.js" />
     <Content Include="app\resources\authResource.js" />
     <Content Include="app\services\articleService.js" />
+    <Content Include="app\services\userService.js" />
     <Content Include="app\services\cartService.js" />
     <Content Include="app\services\categoryService.js" />
     <Content Include="app\services\dialogService.js" />
@@ -148,6 +150,7 @@
     <Content Include="assets\materialicons\MaterialIcons-Regular.ttf" />
     <Content Include="assets\materialicons\MaterialIcons-Regular.woff" />
     <Content Include="assets\materialicons\MaterialIcons-Regular.woff2" />
+    <Content Include="assets\css\partial\_user.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

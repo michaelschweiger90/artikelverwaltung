@@ -100,6 +100,9 @@ namespace ArtikelVerwaltung.API.Filters
             User user = authService.AuthoriseUserByTokenAndId(currentIdentity.UserId, currentIdentity.Token);
             if (user != null)
             {
+                currentIdentity.IsAdmin = user.IsAdmin;
+                currentIdentity.Email = user.Email;
+
                 switch (_role)
                 {
                     case "Admin":

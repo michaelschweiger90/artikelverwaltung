@@ -189,6 +189,8 @@
     <Compile Include="Models\ForgotDTO.cs" />
     <Compile Include="Models\TokenAuthenticationIdetitiy.cs" />
     <Compile Include="Models\CartDTO.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\IUserService.cs" />
     <Compile Include="Utils\AuthFactory.cs" />
     <Compile Include="Models\RegisterDTO.cs" />
     <Compile Include="Models\LoginDTO.cs" />
