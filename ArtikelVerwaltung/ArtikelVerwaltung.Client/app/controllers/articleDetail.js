@@ -1,14 +1,14 @@
 ﻿app.controller('ArticleDetailsCtrl', [
-    '$rootScope', '$scope', '$stateParams', 'Article', 'Cart', 'Toast', '$state', '$q', 'filterFilter',
-    function ($rootScope, $scope, $stateParams, Article, Cart, Toast, $state, $q, filterFilter) {
+    '$rootScope', '$scope', '$stateParams', 'Article', 'Cart', 'Toast', '$state', '$q', 'filterFilter', '$localStorage',
+    function ($rootScope, $scope, $stateParams, Article, Cart, Toast, $state, $q, filterFilter, $localStorage) {
 
 
         var mode = null;
 
         $scope.article = {};
-        $scope.article.cart = [];
-
+        
         $scope.selectedItem;
+        $scope.carts = [];
 
         $scope.catId = $stateParams.catId;
 
@@ -21,7 +21,14 @@
 
                 if (!isNaN(id)) {
                     Article.getArticleById($scope.catId, id, function (article) {
-                        $scope.article = article;
+                    	$scope.article = article;
+
+                    	Cart.getAll($localStorage.user.id, function (carts) {
+                    		Cart.prepareCarts(carts, $scope.article, function (carts, isWanted) {
+                    			$scope.carts = (isWanted) ? carts : [];
+                    		});
+                    	});
+
                     }, function (error) {
                         Toast.translateAndShow("ARTICLE_ERROR_DOES_NOT_EXIST", function () {
                             $state.go('app.article.list');
@@ -52,6 +59,15 @@
                     });
                 });
             }
+        };
+
+        $scope.addArticle = function () {
+        	var article = $scope.article;
+
+        	Cart.addArticle(article, function (carts, article) {
+        		$scope.carts = carts;
+        		$scope.article = article;
+        	});
         };
        
     }]);

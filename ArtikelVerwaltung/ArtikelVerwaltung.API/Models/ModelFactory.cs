@@ -116,7 +116,8 @@ namespace ArtikelVerwaltung.API.Models
 				ID = article.ID, 
 				Name = article.Name,
 				Price = article.Price,
-				Description = article.Description
+				Description = article.Description,
+				Carts = Create(article.ArticleCart)
 			};
 		}
 
@@ -133,6 +134,28 @@ namespace ArtikelVerwaltung.API.Models
 			}
 
 			return list;
+		}
+
+		public List<ArticleCartDTO> Create(ICollection<ArticleCart> acList)
+		{
+			List<ArticleCartDTO> list = new List<ArticleCartDTO>();
+
+			foreach (ArticleCart ac in acList)
+			{
+				list.Add(Create(ac));
+			}
+
+			return list;
+		}
+
+		public ArticleCartDTO Create (ArticleCart ac)
+		{
+			return new ArticleCartDTO()
+			{
+				Id = ac.ID,
+				CartID = ac.CartID,
+				ArticleID = ac.ArticleID
+			};
 		}
 
 		public ArticleCart Create(ArticleCartDTO dto)

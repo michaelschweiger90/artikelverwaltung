@@ -35,17 +35,17 @@
         <div flex="100">
             <md-list>
                 <div class="headline">
-                    <i class="material-icons icon">star_border</i>
+                    <i class="material-icons icon">shopping_cart</i>
                     <span>Warenkorb</span>
                     <span style="float: right">
-                        <md-button class="md-icon-button">
+                        <md-button class="md-icon-button" ng-click="addArticle()">
                             <i class="material-icons">edit</i>
                         </md-button>
                     </span>
                 </div>
                 <md-divider></md-divider>
                 <div>
-                    <md-list-item ng-show="carts.length > 0" ng-repeat="cart in carts">
+                    <md-list-item ng-show="carts.length > 0 && cart.wanted" ng-repeat="cart in carts | orderBy: 'name'">
                         <div class="md-list-item-text" layout="column">
                             {{ cart.name }}
                         </div>

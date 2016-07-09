@@ -150,6 +150,7 @@
     <Content Include="assets\materialicons\MaterialIcons-Regular.ttf" />
     <Content Include="assets\materialicons\MaterialIcons-Regular.woff" />
     <Content Include="assets\materialicons\MaterialIcons-Regular.woff2" />
+    <Content Include="views\dlgs\addArticleToCart.dlg.html" />
     <Content Include="assets\css\partial\_user.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

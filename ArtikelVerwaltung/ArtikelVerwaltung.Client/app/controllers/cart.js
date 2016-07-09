@@ -62,12 +62,6 @@
     		});
     	};
 
-    	$scope.addArticle = function (cart) {
-    		Cart.addArticle(cart, { id: 1 }, function () {
-
-    		});
-    	};
-
     	$scope.removeArticle = function (article) {
     		Cart.removeArticle($scope.selectedCart, article, function (articles) {
     			$scope.articles = articles;
