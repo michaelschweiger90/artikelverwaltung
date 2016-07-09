@@ -42,6 +42,7 @@ var app =
                         'USER_LIST': 'Benutzerliste',
                         'USER_MAKE_ADMIN': 'Admin-Rechte geben',
                         'USER_REMOVE_ADMIN': 'Admin-Rechte beheben',
+                        'USER_EDIT': 'Benutzer bearbeiten',
 
                         'ERROR_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
                         'ERROR_TOO_LONG': 'Maximale Länge überschritten',
