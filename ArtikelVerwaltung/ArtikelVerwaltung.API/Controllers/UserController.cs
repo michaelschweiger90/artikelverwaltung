@@ -6,6 +6,7 @@ using ArtikelVerwaltung.Repository.EF;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 
 namespace ArtikelVerwaltung.API.Controllers
@@ -117,6 +118,22 @@ namespace ArtikelVerwaltung.API.Controllers
             }
 
             if (userService.UpdateUser(userDTO))
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
+            }
+            else
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+            }
+        }
+
+        [Route("deleteAccount")]
+        [HttpDelete]
+        public IHttpActionResult DeleteAccount()
+        {
+            TokenAuthenticationIdentity currentIdentity = (TokenAuthenticationIdentity) Thread.CurrentPrincipal.Identity;
+
+            if (userService.RemoveUserById(currentIdentity.UserId))
             {
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
             }

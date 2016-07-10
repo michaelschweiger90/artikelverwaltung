@@ -28,6 +28,11 @@
             url: urls.BASE_API + 'user/:id/remove',
             method: 'DELETE',
             params: { id: '@id' }
+        },
+        deleteAccount: {
+            url: urls.BASE_API + 'user/deleteAccount',
+            method: 'DELETE',
+            params: {}
         }
     });
 }]);

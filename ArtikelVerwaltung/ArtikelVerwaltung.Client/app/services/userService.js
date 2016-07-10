@@ -17,6 +17,10 @@
             return UserResource.deleteUser({ id: id });
         }
 
+        var deleteAccount = function () {
+            return UserResource.deleteAccount();
+        }
+
         var getUserById = function (id) {
             return UserResource.getUserById({ id: id });
         }
@@ -38,7 +42,8 @@
             removeAdminRights: removeAdminRights,
             deleteUser: deleteUser,
             getUserById: getUserById,
-            updateUser: updateUser
+            updateUser: updateUser,
+            deleteAccount: deleteAccount
         };
     }
 ]);

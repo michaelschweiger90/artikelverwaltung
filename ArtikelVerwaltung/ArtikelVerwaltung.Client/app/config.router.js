@@ -164,6 +164,31 @@ angular
                     ]
                 }
             })
+            .state('app.user.delete', {
+                url: '/user/delete',
+                controller: function ($state, $localStorage, UserService) {
+                    UserService.deleteAccount().$promise.then(function (data) {
+                        $localStorage.user = {};
+                        $state.go('login');
+                    }, function (data) {
+
+                    });
+                },
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/resources/userResource.js',
+                                    'app/services/userService.js',
+                                ]
+                            });
+                        }
+                    ]
+                }
+            })
             .state('app.article', {
                 url: '',
                 templateUrl: 'views/article.html',
