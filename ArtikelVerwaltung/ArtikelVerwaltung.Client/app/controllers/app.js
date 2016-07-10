@@ -13,7 +13,7 @@ app.controller('AppCtrl', [
                    icon: 'shopping_cart'
                }
         ];
-
+        $scope.user = $localStorage.user;
         $scope.isAdmin = $localStorage.user.isAdmin;
         $scope.adminMenus = [
             {

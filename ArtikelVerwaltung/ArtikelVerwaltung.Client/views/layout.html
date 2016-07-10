@@ -9,7 +9,7 @@
             </div>
             <div class="info-container" layout="row">
                 <div class="user-name">
-                    {{Email | mailSidenav}}
+                    <p>{{'SYS_GREETINGS' | translate}}{{user.name}}</p>
                 </div>
                 <div>
                     <md-fab-speed-dial md-direction="up" class="md-scale user-dial md-fab-bottom-right">
@@ -20,9 +20,15 @@
                             </md-button>
                         </md-fab-trigger>
                         <md-fab-actions>
-                            <md-button class="md-icon-button fab-option" ui-sref="app.changepw">
-                                <md-tooltip md-direction="right">{{'TOOLTIP_USER_PW_CHANGE' | translate}}</md-tooltip>
+                            <md-button class="md-icon-button fab-option" ui-sref="app.user.changepw">
+                                <md-tooltip md-direction="right">{{'USER_EDIT_DATA_FAB' | translate}}</md-tooltip>
                                 <i class="material-icons">build</i>
+                            </md-button>
+                        </md-fab-actions>
+                        <md-fab-actions>
+                            <md-button class="md-icon-button fab-option" ui-sref="app.user.remove">
+                                <md-tooltip md-direction="right">{{'USER_DELETE_ACCOUNT_FAB' | translate}}</md-tooltip>
+                                <i class="material-icons">delete</i>
                             </md-button>
                         </md-fab-actions>
                     </md-fab-speed-dial>

@@ -38,9 +38,13 @@ var app =
                         'SYS_ROLE': 'Rolle',
                         'SYS_ADMIN': 'Admin',
                         'SYS_USER': 'Benutzer',
+                        'SYS_GREETINGS': 'Hello ',
 
                         'USER_LIST': 'Benutzerliste',
                         'USER_EDIT': 'Benutzer bearbeiten',
+                        'USER_PW_CHANGE': 'Passwort ändern',
+                        'USER_EDIT_DATA_FAB': 'Daten ändern',
+                        'USER_DELETE_ACCOUNT_FAB': 'Konto löschen',
 
                         'ERROR_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
                         'ERROR_TOO_LONG': 'Maximale Länge überschritten',
@@ -86,7 +90,6 @@ var app =
                         'TOOLTIP_SEARCH': 'Suche',
                         'TOOLTIP_USER_FAB': 'Benutzer',
                         'TOOLTIP_USER_DELETE': 'Benutzer löschen',
-                        'TOOLTIP_USER_PW_CHANGE': 'Passwort ändern',
                         'TOOLTIP_OPEN_SIDENAV': 'Menü',
                         'TOOLTIP_MAKE_USER_ADMIN': 'Admin-Rechte geben',
                         'TOOLTIP_REMOVE_USER_ADMIN': 'Admin-Rechte beheben'
