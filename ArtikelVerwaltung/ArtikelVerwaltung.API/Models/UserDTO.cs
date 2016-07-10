@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace ArtikelVerwaltung.API.Models
 {
@@ -13,6 +8,7 @@ namespace ArtikelVerwaltung.API.Models
 
         public bool isAdmin { get; set; }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Token { get; set; }
     }
 }

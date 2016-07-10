@@ -22,7 +22,7 @@ namespace ArtikelVerwaltung.API.Controllers
         [Route("all")]
         [ApiAuthFilter("Admin")]
         [HttpGet]
-        public IHttpActionResult getAllUsers()
+        public IHttpActionResult GetAllUsers()
         {
             List<User> users = userService.FindAllUsers();
             List<UserDTO> userDTOs = ModelFactory.Create(users);
@@ -40,7 +40,7 @@ namespace ArtikelVerwaltung.API.Controllers
         [Route("{userId:int}/adminRights/grant")]
         [ApiAuthFilter("Admin")]
         [HttpPut]
-        public IHttpActionResult makeAdmin(int userId)
+        public IHttpActionResult MakeAdmin(int userId)
         {
             if (userService.MakeUserAdminById(userId))
             {
@@ -55,7 +55,7 @@ namespace ArtikelVerwaltung.API.Controllers
         [Route("{userId:int}/adminRights/remove")]
         [ApiAuthFilter("Admin")]
         [HttpDelete]
-        public IHttpActionResult removeAdminRights(int userId)
+        public IHttpActionResult RemoveAdminRights(int userId)
         {
             if (userService.RemoveAdminRightByUserId(userId))
             {
@@ -70,9 +70,53 @@ namespace ArtikelVerwaltung.API.Controllers
         [Route("{userId:int}/remove")]
         [ApiAuthFilter("Admin")]
         [HttpDelete]
-        public IHttpActionResult deleteUser(int userId)
+        public IHttpActionResult DeleteUser(int userId)
         {
             if (userService.RemoveUserById(userId))
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
+            }
+            else
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+            }
+        }
+
+        [Route("{userId:int}/get")]
+        [ApiAuthFilter("Admin")]
+        [HttpGet]
+        public IHttpActionResult GetUser(int userId)
+        {
+            if (userId < 1)
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+            }
+
+            User user = userService.FindUserById(userId);
+
+            if (user != null)
+            {
+                UserDTO userDTO = ModelFactory.CreateUserDTOWithoutTokenPassword(user);
+                return Ok(userDTO);
+            }
+            else
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+            }
+        }
+
+        [Route("update")]
+        [ApiAuthFilter("Admin")]
+        [HttpPut]
+        public IHttpActionResult UpdateUser([FromBody] AdminEditUserDTO userDTO)
+        {
+            // check if parameters valid
+            if (!ModelState.IsValid)
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+            }
+
+            if (userService.UpdateUser(userDTO))
             {
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
             }

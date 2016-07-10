@@ -5,7 +5,7 @@ namespace ArtikelVerwaltung.API.Utils
 {
     public class AuthFactory
 	{
-        public static string encrptPasswordWithSHA256(string password)
+        public static string EncrptPasswordWithSHA256(string password)
         {
             byte[] plainTextBytes = UnicodeEncoding.Unicode.GetBytes(password);
 
@@ -16,7 +16,7 @@ namespace ArtikelVerwaltung.API.Utils
             return Convert.ToBase64String(hash);
         }
 
-        public static string generateUniqueToken()
+        public static string GenerateUniqueToken()
         {
             string token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
             return token;

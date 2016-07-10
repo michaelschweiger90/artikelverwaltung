@@ -1,6 +1,9 @@
 ﻿using ArtikelVerwaltung.Repository.Data;
 using ArtikelVerwaltung.Repository.EF;
 using System.Collections.Generic;
+using ArtikelVerwaltung.API.Models;
+using System;
+using ArtikelVerwaltung.API.Utils;
 
 namespace ArtikelVerwaltung.API.Services
 {
@@ -26,8 +29,7 @@ namespace ArtikelVerwaltung.API.Services
             if (user != null)
             {
                 user.IsAdmin = true;
-                userRepository.SaveAll();
-                return true;
+                return userRepository.SaveAll();
             } else
             {
                 return false;
@@ -40,15 +42,7 @@ namespace ArtikelVerwaltung.API.Services
             if (user != null)
             {
                 user.IsAdmin = false;
-                if (userRepository.SaveAll())
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-                    
+                return userRepository.SaveAll();
             }
             else
             {
@@ -81,6 +75,64 @@ namespace ArtikelVerwaltung.API.Services
             {
                 cartRepository.Delete(cart);
             }
+        }
+
+        public bool UpdateUser(AdminEditUserDTO userDTO)
+        {
+            User user = userRepository.GetUserById(userDTO.ID);
+            if (user != null)
+            {
+                bool isChanged = false;
+
+                if (! user.Name.Equals(userDTO.Name))
+                {
+                    isChanged = true;
+                    user.Name = userDTO.Name;
+                }
+
+                if (! user.Email.Equals(userDTO.MailAddress))
+                {
+                    isChanged = true;
+                    user.Email = userDTO.MailAddress;
+                }
+
+                if (! user.SecretAnswer.Equals(userDTO.SecretAnswer))
+                {
+                    isChanged = true;
+                    user.SecretAnswer = userDTO.SecretAnswer;
+                }
+                if (!user.SecretQuestion.Equals(userDTO.SecretQuestion))
+                {
+                    isChanged = true;
+                    user.SecretQuestion = userDTO.SecretQuestion;
+                }
+
+
+                if (userDTO.NewPassword != null && !user.Passwort.Equals(AuthFactory.EncrptPasswordWithSHA256(userDTO.NewPassword)))
+                {
+                    isChanged = true;
+                    user.Passwort = AuthFactory.EncrptPasswordWithSHA256(userDTO.NewPassword);
+                }
+
+                if (isChanged)
+                {
+                    return userRepository.SaveAll();
+                }
+                else
+                {
+                    return true;
+                }
+                
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public User FindUserById(int id)
+        {
+            return userRepository.GetUserById(id);
         }
     }
 }

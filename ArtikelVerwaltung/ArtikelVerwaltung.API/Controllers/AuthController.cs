@@ -22,7 +22,7 @@ namespace ArtikelVerwaltung.API.Controllers
         [Route("register")]
         [AllowAnonymous]
         [HttpPost]
-        public IHttpActionResult registerUser([FromBody] RegisterDTO registerDTO)
+        public IHttpActionResult RegisterUser([FromBody] RegisterDTO registerDTO)
         {
             // check if parameters valid
             if (!ModelState.IsValid)
@@ -42,7 +42,7 @@ namespace ArtikelVerwaltung.API.Controllers
             
             if (user.ID > 0)
             {
-                UserDTO createdUserDTO = ModelFactory.Create(user);
+                UserDTO createdUserDTO = ModelFactory.CreateUserDTOWithToken(user);
                 return Ok(createdUserDTO);
             }
             else
@@ -54,7 +54,7 @@ namespace ArtikelVerwaltung.API.Controllers
         [Route("login")]
         [AllowAnonymous]
         [HttpPost]
-        public IHttpActionResult loginUser([FromBody] LoginDTO loginDTO)
+        public IHttpActionResult LoginUser([FromBody] LoginDTO loginDTO)
         {
             // check if parameters valid
             if (!ModelState.IsValid)
@@ -66,7 +66,7 @@ namespace ArtikelVerwaltung.API.Controllers
 
             if (user !=null)
             {
-                UserDTO userDTO = ModelFactory.Create(user);
+                UserDTO userDTO = ModelFactory.CreateUserDTOWithToken(user);
                 return Ok(userDTO);
             }
             else
@@ -78,7 +78,7 @@ namespace ArtikelVerwaltung.API.Controllers
         [Route("forgot")]
         [AllowAnonymous]
         [HttpPost]
-        public IHttpActionResult forgotPassword([FromBody] ForgotDTO forgotDTO)
+        public IHttpActionResult ForgotPassword([FromBody] ForgotDTO forgotDTO)
         {
             // check if parameters valid
             if (!ModelState.IsValid)
@@ -100,7 +100,7 @@ namespace ArtikelVerwaltung.API.Controllers
 
         [Route("logout")]
         [HttpDelete]
-        public IHttpActionResult logoutUser()
+        public IHttpActionResult LogoutUser()
         {
             var identity = Thread.CurrentPrincipal.Identity as TokenAuthenticationIdentity;
             if (identity != null && authService.LogoutUser(identity.Token))

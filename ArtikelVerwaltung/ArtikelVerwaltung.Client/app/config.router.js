@@ -154,6 +154,7 @@ angular
                             return $ocLazyLoad.load({
                                 serie: true,
                                 files: [
+                                    'app/directives/compareTo.js',
                                     'app/resources/userResource.js',
                                     'app/services/userService.js',
                                     'app/controllers/user.js'

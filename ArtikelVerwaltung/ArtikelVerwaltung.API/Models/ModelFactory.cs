@@ -181,11 +181,11 @@ namespace ArtikelVerwaltung.API.Models
             {
                 Name = registerDTO.Name,
                 Email = registerDTO.MailAddress,
-                Passwort = AuthFactory.encrptPasswordWithSHA256(registerDTO.Password),
+                Passwort = AuthFactory.EncrptPasswordWithSHA256(registerDTO.Password),
                 IsAdmin = false,
                 SecretQuestion = registerDTO.SecretQuestion,
                 SecretAnswer = registerDTO.SecretAnswer,
-                Token = AuthFactory.generateUniqueToken(),
+                Token = AuthFactory.GenerateUniqueToken(),
                 TokenDate = DateTime.Now,
                 Cart = null
             };
@@ -198,9 +198,23 @@ namespace ArtikelVerwaltung.API.Models
                 Name = user.Name,
                 MailAddress = user.Email,
                 ID = user.ID,
-                isAdmin = user.IsAdmin,
-                Token = user.Token
+                isAdmin = user.IsAdmin
             };
+        }
+
+        public UserDTO CreateUserDTOWithToken(User user)
+        {
+            UserDTO userDTO = Create(user);
+            userDTO.Token = user.Token;
+            return userDTO;
+        }
+
+        public UserDTO CreateUserDTOWithoutTokenPassword(User user)
+        {
+            UserDTO userDTO = Create(user);
+            userDTO.SecretAnswer = user.SecretAnswer;
+            userDTO.SecretQuestion = user.SecretQuestion;
+            return userDTO;
         }
 
         public List<UserDTO> Create(List<User> users)

@@ -17,11 +17,11 @@ namespace ArtikelVerwaltung.API.Services
         public User AuthenticateByPassword(string email, string password)
         {
             var user = userRepository.FindUserByEmail(email);
-            string decryptedPassword = AuthFactory.encrptPasswordWithSHA256(password);
+            string decryptedPassword = AuthFactory.EncrptPasswordWithSHA256(password);
 
             if (user != null && user.ID > 0 && decryptedPassword.Equals(user.Passwort))
             {
-                user.Token = AuthFactory.generateUniqueToken();
+                user.Token = AuthFactory.GenerateUniqueToken();
                 user.TokenDate = DateTime.Now;
                 userRepository.SaveAll();
                 return user;
@@ -42,7 +42,7 @@ namespace ArtikelVerwaltung.API.Services
             if (user !=null && 
                 (user.SecretQuestion.Equals(secretQuestion) && user.SecretAnswer.Equals(secretAnswer)))
             {
-                user.Passwort = AuthFactory.encrptPasswordWithSHA256(newPassword);
+                user.Passwort = AuthFactory.EncrptPasswordWithSHA256(newPassword);
                 userRepository.SaveAll();
                 return true;
             }

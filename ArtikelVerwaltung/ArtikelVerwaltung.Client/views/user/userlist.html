@@ -23,10 +23,10 @@
                 <td>{{user.role}}</td>
                 <td>
                     <div class="text-right">
-                        <button title="{{'USER_REMOVE_ADMIN' | translate}}" type="button" ng-show="user.isAdmin" ng-click="removeAdminRights(user)" class="btn btn-sm btn-primary">
+                        <button title="{{'TOOLTIP_REMOVE_USER_ADMIN' | translate}}" type="button" ng-show="user.isAdmin" ng-click="removeAdminRights(user)" class="btn btn-sm btn-primary">
                             <i class="material-icons">person</i>
                         </button>
-                        <button title="{{'USER_MAKE_ADMIN' | translate}}" type="button" ng-hide="user.isAdmin" ng-click="makeAdmin(user)" class="btn btn-sm btn-warning">
+                        <button title="{{'TOOLTIP_MAKE_USER_ADMIN' | translate}}" type="button" ng-hide="user.isAdmin" ng-click="makeAdmin(user)" class="btn btn-sm btn-warning">
                             <i class="material-icons">stars</i>
                         </button>
                         <button type="button" ng-click="editUser(user)" class="btn btn-sm btn-success">

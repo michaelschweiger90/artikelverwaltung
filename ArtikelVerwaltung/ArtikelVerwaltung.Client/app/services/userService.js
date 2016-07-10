@@ -17,11 +17,28 @@
             return UserResource.deleteUser({ id: id });
         }
 
+        var getUserById = function (id) {
+            return UserResource.getUserById({ id: id });
+        }
+        
+        var updateUser = function (user) {
+            return UserResource.updateUser({
+                'id': user.id,
+                'mailAddress': user.mailAddress,
+                'name': user.name,
+                'secretQuestion': user.secretQuestion,
+                'secretAnswer': user.secretAnswer,
+                'newPassword': user.newPassword
+            });
+        };
+
         return {
             getAllUsers: getAllUsers,
             makeAdmin: makeAdmin,
             removeAdminRights: removeAdminRights,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            getUserById: getUserById,
+            updateUser: updateUser
         };
     }
 ]);

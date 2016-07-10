@@ -3,6 +3,25 @@
     function ($localStorage, $rootScope, $scope, $state, UserService, $translate)
     {
         $scope.users = [];
+        $scope.userToEdit = {};
+        var userIdToEdit = $localStorage.userIdToEdit;
+        if (userIdToEdit) {
+            delete $localStorage.userIdToEdit;
+            UserService.getUserById(userIdToEdit).$promise.then(function (data) {
+                if (userIdToEdit === $localStorage.user.id) {
+                    $localStorage.user = {};
+                    $state.go('login');
+                    return;
+                }
+                $scope.userToEdit.id = data.id;
+                $scope.userToEdit.name = data.name;
+                $scope.userToEdit.mailAddress = data.mailAddress;
+                $scope.userToEdit.secretQuestion = data.secretQuestion;
+                $scope.userToEdit.secretAnswer = data.secretAnswer;
+            }, function (data) {
+
+            });
+        }
 
         UserService.getAllUsers().$promise.then(function (data) {
             data.forEach(function (value) {
@@ -52,7 +71,16 @@
         };
 
         $scope.editUser = function (user) {
+            $localStorage.userIdToEdit = user.id;
+            $state.go('app.user.edit');
+        };
 
+        $scope.updateUser = function () {
+            UserService.updateUser($scope.userToEdit).$promise.then(function () {
+                $state.go('app.user.list');
+            }, function () {
+
+            });
         };
 
         $scope.deleteUser = function (user) {

@@ -40,8 +40,6 @@ var app =
                         'SYS_USER': 'Benutzer',
 
                         'USER_LIST': 'Benutzerliste',
-                        'USER_MAKE_ADMIN': 'Admin-Rechte geben',
-                        'USER_REMOVE_ADMIN': 'Admin-Rechte beheben',
                         'USER_EDIT': 'Benutzer bearbeiten',
 
                         'ERROR_PASSWORD_MATCH': 'Passwort stimmt nicht überein!',
@@ -89,9 +87,9 @@ var app =
                         'TOOLTIP_USER_FAB': 'Benutzer',
                         'TOOLTIP_USER_DELETE': 'Benutzer löschen',
                         'TOOLTIP_USER_PW_CHANGE': 'Passwort ändern',
-                        'TOOLTIP_OPEN_SIDENAV': 'Menü'
-
-                        
+                        'TOOLTIP_OPEN_SIDENAV': 'Menü',
+                        'TOOLTIP_MAKE_USER_ADMIN': 'Admin-Rechte geben',
+                        'TOOLTIP_REMOVE_USER_ADMIN': 'Admin-Rechte beheben'
                     });
 
                     $translateProvider.useSanitizeValueStrategy('escape');
