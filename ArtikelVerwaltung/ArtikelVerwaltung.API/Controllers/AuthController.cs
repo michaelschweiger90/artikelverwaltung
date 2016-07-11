@@ -27,13 +27,13 @@ namespace ArtikelVerwaltung.API.Controllers
             // check if parameters valid
             if (!ModelState.IsValid)
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable parameter"));
             }
 
             // check if mail address exists
             if (authService.ExistsUser(registerDTO.MailAddress))
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.Conflict, "User exists"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.Conflict, "Email in use"));
             }
 
             // now create user.
@@ -59,7 +59,7 @@ namespace ArtikelVerwaltung.API.Controllers
             // check if parameters valid
             if (!ModelState.IsValid)
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable parameter"));
             }
             // do authentication
             User user = authService.AuthenticateByPassword(loginDTO.MailAddress, loginDTO.Password);
@@ -71,7 +71,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not created"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invlid credientials"));
             }
         }
 
@@ -83,7 +83,7 @@ namespace ArtikelVerwaltung.API.Controllers
             // check if parameters valid
             if (!ModelState.IsValid)
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable parameter"));
             }
             // do authentication
             bool actionResult = authService.RenewPasswordBySecrets(forgotDTO.MailAddress, forgotDTO.SecretQuestion, forgotDTO.SecretAnswer, forgotDTO.NewPassword);

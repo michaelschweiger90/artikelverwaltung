@@ -1,6 +1,6 @@
 ﻿app.controller('LoginCtrl', [
-    '$localStorage', '$rootScope', '$scope', '$state', 'AuthService',
-    function ($localStorage, $rootScope, $scope, $state, AuthService)
+    '$localStorage', '$rootScope', '$scope', '$state', 'AuthService', 'Toast',
+    function ($localStorage, $rootScope, $scope, $state, AuthService, Toast)
     {
         $scope.user = null;
         $scope.dataLoading = false;
@@ -18,11 +18,19 @@
                     user.id = data.id;
                     user.authToken = data.token,
                     $localStorage.user = user;
-
-                    $state.go('app.article.list');
+                    Toast.translateAndShow('SUCCESS_LOGIN', function () {
+                        $state.go('app.article.list');
+                    });
                 }, function (data)
                 {
                     $scope.dataLoading = false;
+                    if (data.status === 404) {
+                        Toast.translateAndShow('ERROR_LOGIN_WRONG_DATA');
+                    } else if (data.status === 406) {
+                        Toast.translateAndShow('ERROR_PARAMETER_NOT_ACCEPTABLE');
+                    } else {
+                        Toast.translateAndShow('ERROR_UNKNOWN_INTERNAL');
+                    }
                 }
             );
         };

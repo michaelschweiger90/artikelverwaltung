@@ -28,13 +28,13 @@ namespace ArtikelVerwaltung.API.Controllers
             List<User> users = userService.FindAllUsers();
             List<UserDTO> userDTOs = ModelFactory.Create(users);
 
-            if (userDTOs != null)
+            if (userDTOs != null && userDTOs.Count > 0)
             {
                 return Ok(userDTOs);
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Users can not be fetched!"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotFound, "No users found!"));
             }
         }
 
@@ -49,7 +49,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted for user!"));
             }
         }
 
@@ -64,7 +64,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be removed from user!"));
             }
         }
 
@@ -79,7 +79,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "User can not be deleted!"));
             }
         }
 
@@ -90,7 +90,7 @@ namespace ArtikelVerwaltung.API.Controllers
         {
             if (userId < 1)
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable parameter"));
             }
 
             User user = userService.FindUserById(userId);
@@ -102,7 +102,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotFound, "User can not be found!"));
             }
         }
 
@@ -114,7 +114,7 @@ namespace ArtikelVerwaltung.API.Controllers
             // check if parameters valid
             if (!ModelState.IsValid)
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable parameter"));
             }
 
             // check if an user with given email exists
@@ -129,7 +129,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "User data can not be updated!"));
             }
         }
 
@@ -145,7 +145,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Account can not be deleted!"));
             }
         }
 
@@ -156,7 +156,7 @@ namespace ArtikelVerwaltung.API.Controllers
             // check if parameters valid
             if (!ModelState.IsValid)
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable parameter"));
             }
 
             TokenAuthenticationIdentity identity = (TokenAuthenticationIdentity)Thread.CurrentPrincipal.Identity;
@@ -174,7 +174,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Account update failed!"));
             }
         }
 
@@ -193,7 +193,7 @@ namespace ArtikelVerwaltung.API.Controllers
             }
             else
             {
-                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotFound, "Not existing user!"));
             }
         }
     }

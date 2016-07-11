@@ -45,12 +45,18 @@ angular
             })
             .state('logout', {
                 url: '/logout',
-                controller: function ($state, $localStorage, AuthService) {
+                controller: function ($state, $localStorage, AuthService, Toast) {
                     AuthService.doLogout().$promise.then(function (data) {
                         $localStorage.user = {};
-                        $state.go('login');
+                        Toast.translateAndShow('SUCCESS_LOGOUT', function () {
+                            $state.go('login');
+                        });
                     }, function () {
-
+                        if (data.status === 400) {
+                            Toast.translateAndShow('ERROR_LOGOUT_NOT_SUCCESSFUL');
+                        } else {
+                            Toast.translateAndShow('ERROR_UNKNOWN_INTERNAL');
+                        }
                     });
                 },
                 resolve: {
@@ -121,8 +127,6 @@ angular
                                 serie: true,
                                 files: [
                                     'app/filters/mailSidenav.js',
-                                    'app/services/toastService.js',
-                                    'app/services/dialogService.js',
                                     'app/controllers/app.js'
                                 ]
                             });

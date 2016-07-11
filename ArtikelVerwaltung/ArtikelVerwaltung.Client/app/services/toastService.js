@@ -19,11 +19,15 @@
 
 	var translateAndShow = function (key, handler, config) {
 		$translate(key).then(function (message) {
-			show(message, config);
-			handler();
+		    show(message, config);
+		    if (handler) {
+		        handler();
+		    }
 		}, function () {
 			show(key, config);
-			handler();
+			if (handler) {
+			    handler();
+			}
 		});
 	};
 
