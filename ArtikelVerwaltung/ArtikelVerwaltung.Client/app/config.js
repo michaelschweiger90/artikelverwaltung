@@ -60,6 +60,7 @@ var app =
                         'ERROR_USER_DELETE_FAIL': 'Benutzer nicht gelöscht!',
                         'ERROR_ACCOUNT_DELETE_FAIL': 'Konto nicht gelöscht!',
                         'ERROR_UPDATE_ACCOUNT': 'Kontodaten nicht aktualisiert',
+                        'ERROR_TIMEOUT': 'Sitzung abgelaufen oder keine Rechte für die aufgerufene Seite. Bitte erneut einloggen!',
 
                         'SUCCESS_LOGIN': 'Login erfolgreich!',
                         'SUCCESS_REGISTER': 'Registrierung erfolgreich!',
@@ -143,8 +144,7 @@ var app =
                             },
                             'responseError': function (response) {
                                 if (response.status === 401 || response.status === 403) {
-                                    $localStorage.user = {};
-                                    $location.path('/login');
+                                    $location.path('/auth/timeout');
                                 }
                                 return $q.reject(response);
                             }

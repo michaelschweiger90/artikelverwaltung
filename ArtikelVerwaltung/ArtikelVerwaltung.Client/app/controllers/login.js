@@ -2,6 +2,13 @@
     '$localStorage', '$rootScope', '$scope', '$state', 'AuthService', 'Toast',
     function ($localStorage, $rootScope, $scope, $state, AuthService, Toast)
     {
+        if ($state.current.name === 'timeout') {
+            $localStorage.user = {};
+            Toast.translateAndShow('ERROR_TIMEOUT', function () {
+                $state.go('login');
+            });
+        }
+
         $scope.user = null;
         $scope.dataLoading = false;
 

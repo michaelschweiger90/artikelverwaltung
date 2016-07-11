@@ -43,6 +43,25 @@ angular
                     ]
                 }
             })
+            .state('timeout', {
+                url: '/auth/timeout',
+                controller: 'LoginCtrl',
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/resources/authResource.js',
+                                    'app/services/authService.js',
+                                    'app/controllers/login.js'
+                                ]
+                            });
+                        }
+                    ]
+                }
+            })
             .state('logout', {
                 url: '/logout',
                 controller: function ($state, $localStorage, AuthService, Toast) {
