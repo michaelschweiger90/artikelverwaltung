@@ -32,7 +32,14 @@
         deleteAccount: {
             url: urls.BASE_API + 'user/deleteAccount',
             method: 'DELETE',
-            params: {}
+        },
+        updateUserLoggedin: {
+            url: urls.BASE_API + 'user/editAccount',
+            method: 'PUT'
+        },
+        getAccountData: {
+            url: urls.BASE_API + 'user/accountDetails',
+            method: 'GET'
         }
     });
 }]);

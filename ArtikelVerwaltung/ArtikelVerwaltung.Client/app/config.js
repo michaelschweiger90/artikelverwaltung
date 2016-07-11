@@ -42,6 +42,7 @@ var app =
 
                         'USER_LIST': 'Benutzerliste',
                         'USER_EDIT': 'Benutzer bearbeiten',
+                        'USER_EDIT_ACCOUNT': 'Kontodaten ändern',
                         'USER_PW_CHANGE': 'Passwort ändern',
                         'USER_EDIT_DATA_FAB': 'Daten ändern',
                         'USER_DELETE_ACCOUNT_FAB': 'Konto löschen',

@@ -77,7 +77,7 @@ namespace ArtikelVerwaltung.API.Services
             }
         }
 
-        public bool UpdateUser(AdminEditUserDTO userDTO)
+        public bool UpdateUser(UserEditDTO userDTO)
         {
             User user = userRepository.GetUserById(userDTO.ID);
             if (user != null)
@@ -133,6 +133,19 @@ namespace ArtikelVerwaltung.API.Services
         public User FindUserById(int id)
         {
             return userRepository.GetUserById(id);
+        }
+
+        public bool ExistsUserWithEmail(string email, int ID)
+        {
+            User user = userRepository.FindUserByEmail(email);
+            if (user.ID == ID && user.Email == email)
+            {
+                return false;
+            }
+            else
+            {
+                return user != null && user.ID != ID;
+            }
         }
     }
 }

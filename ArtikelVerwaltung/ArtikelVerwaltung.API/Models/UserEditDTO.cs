@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ArtikelVerwaltung.API.Models
 {
-    public class AdminEditUserDTO
+    public class UserEditDTO
     {
         [Required]
         [EmailAddress]

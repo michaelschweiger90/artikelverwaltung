@@ -103,6 +103,7 @@
     <Content Include="app\controllers\articleList.js" />
     <Content Include="app\controllers\cart.js" />
     <Content Include="app\controllers\forgot.js" />
+    <Content Include="app\controllers\admin.js" />
     <Content Include="app\controllers\user.js" />
     <Content Include="app\controllers\login.js" />
     <Content Include="app\controllers\register.js" />
@@ -133,6 +134,7 @@
     <Content Include="views\admin\article-details.html" />
     <Content Include="views\admin\article-list.html" />
     <Content Include="views\admin\article.html" />
+    <Content Include="views\admin\useredit.html" />
     <Content Include="views\Article.html" />
     <Content Include="views\article\article-detail.html" />
     <Content Include="views\article\article-list.html" />
@@ -167,7 +169,7 @@
     <Content Include="views\register.html" />
     <Content Include="views\start.html" />
     <Content Include="views\user\useredit.html" />
-    <Content Include="views\user\userlist.html" />
+    <Content Include="views\admin\userlist.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -186,7 +186,7 @@
     </Compile>
     <Compile Include="Models\ArticleCartDTO.cs" />
     <Compile Include="Models\ArticleDTO.cs" />
-    <Compile Include="Models\AdminEditUserDTO.cs" />
+    <Compile Include="Models\UserEditDTO.cs" />
     <Compile Include="Models\ForgotDTO.cs" />
     <Compile Include="Models\TokenAuthenticationIdetitiy.cs" />
     <Compile Include="Models\CartDTO.cs" />

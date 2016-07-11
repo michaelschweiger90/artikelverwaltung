@@ -36,6 +36,21 @@
             });
         };
 
+        var updateUserLoggedin = function (user) {
+            return UserResource.updateUserLoggedin({
+                'id': user.id,
+                'mailAddress': user.mailAddress,
+                'name': user.name,
+                'secretQuestion': user.secretQuestion,
+                'secretAnswer': user.secretAnswer,
+                'newPassword': user.newPassword
+            });
+        };
+
+        var getAccountData = function () {
+            return UserResource.getAccountData();
+        };
+
         return {
             getAllUsers: getAllUsers,
             makeAdmin: makeAdmin,
@@ -43,7 +58,9 @@
             deleteUser: deleteUser,
             getUserById: getUserById,
             updateUser: updateUser,
-            deleteAccount: deleteAccount
+            deleteAccount: deleteAccount,
+            updateUserLoggedin: updateUserLoggedin,
+            getAccountData: getAccountData
         };
     }
 ]);

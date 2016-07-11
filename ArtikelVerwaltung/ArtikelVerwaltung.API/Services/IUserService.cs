@@ -12,10 +12,12 @@ namespace ArtikelVerwaltung.API.Services
 
         bool MakeUserAdminById(int id);
 
-        bool UpdateUser(AdminEditUserDTO userDTO);
+        bool UpdateUser(UserEditDTO userDTO);
 
         bool RemoveAdminRightByUserId(int id);
 
         bool RemoveUserById(int id);
+
+        bool ExistsUserWithEmail(string email, int ID);
     }
 }

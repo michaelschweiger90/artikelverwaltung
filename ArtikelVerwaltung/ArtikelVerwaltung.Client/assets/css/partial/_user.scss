@@ -14,3 +14,7 @@
 .login-body, .register-body, .forgot-body {
     background: inherit;
 }
+
+a[ng-click]{
+    cursor: pointer;
+}

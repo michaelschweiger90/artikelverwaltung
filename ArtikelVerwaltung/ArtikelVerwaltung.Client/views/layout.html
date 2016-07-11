@@ -20,13 +20,13 @@
                             </md-button>
                         </md-fab-trigger>
                         <md-fab-actions>
-                            <md-button class="md-icon-button fab-option" ui-sref="app.user.changepw">
+                            <md-button class="md-icon-button fab-option" ng-click="redirectToEdit()">
                                 <md-tooltip md-direction="right">{{'USER_EDIT_DATA_FAB' | translate}}</md-tooltip>
                                 <i class="material-icons">build</i>
                             </md-button>
                         </md-fab-actions>
                         <md-fab-actions>
-                            <md-button class="md-icon-button fab-option" ui-sref="app.user.delete">
+                            <md-button class="md-icon-button fab-option" ui-sref="app.user.deleteAccount">
                                 <md-tooltip md-direction="right">{{'USER_DELETE_ACCOUNT_FAB' | translate}}</md-tooltip>
                                 <i class="material-icons">delete</i>
                             </md-button>

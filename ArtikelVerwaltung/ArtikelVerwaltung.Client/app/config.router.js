@@ -5,6 +5,16 @@ angular
     .run(['$rootScope', '$state', '$stateParams', function($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+        $rootScope.callbackJob = {
+            goBack: function () {
+                if ($rootScope.callbackJob.previousState) {
+                    $state.go($rootScope.callbackJob.previousState);
+                    delete $rootScope.callbackJob.previousState;
+                } else {
+                    $state.go('app.article.list');
+                }
+            }
+        };
     }])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
@@ -51,7 +61,7 @@ angular
                                 serie: true,
                                 files: [
                                     'app/resources/authResource.js',
-                                    'app/services/authService.js',
+                                    'app/services/authService.js'
                                 ]
                             });
                         }
@@ -125,25 +135,7 @@ angular
                 templateUrl: '',
                 abstract: false
             })
-            .state('app.user.list', {
-                url: '/user/list',
-                templateUrl: 'views/user/userlist.html',
-                resolve: {
-                    deps: [
-                        '$ocLazyLoad',
-                        function ($ocLazyLoad) {
-                            return $ocLazyLoad.load({
-                                serie: true,
-                                files: [
-                                    'app/resources/userResource.js',
-                                    'app/services/userService.js',
-                                    'app/controllers/user.js'
-                                ]
-                            })
-                        }
-                    ]
-                }
-            })
+            
             .state('app.user.edit', {
                 url: '/user/edit',
                 templateUrl: 'views/user/useredit.html',
@@ -159,21 +151,14 @@ angular
                                     'app/services/userService.js',
                                     'app/controllers/user.js'
                                 ]
-                            })
+                            });
                         }
                     ]
                 }
             })
-            .state('app.user.delete', {
-                url: '/user/delete',
-                controller: function ($state, $localStorage, UserService) {
-                    UserService.deleteAccount().$promise.then(function (data) {
-                        $localStorage.user = {};
-                        $state.go('login');
-                    }, function (data) {
-
-                    });
-                },
+            .state('app.user.deleteAccount', {
+                url: '/user/deleteAccount',
+                controller: 'UserCtrl',
                 resolve: {
                     deps: [
                         '$ocLazyLoad',
@@ -183,6 +168,56 @@ angular
                                 files: [
                                     'app/resources/userResource.js',
                                     'app/services/userService.js',
+                                    'app/controllers/user.js'
+                                ]
+                            });
+                        }
+                    ]
+                }
+            })
+            .state('app.admin', {
+                url: '',
+                templateUrl: '',
+                abstract: false
+            })
+            .state('app.admin.user', {
+                url: '',
+                templateUrl: '',
+                abstract: false
+            })
+            .state('app.admin.user.list', {
+                url: '/admin/user/list',
+                templateUrl: 'views/admin/userlist.html',
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/resources/userResource.js',
+                                    'app/services/userService.js',
+                                    'app/controllers/admin.js'
+                                ]
+                            });
+                        }
+                    ]
+                }
+            })
+            .state('app.admin.user.edit', {
+                url: '/admin/user/edit',
+                templateUrl: 'views/admin/useredit.html',
+                resolve: {
+                    deps: [
+                        '$ocLazyLoad',
+                        function ($ocLazyLoad) {
+                            return $ocLazyLoad.load({
+                                serie: true,
+                                files: [
+                                    'app/directives/compareTo.js',
+                                    'app/resources/userResource.js',
+                                    'app/services/userService.js',
+                                    'app/controllers/admin.js'
                                 ]
                             });
                         }
@@ -350,7 +385,4 @@ angular
                     ]
                 }
             });
-
-           
-
     }]);

@@ -1,8 +1,8 @@
-<div class="col-md-5" ng-controller="UserCtrl">
+<div class="col-md-5" ng-controller="AdminCtrl">
     <form name="form">
         <md-toolbar class="md-table-toolbar md-default">
             <h3>
-                <span>{{'USER_EDIT_ACCOUNT' | translate}}</span>
+                <span>{{'USER_EDIT' | translate}}</span>
             </h3>
         </md-toolbar>
 
@@ -59,9 +59,9 @@
                 </div>
             </md-input-container>
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                <md-button ng-click="updateUser()" ng-disabled="form.$invalid || dataLoading" class="md-raised md-primary">{{'SYS_SAVE' | translate }}</md-button>
+                <md-button ng-click="updateUserWithAdminRights()" ng-disabled="form.$invalid || dataLoading" class="md-raised md-primary">{{'SYS_SAVE' | translate }}</md-button>
                 <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                <a ng-click="callbackJob.goBack()">{{'SYS_CANCEL' | translate }}</a>
+                <a ui-sref="app.admin.user.list">{{'SYS_CANCEL' | translate }}</a>
             </section>
         </md-content>
     </form>

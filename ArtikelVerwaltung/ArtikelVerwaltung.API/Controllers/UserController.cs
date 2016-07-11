@@ -109,12 +109,18 @@ namespace ArtikelVerwaltung.API.Controllers
         [Route("update")]
         [ApiAuthFilter("Admin")]
         [HttpPut]
-        public IHttpActionResult UpdateUser([FromBody] AdminEditUserDTO userDTO)
+        public IHttpActionResult UpdateUser([FromBody] UserEditDTO userDTO)
         {
             // check if parameters valid
             if (!ModelState.IsValid)
             {
                 return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+            }
+
+            // check if an user with given email exists
+            if (userService.ExistsUserWithEmail(userDTO.MailAddress, userDTO.ID))
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.Conflict, "User exists"));
             }
 
             if (userService.UpdateUser(userDTO))
@@ -136,6 +142,54 @@ namespace ArtikelVerwaltung.API.Controllers
             if (userService.RemoveUserById(currentIdentity.UserId))
             {
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
+            }
+            else
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+            }
+        }
+
+        [Route("editAccount")]
+        [HttpPut]
+        public IHttpActionResult UpdateUserLoggenin([FromBody] UserEditDTO userDTO)
+        {
+            // check if parameters valid
+            if (!ModelState.IsValid)
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Unacceptable Parameter"));
+            }
+
+            TokenAuthenticationIdentity identity = (TokenAuthenticationIdentity)Thread.CurrentPrincipal.Identity;
+            userDTO.ID = identity.UserId;
+
+            // check if an user with given email exists
+            if (userService.ExistsUserWithEmail(userDTO.MailAddress, userDTO.ID))
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.Conflict, "User exists"));
+            }
+
+            if (userService.UpdateUser(userDTO))
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK));
+            }
+            else
+            {
+                return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Admin right could not be granted!"));
+            }
+        }
+
+        [Route("accountDetails")]
+        [HttpGet]
+        public IHttpActionResult GetUserLoggedin()
+        {
+            TokenAuthenticationIdentity identity = (TokenAuthenticationIdentity)Thread.CurrentPrincipal.Identity;
+
+            User user = userService.FindUserById(identity.UserId);
+
+            if (user != null)
+            {
+                UserDTO userDTO = ModelFactory.CreateUserDTOWithoutTokenPassword(user);
+                return Ok(userDTO);
             }
             else
             {

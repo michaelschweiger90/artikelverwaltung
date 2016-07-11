@@ -1,6 +1,6 @@
 app.controller('AppCtrl', [
-    '$scope', '$mdSidenav', '$rootScope', '$localStorage',
-    function ($scope, $mdSidenav, $rootScope, $localStorage) {
+    '$scope', '$mdSidenav', '$rootScope', '$localStorage','$state',
+    function ($scope, $mdSidenav, $rootScope, $localStorage, $state) {
         $scope.menus = [
                {
                    link: 'app.article.list',
@@ -22,9 +22,15 @@ app.controller('AppCtrl', [
                 icon: 'https'
             },
             {
-                link: 'app.user.list',
+                link: 'app.admin.user.list',
                 title: 'NAVIGATION_USERMANAGEMENT',
                 icon: 'people_outline'
             }
         ];
+
+        $scope.redirectToEdit = function () {
+            $localStorage.userIdToEdit = $localStorage.user.id;
+            $rootScope.callbackJob.previousState = $state.current.name;
+            $state.go('app.user.edit');
+        };
     }]);
