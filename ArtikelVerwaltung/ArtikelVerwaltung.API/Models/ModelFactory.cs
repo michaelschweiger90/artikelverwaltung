@@ -181,11 +181,11 @@ namespace ArtikelVerwaltung.API.Models
             {
                 Name = registerDTO.Name,
                 Email = registerDTO.MailAddress,
-                Passwort = AuthFactory.EncrptPasswordWithSHA256(registerDTO.Password),
+                Passwort = AuthUtil.EncrptPasswordWithSHA256(registerDTO.Password),
                 IsAdmin = false,
                 SecretQuestion = registerDTO.SecretQuestion,
                 SecretAnswer = registerDTO.SecretAnswer,
-                Token = AuthFactory.GenerateUniqueToken(),
+                Token = AuthUtil.GenerateUniqueToken(),
                 TokenDate = DateTime.Now,
                 Cart = null
             };

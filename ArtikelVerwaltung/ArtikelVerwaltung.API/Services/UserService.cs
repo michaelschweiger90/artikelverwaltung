@@ -108,10 +108,10 @@ namespace ArtikelVerwaltung.API.Services
                 }
 
 
-                if (userDTO.NewPassword != null && !user.Passwort.Equals(AuthFactory.EncrptPasswordWithSHA256(userDTO.NewPassword)))
+                if (userDTO.NewPassword != null && !user.Passwort.Equals(AuthUtil.EncrptPasswordWithSHA256(userDTO.NewPassword)))
                 {
                     isChanged = true;
-                    user.Passwort = AuthFactory.EncrptPasswordWithSHA256(userDTO.NewPassword);
+                    user.Passwort = AuthUtil.EncrptPasswordWithSHA256(userDTO.NewPassword);
                 }
 
                 if (isChanged)
