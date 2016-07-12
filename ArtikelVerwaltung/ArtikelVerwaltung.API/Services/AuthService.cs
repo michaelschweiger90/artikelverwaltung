@@ -9,9 +9,9 @@ namespace ArtikelVerwaltung.API.Services
     {
         private readonly IUserRepository userRepository;
 
-        public AuthService(IUserRepository repository)
+        public AuthService(IRepository repository)
         {
-            userRepository = repository;
+            userRepository = repository.GetUserRepository();
         }
 
         public User AuthenticateByPassword(string email, string password)

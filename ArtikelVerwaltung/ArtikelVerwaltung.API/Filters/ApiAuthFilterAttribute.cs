@@ -93,7 +93,7 @@ namespace ArtikelVerwaltung.API.Filters
                                .DependencyResolver.GetService(typeof(IRepository)) as Repository.Data.Repository;
             if (repository == null) return false;
 
-            IAuthService authService = new AuthService(repository.GetUserRepository());
+            IAuthService authService = new AuthService(repository);
 
             var currentIdentity = Thread.CurrentPrincipal.Identity as TokenAuthenticationIdentity;
 
