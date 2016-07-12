@@ -3,7 +3,7 @@ using System.Text;
 
 namespace ArtikelVerwaltung.API.Utils
 {
-    public class AuthFactory
+    public class AuthUtil
 	{
         public static string EncrptPasswordWithSHA256(string password)
         {
