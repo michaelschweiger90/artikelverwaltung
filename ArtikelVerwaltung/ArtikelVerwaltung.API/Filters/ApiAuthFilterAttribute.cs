@@ -88,11 +88,9 @@ namespace ArtikelVerwaltung.API.Filters
 
         private bool OnAuthoriseUser(HttpActionContext actionContext)
         {
-            var repository = actionContext.ControllerContext.Configuration
-                               .DependencyResolver.GetService(typeof(IRepository)) as Repository.Data.Repository;
-            if (repository == null) return false;
-
-            IAuthService authService = new AuthService(repository);
+            var authService = actionContext.ControllerContext.Configuration
+                               .DependencyResolver.GetService(typeof(IAuthService)) as AuthService;
+            if (authService == null) return false;
 
             var currentIdentity = Thread.CurrentPrincipal.Identity as TokenAuthenticationIdentity;
 

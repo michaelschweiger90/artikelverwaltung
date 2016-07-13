@@ -1,7 +1,6 @@
 ﻿using ArtikelVerwaltung.API.Filters;
 using ArtikelVerwaltung.API.Models;
 using ArtikelVerwaltung.API.Services;
-using ArtikelVerwaltung.Repository.Data;
 using ArtikelVerwaltung.Repository.EF;
 using System.Collections.Generic;
 using System.Net;
@@ -16,8 +15,8 @@ namespace ArtikelVerwaltung.API.Controllers
 	{
         private IUserService userService;
 
-        public UserController(IRepository repo) : base(repo) {
-            this.userService = new UserService(repo.GetUserRepository());
+        public UserController(IUserService userService) {
+            this.userService = userService;
         }
 
         [Route("all")]

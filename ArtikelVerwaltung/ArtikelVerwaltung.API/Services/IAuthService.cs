@@ -2,7 +2,7 @@
 
 namespace ArtikelVerwaltung.API.Services
 {
-    interface IAuthService
+    public interface IAuthService
     {
         User AuthenticateByPassword(string email, string password);
 

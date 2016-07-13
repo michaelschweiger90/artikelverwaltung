@@ -1,6 +1,5 @@
 ﻿using ArtikelVerwaltung.API.Models;
 using ArtikelVerwaltung.API.Services;
-using ArtikelVerwaltung.Repository.Data;
 using ArtikelVerwaltung.Repository.EF;
 using System.Net;
 using System.Net.Http;
@@ -14,9 +13,9 @@ namespace ArtikelVerwaltung.API.Controllers
 	{
         private IAuthService authService;
 
-        public AuthController(IRepository repo) : base(repo)
+        public AuthController(IAuthService authService)
         {
-            this.authService = new AuthService(repo.GetUserRepository());
+            this.authService = authService;
         }
 
         [Route("register")]

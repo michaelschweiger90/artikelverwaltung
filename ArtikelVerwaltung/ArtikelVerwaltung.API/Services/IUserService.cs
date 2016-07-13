@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ArtikelVerwaltung.API.Services
 {
-    interface IUserService
+    public interface IUserService
     {
         List<User> FindAllUsers();
 

@@ -14,6 +14,8 @@ namespace ArtikelVerwaltung.API.Controllers
 		private IUserRepository userRepo;
 		private ModelFactory modelFactory;
 
+        public BaseAPIController() { }
+
 		public BaseAPIController(IRepository repo)
 		{
 			articleRepo = repo.GetArticleRepository();
