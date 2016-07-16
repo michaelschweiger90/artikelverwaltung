@@ -1,33 +1,33 @@
 ﻿app.controller('ArticleCtrl', [
-    '$rootScope', '$scope', 'Category',
-    function ($rootScope, $scope, Category) {
+    '$rootScope', '$scope', 'Category', 'Toast',
+    function ($rootScope, $scope, Category, Toast) {
 
-        $scope.menuOptions = [
+    	$scope.menuOptions = [
+			['Kategorie umbennen', function ($itemScope) {
+				var category = $itemScope.category;
+				Category.update(category, function () {
+					Toast.translateAndShow("CATEGORY_RENAME_SUCCESS", function () { });
+				});
+			}],
             ['Kategorie löschen', function ($itemScope) {
-                var categorie = $itemScope.category;
-                categorie.$delete();
-            }],
-            ['Kategorie umbennen', function ($itemScope) {
-                var categorie = $itemScope.category;
-                /*
-                Category.deleteArticleFromCategory(article, $stateParams.id, function (article) {
-                    $scope.article = article;
+                var category = $itemScope.category;
+                Category.delete(category, function (category) {
+                	$scope.categories.splice($scope.categories.indexOf(category), 1);
+                	Toast.translateAndShow("CATEGORY_DELETE_SUCCESS", function () { });
                 });
-                */
-            }],
-            ['Kategorie hinzufügen', function ($itemScope) {
-                var categorie = $itemScope.category;
-                /*
-                Category.deleteArticleFromCategory(article, $stateParams.id, function (article) {
-                    $scope.article = article;
-                });
-                */
             }]
         ];
 
         Category.get(function(categories){
             $scope.categories = categories;
         });
+
+        $scope.addCategory = function () {
+        	Category.insert(function (category) {
+        		$scope.categories.push(category);
+        		Toast.translateAndShow("CATEGORY_ADD_SUCCESS", function () { });
+        	});
+        };
 
         $scope.isInit = false;
 

@@ -1,11 +1,14 @@
 ﻿<div ng-controller="ArticleCtrl" layout-gt-md="row" layout-md="column">
     
     <div flex="40">
+		<md-button class="md-raised btn orange-button login-button" ng-click="addCategory()">
+			<i class="material-icons">add</i>
+			{{'CATEGORY_NEW' | translate }}
+		</md-button>
         <md-list>
-            <md-list-item ui-sref="app.article-management.list({id: category.id})" ng-repeat="category in categories" class="md-2-line">
-                <div class="md-list-item-text" context-menu="menuOptions">
-                    <h3>{{ category.name }}</h3>
-                    <p>{{ category.source }}</p>
+            <md-list-item ui-sref="app.article-management.list({id: category.id})" ng-repeat="category in categories" class="md-1-line" context-menu="menuOptions">
+                <div class="md-list-item-text" >
+                    {{ category.name }}
                 </div>
                 <md-divider></md-divider>
             </md-list-item>

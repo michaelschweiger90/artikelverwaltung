@@ -114,8 +114,12 @@ var app =
                         'ARTICLE_UNASSIGNED': 'Nicht zugeordnete Artikel',
                         'ARTICLE_PRICE': 'Artikelpreis',
 
+                    	'CATEGORY_NEW': 'Kategorie hinzufügen',
                         'CATEGORY_RENAME': 'Kategorie umbenennen',
                         'CATEGORY_INSERT': 'Neue Kategorie',
+                        'CATEGORY_RENAME_SUCCESS': 'Kategorie erfolgreich umbenannt',
+                        'CATEGORY_DELETE_SUCCESS': 'Kategorie erfolgreich gelöscht',
+                    	'CATEGORY_ADD_SUCCESS': 'Kategorie erfolgreich angelegt',
 
                         'CART_DELETE': 'Warenkorb löschen',
                         'CART_RENAME': 'Warenkorb umbenennen',

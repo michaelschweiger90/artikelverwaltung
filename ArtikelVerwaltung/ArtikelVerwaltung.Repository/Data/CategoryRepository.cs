@@ -32,7 +32,8 @@ namespace ArtikelVerwaltung.Repository.Data
 
         public Category DeleteCategory(Category category)
         {
-            return ctx.Category.Remove(category);
+			ctx.ArticleCategory.RemoveRange(ctx.Category.Find(category.ID).ArticleCategory);
+			return ctx.Category.Remove(category);
         }
 
         public List<Category> GetAll()

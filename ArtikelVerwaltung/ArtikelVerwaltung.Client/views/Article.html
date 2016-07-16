@@ -3,10 +3,9 @@
         
         <div flex-sm-auto flex-gt-sm="40">
             <md-list>
-                <md-list-item ui-sref="app.article.list({id: category.id})" ng-repeat="category in categories" class="md-2-line">
+                <md-list-item ui-sref="app.article.list({id: category.id})" ng-repeat="category in categories" class="md-1-line" contextmenu="menuOptions">
                     <div class="md-list-item-text">
-                        <h3>{{ category.name }}</h3>
-                        <p>{{ category.source }}</p>
+                        {{ category.name }}
                     </div>
                     <md-divider></md-divider>
                 </md-list-item>

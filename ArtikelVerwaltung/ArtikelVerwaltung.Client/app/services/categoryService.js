@@ -8,14 +8,13 @@
             });
         };
 
-        var insertCategory = function (category, handler) {
+        var insertCategory = function (handler) {
 
             var newCategory = getNewResource();
-            newCategory.parentId = category.id;
 
             var CategoryEditController = function ($scope, $mdDialog) {
 
-                $scope.category = newCategory.name;
+            	$scope.name = newCategory.name;
                 $scope.mode = 'insert';
 
                 $scope.hide = function () {
@@ -25,23 +24,19 @@
                     $mdDialog.cancel();
                 };
                 $scope.edit = function () {
-                    $mdDialog.hide($scope.category);
+                	$mdDialog.hide($scope.name);
                 };
             };
 
             var config = {
                 controller: CategoryEditController,
-                template: '/views/admin/editCategory.dlg.html'
+                template: '/views/dlgs/editCategory.dlg.html'
             };
 
             Dialog.custom(config, function (data) {
-                newCategory.name = data;
-                CategoryResource.save(newCategory, function () {
-                    if (category.children) {
-                        category.children.push(newCategory);
-                    }
+            	newCategory.name = data;
+                newCategory.$save(function () {
                     handler(newCategory);
-
                 });
 
             }, function () {
@@ -64,8 +59,7 @@
                 ok: 'Entfernen'
             }, function () {
                 category.$delete(function () {
-                    handler(category);
-                    Eventbus.deleteCategory(original);
+                	handler(original);
                 });
             });
 
@@ -75,7 +69,8 @@
 
             var CategoryEditController = function ($scope, $mdDialog) {
 
-                $scope.category = category.name;
+				$scope.mode = "update"
+                $scope.name = category.name;
 
                 $scope.hide = function () {
                     $mdDialog.hide();
@@ -84,20 +79,23 @@
                     $mdDialog.cancel();
                 };
                 $scope.edit = function () {
-                    $mdDialog.hide($scope.category);
+                    $mdDialog.hide($scope.name);
                 };
             };
 
             var config = {
                 controller: CategoryEditController,
-                template: '/views/admin/editCategory.dlg.html'
+                template: '/views/dlgs/editCategory.dlg.html'
             };
 
             Dialog.custom(config, function (data) {
-                category.name = data;
-                category.$update(function () {
-                    handler();
-                });
+            	category.name = data;
+            	category.$update(function () {
+            		if (handler != undefined)
+            		{
+            			handler();
+            		}
+            	});
 
             }, function () {
 
@@ -106,6 +104,10 @@
 
         var getNewResource = function () {
             return new CategoryResource();
+        };
+
+        var renameCategory = function (category) {
+
         };
 
         return {
