@@ -26,6 +26,13 @@ a
   display: inline;
 }
 
+.green-checkbox {
+    &.md-checked .md-icon {
+      background-color: $c_layout_green;
+      color: $c_layout_green;
+    }
+}
+
 .box
 {
   max-width: 90%;
