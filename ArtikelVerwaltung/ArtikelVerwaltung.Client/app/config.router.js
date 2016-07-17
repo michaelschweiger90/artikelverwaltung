@@ -23,7 +23,7 @@ angular
 
     	$stateProvider
 			.state('start', {
-				abstract: false,
+				abstract: true,
 				url: '',
 				templateUrl: 'views/start.html'
 			})

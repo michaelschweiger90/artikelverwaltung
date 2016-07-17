@@ -6,7 +6,7 @@
 			{{'CATEGORY_NEW' | translate }}
 		</md-button>
         <md-list>
-            <md-list-item ui-sref="app.article-management.list({id: category.id})" ng-repeat="category in categories" class="md-1-line" context-menu="menuOptions">
+            <md-list-item ui-sref="app.article-management.list({id: category.id})" ng-repeat="category in categories | orderBy: 'name'" class="md-1-line" context-menu="menuOptions">
                 <div class="md-list-item-text" >
                     {{ category.name }}
                 </div>

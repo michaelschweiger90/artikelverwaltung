@@ -3,7 +3,7 @@
         
         <div flex-sm-auto flex-gt-sm="30">
             <md-list>
-                <md-list-item ui-sref="app.article.list({id: category.id})" ng-repeat="category in categories" class="md-1-line" contextmenu="menuOptions">
+                <md-list-item ui-sref="app.article.list({id: category.id})" ng-repeat="category in categories | orderBy: 'name'" class="md-1-line" contextmenu="menuOptions">
                     <div class="md-list-item-text">
                         {{ category.name }}
                     </div>
