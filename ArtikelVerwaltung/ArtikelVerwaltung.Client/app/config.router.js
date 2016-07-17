@@ -21,8 +21,13 @@ angular
         $urlRouterProvider
             .otherwise('/login');
 
-        $stateProvider
-            .state('forgot', {
+    	$stateProvider
+			.state('start', {
+				abstract: false,
+				url: '',
+				templateUrl: 'views/start.html'
+			})
+            .state('start.forgot', {
                 url: '/forgot',
                 templateUrl: 'views/forgot.html',
                 controller: 'ForgotCtrl',
@@ -68,7 +73,7 @@ angular
                     AuthService.doLogout().$promise.then(function (data) {
                         $localStorage.user = {};
                         Toast.translateAndShow('SUCCESS_LOGOUT', function () {
-                            $state.go('login');
+                            $state.go('start.login');
                         });
                     }, function () {
                         if (data.status === 400) {
@@ -93,7 +98,7 @@ angular
                     ]
                 }
             })
-            .state('register', {
+            .state('start.register', {
                 url: '/register',
                 templateUrl: 'views/register.html',
                 controller: 'RegisterCtrl',
@@ -114,7 +119,7 @@ angular
                     ]
                 }
             })
-            .state('login', {
+            .state('start.login', {
                 url: '/login',
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl',

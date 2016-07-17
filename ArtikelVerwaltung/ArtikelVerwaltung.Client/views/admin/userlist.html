@@ -1,10 +1,7 @@
-<div class="col-md-7" ng-controller="AdminCtrl">
-    <md-toolbar class="md-table-toolbar md-default">
-        <h3>
-            <span>{{'USER_LIST' | translate}}</span>
-        </h3>
-    </md-toolbar>
-
+<div ng-controller="AdminCtrl">
+    <h3>
+        <span>{{'USER_LIST' | translate}}</span>
+    </h3>
     <table st-table="displayedUsers" st-safe-src="users" class="table table-striped">
         <thead>
             <tr>

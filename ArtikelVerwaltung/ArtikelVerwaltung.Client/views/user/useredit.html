@@ -1,12 +1,9 @@
-<div class="col-md-5" ng-controller="UserCtrl">
+<div ng-controller="UserCtrl">
     <form name="form">
-        <md-toolbar class="md-table-toolbar md-default">
-            <h3>
-                <span>{{'USER_EDIT_ACCOUNT' | translate}}</span>
-            </h3>
-        </md-toolbar>
-
-        <md-content class="md-padding login-body" layout="column">
+        <h3>
+            <span>{{'USER_EDIT_ACCOUNT' | translate}}</span>
+        </h3>
+        <md-content class="md-padding login-body" layout="column" flex-xs-auto flex-sm="70" flex-gt-sm="50">
             <md-input-container class="md-block" flex-gt-sm>
                 <label for="name">{{'SYS_NAME' | translate }}</label>
                 <input type="text" name="name" id="name" ng-minlength="5" ng-maxlength="255" ng-model="userToEdit.name" required />
@@ -59,7 +56,7 @@
                 </div>
             </md-input-container>
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                <md-button ng-click="updateUser()" ng-disabled="form.$invalid || dataLoading" class="md-raised md-primary">{{'SYS_SAVE' | translate }}</md-button>
+                <md-button ng-click="updateUser()" ng-disabled="form.$invalid || dataLoading" class="md-raised md-primary orange-button">{{'SYS_SAVE' | translate }}</md-button>
                 <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                 <a ng-click="callbackJob.goBack()">{{'SYS_CANCEL' | translate }}</a>
             </section>

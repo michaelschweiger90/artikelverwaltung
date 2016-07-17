@@ -5,7 +5,7 @@
         if ($state.current.name === 'timeout') {
             $localStorage.user = {};
             Toast.translateAndShow('ERROR_TIMEOUT', function () {
-                $state.go('login');
+                $state.go('start.login');
             });
         }
 
