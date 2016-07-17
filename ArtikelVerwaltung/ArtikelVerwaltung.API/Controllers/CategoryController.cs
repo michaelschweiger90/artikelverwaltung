@@ -46,9 +46,10 @@ namespace ArtikelVerwaltung.API.Controllers
                     throw new HttpResponseException(HttpStatusCode.BadRequest);
                 }
 
-                if (CategoryRepository.SaveAll())
+				CategoryRepository.SaveCategory(category);
+
+				if (CategoryRepository.SaveAll())
                 {
-                    CategoryRepository.SaveCategory(category);
                     return Ok(ModelFactory.Create(category));
                 }
                 else
@@ -68,12 +69,14 @@ namespace ArtikelVerwaltung.API.Controllers
         {
             try
             {
-                Category category = CategoryRepository.GetCategoryById(id);
+                Category existCategory = CategoryRepository.GetCategoryById(id);
 
-                if (category == null)
+                if (existCategory == null)
                     throw new ArgumentException("Kategorie exisitert nicht!");
 
-                CategoryRepository.UpdateCategory(category);
+				Category category = ModelFactory.Create(categoryDTO);
+
+				CategoryRepository.UpdateCategory(category);
 
                 if (CategoryRepository.SaveAll())
                 {

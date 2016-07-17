@@ -1,6 +1,6 @@
 ﻿<div ng-controller="CartCtrl">
-	<div layout="row" layout-padding="5px" layout-align="start">
-		<md-button class="md-raised" layout="start none" ng-click="add()">
+	<div layout="row" layout-align="start">
+		<md-button class="md-raised btn orange-button login-button" layout="start none" ng-click="add()">
 			<i class="material-icons">add_shopping_cart</i>
 			Warenkorb hinzufügen
 		</md-button>
@@ -24,10 +24,10 @@
 		<div flex layout-padding="5px">
 			<md-list>
 				<div ng-show="articles.length > 0">
-					<md-list-item ng-repeat="article in articles" context-menu="articleOptions">
-						<div layout="row" class="md-list-item-text">
-							{{ article.name }}<br />
-							{{ article.price }} Euro
+					<md-list-item ng-repeat="article in articles" context-menu="articleOptions" class="md-1-line">
+						<div layout="column" class="md-list-item-text">
+							<div><b>{{ article.name }}</b></div>
+							<div>{{ article.price }} Euro</div>
 						</div>
 						<md-divider></md-divider>
 					</md-list-item>

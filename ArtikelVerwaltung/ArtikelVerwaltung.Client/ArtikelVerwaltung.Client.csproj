@@ -138,6 +138,7 @@
     <Content Include="views\Article.html" />
     <Content Include="views\article\article-detail.html" />
     <Content Include="views\article\article-list.html" />
+    <Content Include="views\dlgs\editCategory.dlg.html" />
     <Content Include="views\dlgs\cart.dlg.html" />
     <Content Include="assets\css\partial\_admin-user.scss" />
     <Content Include="assets\css\partial\_article.scss" />

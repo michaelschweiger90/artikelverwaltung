@@ -28,6 +28,10 @@ app.controller('AppCtrl', [
             }
         ];
 
+        $scope.toggleSidenav = function (menuId) {
+        	$mdSidenav(menuId).toggle();
+        };
+
         $scope.redirectToEdit = function () {
             $localStorage.userIdToEdit = $localStorage.user.id;
             $rootScope.callbackJob.previousState = $state.current.name;
