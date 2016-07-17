@@ -27,5 +27,23 @@ namespace ArtikelVerwaltungRepository.UnitTest.Data
         {
             Assert.IsInstanceOfType(repository.GetUserRepository(), typeof(IUserRepository));
         }
+
+        [TestMethod]
+        public void TestGetCartRepository()
+        {
+            Assert.IsInstanceOfType(repository.GetCartRepository(), typeof(ICartRepository));
+        }
+
+        [TestMethod]
+        public void TestGetArticleRepository()
+        {
+            Assert.IsInstanceOfType(repository.GetArticleRepository(), typeof(IArticleRepository));
+        }
+
+        [TestMethod]
+        public void TestGetCategoryRepository()
+        {
+            Assert.IsInstanceOfType(repository.GetCategoryRepository(), typeof(ICategoryRepository));
+        }
     }
 }
