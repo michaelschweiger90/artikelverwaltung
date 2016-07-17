@@ -1,6 +1,6 @@
 ﻿app.controller('ForgotCtrl', [
-    '$localStorage', '$rootScope', '$scope', '$state', 'AuthService',
-    function ($localStorage, $rootScope, $scope, $state, AuthService)
+    '$localStorage', '$rootScope', '$scope', '$state', 'AuthService', 'Toast',
+    function ($localStorage, $rootScope, $scope, $state, AuthService, Toast)
     {
         $scope.user = null;
         $scope.dataLoading = false;
