@@ -84,31 +84,31 @@ namespace ArtikelVerwaltung.API.Services
             {
                 bool isChanged = false;
 
-                if (! user.Name.Equals(userDTO.Name))
+                if (userDTO.Name != null && userDTO.Name != "" &&! user.Name.Equals(userDTO.Name))
                 {
                     isChanged = true;
                     user.Name = userDTO.Name;
                 }
 
-                if (! user.Email.Equals(userDTO.MailAddress))
+                if (userDTO.MailAddress != null && userDTO.MailAddress != "" && ! user.Email.Equals(userDTO.MailAddress))
                 {
                     isChanged = true;
                     user.Email = userDTO.MailAddress;
                 }
 
-                if (! user.SecretAnswer.Equals(userDTO.SecretAnswer))
+                if (userDTO.SecretAnswer != null && userDTO.SecretAnswer != "" && ! user.SecretAnswer.Equals(userDTO.SecretAnswer))
                 {
                     isChanged = true;
                     user.SecretAnswer = userDTO.SecretAnswer;
                 }
-                if (!user.SecretQuestion.Equals(userDTO.SecretQuestion))
+                if (userDTO.SecretQuestion !=null && userDTO.SecretQuestion != "" && !user.SecretQuestion.Equals(userDTO.SecretQuestion))
                 {
                     isChanged = true;
                     user.SecretQuestion = userDTO.SecretQuestion;
                 }
 
 
-                if (userDTO.NewPassword != null && !user.Passwort.Equals(AuthUtil.EncrptPasswordWithSHA256(userDTO.NewPassword)))
+                if (userDTO.NewPassword != null && userDTO.NewPassword != "" && !user.Passwort.Equals(AuthUtil.EncrptPasswordWithSHA256(userDTO.NewPassword)))
                 {
                     isChanged = true;
                     user.Passwort = AuthUtil.EncrptPasswordWithSHA256(userDTO.NewPassword);
@@ -138,13 +138,13 @@ namespace ArtikelVerwaltung.API.Services
         public bool ExistsUserWithEmail(string email, int ID)
         {
             User user = userRepository.FindUserByEmail(email);
-            if (user.ID == ID && user.Email == email)
+            if (user != null)
             {
-                return false;
+                return user.ID == ID; ;
             }
             else
             {
-                return user != null && user.ID != ID;
+                return false;
             }
         }
     }
