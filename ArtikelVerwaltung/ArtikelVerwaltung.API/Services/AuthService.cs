@@ -17,9 +17,9 @@ namespace ArtikelVerwaltung.API.Services
         public User AuthenticateByPassword(string email, string password)
         {
             var user = userRepository.FindUserByEmail(email);
-            string decryptedPassword = AuthUtil.EncrptPasswordWithSHA256(password);
+            string encryptedPassword = AuthUtil.EncrptPasswordWithSHA256(password);
 
-            if (user != null && user.ID > 0 && decryptedPassword.Equals(user.Passwort))
+            if (user != null && user.ID > 0 && encryptedPassword.Equals(user.Passwort))
             {
                 user.Token = AuthUtil.GenerateUniqueToken();
                 user.TokenDate = DateTime.Now;
