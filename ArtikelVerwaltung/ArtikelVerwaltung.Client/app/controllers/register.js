@@ -1,6 +1,6 @@
 ﻿app.controller('RegisterCtrl', [
-    '$state', '$localStorage', '$rootScope', '$scope', 'AuthService',
-    function ($state, $localStorage, $rootScope, $scope, AuthService)
+    '$state', '$localStorage', '$rootScope', '$scope', 'AuthService', 'Toast',
+    function ($state, $localStorage, $rootScope, $scope, AuthService, Toast)
     {
         $scope.user = null;
         $scope.dataLoading = false;
